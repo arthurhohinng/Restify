@@ -1,0 +1,11 @@
+.results {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.preview-card {
+    flex-grow: 1;
+    padding: 15px;
+}
+
