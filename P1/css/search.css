@@ -1,3 +1,4 @@
+/* Simple CSS file for the search.html demo, since normal HTML just looked bad */
 .results {
     display: flex;
     flex-direction: row;
