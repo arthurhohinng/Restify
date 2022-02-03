@@ -55,10 +55,14 @@
             </div>
         </div>
     </nav>
-    Welcome to Restify!
-    <form method="GET">
-        <input type="text" name="searchBar" placeholder="Search for restaurants...">
-        <input type="submit" name="submit" id="Submit">
-    </form>
+    <div class="d-flex flex-column align-items-center search-bar">
+        <h1>Restify</h1>
+        <div class="p-1">
+            <form class="d-flex" method="GET">
+                <input class="form-control me-2" type="search" placeholder="Search for restuarants..." aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
