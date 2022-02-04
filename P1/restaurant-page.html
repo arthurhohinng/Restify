@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>My Restaurant</title>
+    </head>
+    
+    <body>
+        <!--
+        General info (name, address, logo, ...)
+        Menu (list of food items with description and price)
+        Update menu option
+        Update general info
+        Add/remove blog posts
+        (Have a button for the last 3, which will be done through JS)
+        -->
+        <h1>Restaurant name</h2>
+        <span>Logo</span><br>
+        <span>Address</span><br>
+        <span>Postal Code</span><br>
+        <span>Phone Number</span>
+        <!--
+            This button takes you to another page, where you can edit
+            restaurant info. That page would have a form with a submit
+            button to update rstaurant info, handled by JS. Likewise
+            for updating the menu
+        -->
+
+        <span>Menu</span><br>
+        <ul>
+            <li>Burger, Delicious hamburger with vegetables, $19.99</li>
+            <li>Pizza, Delicious pizza with any three toppings of your choice, $24.99</li>
+            <li>Salad, Loaded with vegetables and dressing of your choice. You can also add cheese for an extra $1, $9.99</li>
+        </ul><br>
+
+        <form>
+            <input type="button" value="Add new picture"/>
+        </form><br>
+
+        <form>
+            <input type="button" value="Remove picture"/>
+        </form>
+
+        <!--
+            https://www.w3schools.com/howto/howto_css_blog_layout.asp
+            For the blog posts.
+        -->
+        <form>
+            <input type="button" value="Add new blog post"/>
+        </form>
+
+        <form>
+            <input type="button" value="Remove blog post"/>
+        </form>
+        <h2>Blog Posts</h2>
+        <div class="header">
+          </div>
+          
+          <div class="row">
+            <div class="leftcolumn">
+              <div class="card">
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, Dec 7, 2017</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Some text..</p>
+              </div>
+              <div class="card">
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, Sep 2, 2017</h5>
+                <div class="fakeimg" style="height:200px;">Image</div>
+                <p>Some text..</p>
+              </div>
+            </div>
+            <div class="rightcolumn">
+              <div class="card">
+                <h2>About Me</h2>
+                <div class="fakeimg" style="height:100px;">Image</div>
+                <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+              </div>
+              <div class="card">
+                <h3>Popular Post</h3>
+                <div class="fakeimg">Image</div><br>
+                <div class="fakeimg">Image</div><br>
+                <div class="fakeimg">Image</div>
+              </div>
+              <div class="card">
+                <h3>Follow Me</h3>
+                <p>Some text..</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer">
+            <h2>Footer</h2>
+          </div>
+    </body>
+</html>
