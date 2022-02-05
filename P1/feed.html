@@ -5,10 +5,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Restify Search Results</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/feed.css">
 </head>
 <body>
-    <h1 style="text-align: center">Feed</h1>
+
+    <!-- Navbar bootstrap source: https://getbootstrap.com/docs/5.1/components/navbar/ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Restify</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feed.html">Feed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-restaurant.html">My Restaurant</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Notifications
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">Started following Wendys</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Stewart liked your blogpost</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="#">...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="form-pages/edit-profile.html">Edit Profile</a>
+                            </li>
+                        </ul>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-success" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h1 id="title" style="text-align: center">Restaurant Feed</h1>
     <div class="container">
         <!-- Not sure how to uniquely identify each feed item (or if we even need to) -->
         
@@ -20,8 +75,8 @@
                 </a>
             </div>
             <div class="media-body">
-                <h4 class="media-heading">Wendy's Uploaded a Blogpost
-                    <span class="pull-right">4:14 AM</span>
+                <h4 class="media-heading"><span class="name">Wendy's</span> Uploaded a Blogpost
+                    <span class="float-right">4:14 AM</span>
                 </h4>
                 <!-- Should be a preview, like first 50 words of the post or so -->
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
@@ -29,7 +84,7 @@
                 nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
                 esse cillum dolore eu fugiat nulla pariatur...
                 <br>
-                <span><a href="">>> See Full Post</a></span>
+                <span class="float-right"><a href="">>> See Full Post</a></span>
             </div>
         </div>
         <!-- Blog Preview ENDS -->
@@ -41,15 +96,15 @@
                 </a>
             </div>
             <div class="media-body">
-                <h4 class="media-heading">Burger King Uploaded a Blogpost 
-                    <span class="pull-right">Yesterday</span> 
+                <h4 class="media-heading"><span class="name">Burger King</span> Uploaded a Blogpost 
+                    <span class="float-right">Yesterday</span> 
                 </h4>
                 Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
                 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
                 dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
                 sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt...
                 <br>
-                <span><a href="">>> See Full Post</a></span>
+                <span class="float-right"><a href="">>> See Full Post</a></span>
             </div>
         </div>
         <div class="media">
@@ -59,15 +114,15 @@
                 </a>
             </div>
             <div class="media-body">
-                <h4 class="media-heading">Popeye's Uploaded a Blogpost 
-                    <span class="pull-right">Yesterday</span> 
+                <h4 class="media-heading"><span class="name">Popeye's</span> Uploaded a Blogpost 
+                    <span class="float-right">Yesterday</span> 
                 </h4>
                 Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
                 nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea 
                 voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
                 voluptas nulla pariatur? ...
                 <br>
-                <span><a href="">>> See Full Post</a></span>
+                <span class="float-right"><a href="">>> See Full Post</a></span>
             </div>
         </div>
         <div class="media">
@@ -77,15 +132,15 @@
                 </a>
             </div>
             <div class="media-body">
-                <h4 class="media-heading">Kelseys Uploaded a Blogpost 
-                    <span class="pull-right">Monday</span> 
+                <h4 class="media-heading"><span class="name">Kelsey's</span> Uploaded a Blogpost 
+                    <span class="float-right">Monday</span> 
                 </h4>
                 At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
                 deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non 
                 provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum 
                 fuga. ...
                 <br>
-                <span><a href="">>> See Full Post</a></span>
+                <span class="float-right"><a href="">>> See Full Post</a></span>
             </div>
         </div>
         <div class="media">
@@ -95,13 +150,13 @@
                 </a>
             </div>
             <div class="media-body">
-                <h4 class="media-heading">Cactus Club Uploaded a Blogpost 
-                    <span class="pull-right">Saturday</span> 
+                <h4 class="media-heading"><span class="name">Cactus Club</span> Uploaded a Blogpost 
+                    <span class="float-right">Saturday</span> 
                 </h4>
                 Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
                 sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem...
                 <br>
-                <span><a href="">>> See Full Post</a></span>
+                <span class="float-right"><a href="">>> See Full Post</a></span>
             </div>
         </div>
     </div>  

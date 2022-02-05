@@ -5,78 +5,137 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Restify Search Results</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/search.css">
 </head>
 <body>
-    <h1 style="text-align: center">Search Results</h1>
+
+    <!-- Navbar bootstrap source: https://getbootstrap.com/docs/5.1/components/navbar/ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Restify</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="feed.html">Feed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="my-restaurant.html">My Restaurant</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Notifications
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">Started following Wendys</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="#">Stewart liked your blogpost</a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="#">...</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="form-pages/edit-profile.html">Edit Profile</a>
+                            </li>
+                        </ul>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-success" type="submit">Logout</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <h1 id="title" style="text-align: center">Search Results</h1>
     <div class="container">
 
         <!-- Card Template BEGIN -->
-        <div class="col-sm-4 px-3">
+        <div class="card col-sm-4">
             <!-- in the final product, everything inside this div will be generated in JS -->
             <!-- IDs for everything here are based on numerical IDs of the restaurants, so we can update them using JS (subject to change) -->
             <div id="19020"> <!-- Numerical ID of the restaurant -->
                 <img class="thumbnail 19020-img" src="https://www.gannett-cdn.com/-mm-/abf7fc9e077790e137c6a86512b8396963a5a375/c=0-302-3264-2146&r=x1683&c=3200x1680/local/-/media/2016/06/30/SiouxFalls/SiouxFalls/636028891036886063-Popeyes.jpg" height="200" width="400">
-                <div id="19020-name">
-                    Popeye's
-                </div>
+                <div class="float-left rest-name" id="19020-name">Popeye's</div>
+                <br>
                 <div id="19020-info">
-                    <span id="19020-address"> 4038 Windwood Drive, Mississauga </span>
-                    <span class="pull-right" id="19020-likes"> 1500 Likes </span>
+                    <span class="float-left" id="19020-address"> 4038 Windwood Drive, Mississauga </span>
+                    <span class="float-right" id="19020-likes"> 1500 Likes </span>
                 </div>
             </div>
         </div>
         <!--Card Template END -->
 
-        <div class="col-sm-4">
+        <div class="card col-sm-4">
             <div id="19031">
                 <img class="thumbnail 19031-img" src="https://brobible.com/wp-content/uploads/2020/03/istock-635717214.jpg?resize=300" height="200" width="400">
-                <span id="19031-name"> Chick-Fil-A </span>
+                <div class="float-left rest-name" id="19031-name"> Chick-Fil-A </div>
+                <br>
                 <div id="19031-info">
                     <span id="19031-address"> 1301 Chicken Drive, Brampton </span>
-                    <span class="pull-right" id="19031-likes"> 400 Likes </span>
+                    <span class="float-right" id="19031-likes"> 400 Likes </span>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-4">
+        <div class="card col-sm-4">
             <div id="19483">
                 <img class="thumbnail 19483-img" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https://static.onecms.io/wp-content/uploads/sites/9/2020/01/taco-bell-salary-FT-BLOG0120.jpg" height="200" width="400">
-                <span id="19483-name"> Taco Bell </span>
+                <div class="float-left rest-name" id="19483-name"> Taco Bell </div>
+                <br>
                 <div id="19483-info">
                     <span id="19483-address"> 8584 Taco Drive, Waco </span>
-                    <span class="pull-right" id="19483-likes"> 300 Likes </span>
+                    <span class="float-right" id="19483-likes"> 300 Likes </span>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-4">
+        <div class="card col-sm-4">
             <div id="19483">
                 <img class="thumbnail 19483-img" src="https://i1.wp.com/nypost.com/wp-content/uploads/sites/2/2014/09/kuro_burger1.jpg?quality=90&strip=all&ssl=1" height="200" width="400">
-                <span id="19483-name"> Burger King </span>
+                <div class="float-left rest-name" id="19483-name"> Burger King </div>
+                <br>
                 <div id="19483-info">
                     <span id="19483-address"> 8584 Burger Drive, BC </span>
-                    <span class="pull-right" id="19483-likes"> 200 Likes </span>
+                    <span class="float-right" id="19483-likes"> 200 Likes </span>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="card col-sm-4">
             <div id="19483">
                 <img class="thumbnail 19483-img" src="https://www.niagarafallstourism.com/site/assets/files/2578/kelseys-cliftonhill-entrance-web-ready-1.jpg" height="200" width="400">
-                <span id="19483-name"> Taco Bell </span>
+                <div class="float-left rest-name" id="19483-name"> Taco Bell </div>
+                <br>
                 <div id="19483-info">
                     <span id="19483-address"> 1000 Lundy's Lane, Niagara Falls </span>
-                    <span class="pull-right" id="19483-likes"> 100 Likes </span>
+                    <span class="float-right" id="19483-likes"> 100 Likes </span>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="card col-sm-4">
             <div id="19483">
                 <img class="thumbnail 19483-img" src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https://static.onecms.io/wp-content/uploads/sites/9/2020/01/taco-bell-salary-FT-BLOG0120.jpg" height="200" width="400">
-                <span id="19483-name"> Taco Bell </span>
+                <div class="float-left rest-name" id="19483-name"> Taco Bell </div>
+                <br>
                 <div id="19483-info">
                     <span id="19483-address"> 8584 Tortilla Way, San Antonio </span>
-                    <span class="pull-right" id="19483-likes"> 0 Likes </span>
+                    <span class="float-right" id="19483-likes"> 0 Likes </span>
                 </div>
             </div>
         </div>

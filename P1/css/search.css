@@ -1,0 +1,23 @@
+
+#title {
+    color: white;
+    padding: 2%;
+}
+
+.rest-name {
+    text-align: left;
+    color: white;
+    display: block;
+}
+
+.card {
+    background-color: rgba(87, 80, 131, 0.767);
+    border-radius: 10%;
+    padding: 2%;
+}
+
+img {
+    height: 200px;
+    width: 300px;
+    object-fit: fill;
+}

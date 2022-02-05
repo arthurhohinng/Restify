@@ -1,0 +1,36 @@
+body{
+    background-color: darkslateblue;
+    color: rgba(255,255,255,.55);
+    text-align: left;
+}
+
+#title {
+    color: white;
+    padding: 2%;
+}
+
+.name {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.container {
+    width: 50%;
+    margin: auto;
+}
+
+.media {
+    padding: 3%;
+    margin-bottom: 3%;
+    background-color: rgba(87, 80, 131, 0.767);
+    border-radius: 25px;
+}
+
+.media-object {
+    padding: 10%;
+    border-radius: 100%;
+}
+
+/* TODO: add colours for every link (hovered, clicked, etc) */
+a {
+    color: white;
+}
