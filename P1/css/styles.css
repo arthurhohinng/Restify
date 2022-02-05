@@ -93,3 +93,6 @@ h2 {
 .text {
     color: black;
 }
+#commentbox {
+    border-radius: 15px;
+}
