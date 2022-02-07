@@ -60,16 +60,92 @@
         </div>
     </nav>
 
-    <h1>Restaurant Name</h1>
-    <h2>Description</h2>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, similique libero? Commodi blanditiis a cum dolore facere, incidunt nemo ab quia, error tenetur, illo facilis quisquam laborum nostrum culpa neque?
-    </p>
+    <h2>John's Restaurant</h2>
+        <img class="center" src="https://illustoon.com/photo/dl/4728.png"><br>
+        <span>Address: 123 Food Street</span><br>
+        <span>Postal Code: L11 211</span><br>
+        <span>Phone Number: 416-111-111</span><br>
     <br>
+    <span>Menu</span><br>
+        <ul>
+            <li>Burger, Delicious hamburger with vegetables, $19.99</li>
+            <li>Pizza, Delicious pizza with any three toppings of your choice, $24.99</li>
+            <li>Salad, Loaded with vegetables and dressing of your choice. You can also add cheese for an extra $1, $9.99</li>
+            <li>Slushy, Ice-cold refreshing drink available in any soda flavour as well as our specialty flavours, $1.99</li>
+        </ul><br>
+    <span>Got a comment?</span>
+    <form method="post">
+        <textarea id="commentbox">Enter your comment here...</textarea><br>
+        <input type="submit" value="submit">
+    </form>
     <div>
         <a href="form-pages/edit-restaurant.html">Edit restaurant</a>
         <br>
         <a href="form-pages/edit-menu.html">Edit menu</a>
     </div>
+    <form>
+        <input type="button" value="Add new picture"/>
+    </form><br>
+
+    <form>
+        <input type="button" value="Remove picture"/>
+    </form><br>
+
+    <form>
+        <input type="button" value="Add new blog post"/>
+    </form><br>
+
+    <form>
+        <input type="button" value="Remove blog post"/>
+    </form><br>
+    <h2>Blog Posts</h2>
+        <div class="header">
+          </div>
+          
+          <div class="row">
+            <div class="leftcolumn">
+              <div class="card"> <!--Use this div to add a blog post-->
+                <h2 class="text">Great food!</h2>
+                <h5 class="text">Best burgers in town!, Dec 7, 2017</h5>
+                <img src="https://thumbs.dreamstime.com/z/happy-man-tasty-fast-food-unhealthy-burger-sandwich-hand-get-ready-to-eat-isolated-white-background-concept-43948399.jpg" width="250">
+                <p class="text">Just tried out John's Burgers, they are soooo goood!!!</p>
+              </div>
+              <div class="card">
+                <h2 class="text">Pizza Needs Improvement</h2>
+                <h5 class="text">Like the title says, Sep 2, 2017</h5>
+                <img src="https://thumbs.dreamstime.com/z/young-handsome-man-beard-holding-delivery-cardoboard-italian-pizza-angry-face-negative-sign-showing-dislike-thumbs-down-219637761.jpg" width="400">
+                <p class="text">Just bought this pizza, the dough is severely undercooked...</p>
+              </div>
+              <div class="card">
+                <h2 class="text">Underrated slushies</h2>
+                <h5 class="text">So refreshing, Dec 7, 2017</h5>
+                <img src="https://image.shutterstock.com/image-photo/young-boy-drinking-blue-ice-600w-446436811.jpg" width="350">
+                <p class="text">My younger brother loves the slushies offered here! So much variety</p>
+              </div>
+            </div>
+            <div class="rightcolumn">
+              <div class="card">
+                <h2 class="text">About Me</h2>
+                <img src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
+                <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
+              </div>
+              <div class="card">
+                <h3 class="text">Popular Posts</h3>
+                <a href="link"> <!--Will use JS later to take these images to the blog post page, also may need sepearte link for each page-->
+                <img src="https://www.acouplecooks.com/wp-content/uploads/2020/05/Italian-Salad-051-735x919.jpg" width="200"><br><br>
+                <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2018/02/xxxl-fatburger.jpg?quality=82&strip=1&resize=640%2C360" width="250"><br><br>
+                <img src="https://www.busylittlekiddies.com/wp-content/uploads/Slushie-recipe.jpg" width="200">
+                </a>
+              </div>
+              <div class="card">
+                <h3 class="text">Follow Me</h3>
+                <p class="text">Instagram: @john_123</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="footer">
+            <h2 class="text">Thanks for visiting the site!</h2>
+          </div>
 </body>
 </html>
