@@ -4,6 +4,7 @@ body{
     background-color: darkslateblue;
     color: rgba(255,255,255,.55);
     text-align: center;
+    height: 100%;
 }
 
 .nav-link{
@@ -16,10 +17,4 @@ body{
 
 #name {
     color: white;
-}
-
-footer {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
 }
