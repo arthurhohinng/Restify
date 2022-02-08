@@ -17,3 +17,9 @@ body{
 #name {
     color: white;
 }
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
