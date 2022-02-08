@@ -5,9 +5,12 @@
 }
 
 .rest-name {
-    text-align: left;
     color: white;
-    display: block;
+    margin: 5px;
+}
+
+.rest-info {
+    margin: 5px;
 }
 
 .card {
@@ -16,8 +19,17 @@
     padding: 2%;
 }
 
+.col {
+    margin: 10px;
+}
+
 img {
     height: 200px;
     width: 300px;
     object-fit: fill;
+    border-radius: 10%;
+}
+
+img:hover {
+    filter: opacity(0.5);
 }
