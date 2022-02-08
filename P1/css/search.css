@@ -9,8 +9,22 @@
     margin: 5px;
 }
 
+.rest-likes {
+    display: block;
+}
+
 .rest-info {
     margin: 5px;
+}
+
+.search {
+    width: 50%;
+    margin: auto;
+    margin-bottom: 5%;
+}
+
+.btn {
+    margin-left: 3%;
 }
 
 .card {
