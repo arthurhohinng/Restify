@@ -4,17 +4,29 @@
     padding: 2%;
 }
 
+body {
+    width: 100%;
+}
+
 .rest-name {
-    color: white;
-    margin: 5px;
+    display: block;
+    color: white; 
+    text-align: left;
+    margin-left: 5%;
+    font-size: 20px;
 }
 
 .rest-likes {
     display: block;
+    text-align: left;
+    margin-left: 5%;
+    color: rgba(255, 255, 255, 0.699); 
 }
 
-.rest-info {
-    margin: 5px;
+.rest-addr {
+    display: block;
+    text-align: left;
+    margin-left: 5%;
 }
 
 .search {
@@ -31,6 +43,7 @@
     background-color: rgba(87, 80, 131, 0.767);
     border-radius: 10%;
     padding: 2%;
+    margin-bottom: 30px;
 }
 
 .col {
@@ -38,10 +51,12 @@
 }
 
 img {
-    height: 200px;
-    width: 300px;
-    object-fit: fill;
-    border-radius: 10%;
+    display: block;
+    max-height: 200px;
+    padding: 5%;
+    border-radius: 15%;
+    margin: auto;
+    margin-bottom: 3px;
 }
 
 img:hover {
