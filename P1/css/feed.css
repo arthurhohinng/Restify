@@ -11,6 +11,7 @@ body{
 
 .name {
     color: rgba(255, 255, 255, 0.8);
+    margin-left: 2%;
 }
 
 .container {
@@ -28,6 +29,25 @@ body{
 .media-object {
     padding: 10%;
     border-radius: 100%;
+}
+
+details {
+    padding: 3%;
+}
+
+summary {
+    color: rgb(241, 227, 179);
+    font-size: 18px;
+}
+
+img {
+    margin: 2%;
+    border-radius: 10%;
+}
+
+button {
+    background-color: rgba(255, 255, 255, 0.226) !important; /* Overriding default bg button color which was transparent */
+    margin-top: 2%;
 }
 
 /* TODO: add colours for every link (hovered, clicked, etc) */

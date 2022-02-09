@@ -7,6 +7,8 @@
     <title>Restify Search Results</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/feed.css">
+    <!-- JS being used for collapsing blogpost previews -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -77,13 +79,17 @@
                 <h4 class="media-heading"><span class="name">Wendy's</span> Uploaded a Blogpost
                     <span class="float-right">4:14 AM</span>
                 </h4>
-                <!-- Should be a preview, like first 50 words of the post or so -->
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-                esse cillum dolore eu fugiat nulla pariatur...
-                <br>
-                <span class="float-right"><a href="">>> See Full Post</a></span>
+                <details>
+                    <summary>New Factory Unleashes the True Power of Burger Production!</summary>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                    nisi ut aliquip ex ea commodo consequat. 
+                    <img class="img-fluid" src="https://www.tonkiamachine.com/wp-content/uploads/2018/06/burger-patty-production-line.jpg">
+                    Duis aute irure dolor in reprehenderit in voluptate velit 
+                    esse cillum dolore eu fugiat nulla pariatur.
+                    <br>
+                    <button type="button" class="btn btn-outline-light">Like!</button>
+                </details>
             </div>
         </div>
         <!-- Blog Preview ENDS -->
@@ -98,12 +104,16 @@
                 <h4 class="media-heading"><span class="name">Burger King</span> Uploaded a Blogpost 
                     <span class="float-right">Yesterday</span> 
                 </h4>
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
-                totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-                dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
-                sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt...
-                <br>
-                <span class="float-right"><a href="">>> See Full Post</a></span>
+                <details>
+                    <summary>Why our New Kuro Burger Will Give you SUPERPOWERS!!</summary>
+                    <img class="img-fluid" src="https://i.pinimg.com/736x/54/c5/2c/54c52cbee1426dd41c8badfc24910f0e--black-bun-the-black.jpg">
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                    totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
+                    dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+                    sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt...
+                    <br>
+                    <button type="button" class="btn btn-outline-light">Like!</button>
+                </details>
             </div>
         </div>
         <div class="media">
@@ -116,12 +126,17 @@
                 <h4 class="media-heading"><span class="name">Popeye's</span> Uploaded a Blogpost 
                     <span class="float-right">Yesterday</span> 
                 </h4>
-                Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
-                nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea 
-                voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
-                voluptas nulla pariatur? ...
-                <br>
-                <span class="float-right"><a href="">>> See Full Post</a></span>
+                <details>
+                    <summary>Chicken Farm Update #2093: Sunlight Deprivation Day 100292</summary>
+                    Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
+                    nisi ut aliquid ex ea commodi consequatur? 
+                    <img class="img-fluid" src="https://www.adelaidereview.com.au/content/uploads/2018/04/factory-farming-chicken-egg-adelaide-review-800x567.jpg">
+                    Quis autem vel eum iure reprehenderit qui in ea 
+                    voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
+                    voluptas nulla pariatur?
+                    <br>
+                    <button type="button" class="btn btn-outline-light">Like!</button>
+                </details>
             </div>
         </div>
         <div class="media">
@@ -134,12 +149,16 @@
                 <h4 class="media-heading"><span class="name">Kelsey's</span> Uploaded a Blogpost 
                     <span class="float-right">Monday</span> 
                 </h4>
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
-                deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non 
-                provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum 
-                fuga. ...
-                <br>
-                <span class="float-right"><a href="">>> See Full Post</a></span>
+                <details>
+                    <summary>Why We Charge $20 for Mediocre Pasta (FOR REAL)</summary>
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum 
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non 
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum 
+                    fuga.
+                    <img class="img-fluid" src="https://c1.staticflickr.com/5/4038/4495139330_23df00e75e_z.jpg">
+                    <br>
+                    <button type="button" class="btn btn-outline-light">Like!</button>
+                </details>
             </div>
         </div>
         <div class="media">
@@ -152,10 +171,14 @@
                 <h4 class="media-heading"><span class="name">Cactus Club</span> Uploaded a Blogpost 
                     <span class="float-right">Saturday</span> 
                 </h4>
-                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-                sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem...
-                <br>
-                <span class="float-right"><a href="">>> See Full Post</a></span>
+                <details>
+                    <summary>To Our Customers, Please Stop Ordering "The Cactus"</summary>
+                    Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+                    sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                    WE DO NOT SELL CACTI!!! STOP PLEASE STOP PLEASE PLEASE AAAAAAAAA
+                    <br>
+                    <button type="button" class="btn btn-outline-light">Like!</button>
+                </details>
             </div>
         </div>
     </div>
