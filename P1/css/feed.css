@@ -31,18 +31,18 @@ body{
     border-radius: 100%;
 }
 
-details {
-    padding: 3%;
+.media-heading {
+    padding-top: 3%;
 }
 
-summary {
-    color: rgb(241, 227, 179);
-    font-size: 18px;
+.posttitle {
+    color: rgb(228, 228, 171);
 }
 
 img {
-    margin: 2%;
+    margin: auto;
     border-radius: 10%;
+    padding: 3%;
 }
 
 button {
