@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>My Restaurant</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/my-restaurant.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navbar bootstrap source: https://getbootstrap.com/docs/4.0/components/navbar/ -->
@@ -60,92 +61,194 @@
         </div>
     </nav>
 
-    <h2>John's Restaurant</h2>
-        <img class="center" src="https://illustoon.com/photo/dl/4728.png"><br>
-        <span>Address: 123 Food Street</span><br>
-        <span>Postal Code: L11 211</span><br>
-        <span>Phone Number: 416-111-111</span><br>
-    <br>
-    <span>Menu</span><br>
-        <ul>
-            <li>Burger, Delicious hamburger with vegetables, $19.99</li>
-            <li>Pizza, Delicious pizza with any three toppings of your choice, $24.99</li>
-            <li>Salad, Loaded with vegetables and dressing of your choice. You can also add cheese for an extra $1, $9.99</li>
-            <li>Slushy, Ice-cold refreshing drink available in any soda flavour as well as our specialty flavours, $1.99</li>
-        </ul><br>
-    <span>Got a comment?</span>
-    <form method="post">
-        <textarea id="commentbox">Enter your comment here...</textarea><br>
-        <input type="submit" value="submit">
-    </form>
-    <div>
-        <a href="form-pages/edit-restaurant.html">Edit restaurant</a>
-        <br>
-        <a href="form-pages/edit-menu.html">Edit menu</a>
+    <h2 id="title">John's Restaurant</h2>
+
+    <div class="wrapper">
+        <div class="container">
+            <!-- Tabs of info will be located under restaurant name -->
+            <ul class="nav nav-tabs" id="restaurant-tabs" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false">Menu</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="blog-tab" data-toggle="tab" href="#blogposts" role="tab" aria-controls="blogposts" aria-selected="false">Blog Posts</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Edit Restaurant</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="restaurant-tabs-content">
+                <!-- Restaurant info -->
+                <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <h3 style="margin-top:2%">John's Restaurant</h3>
+                    <div id="rest-img"><img class="img-fluid center" src="https://illustoon.com/photo/dl/4728.png"></div>
+                    <div id="rest-addr">
+                        <span>Address:</span> 123 Food Street<br>
+                        <span>Postal Code:</span> L11 211<br>
+                        <span>Phone Number:</span> 416-111-111<br>
+                    </div>
+                    <div class="card">
+                        <h2 class="text">About the Owner</h2>
+                        <img class="center" src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
+                        <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
+                    </div>
+                </div>
+                <!-- Menu -->
+                <div class="tab-pane fade show active" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                    <!-- Menu is made using basic headings for each category and a table for the items and their prices -->
+                    <h4 class="menu-category" style="margin-top:3%;"> Starters </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>Cheesesticks</td>
+                                <td>$7.99</td>
+                            </tr>
+                            <tr>
+                                <td>Jalapeno Poppers</td>
+                                <td>$9.99</td>
+                            </tr>
+                            <tr>
+                                <td>Loaded Poutine</td>
+                                <td>$12.99</td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Mains </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>Hamburger</td>
+                                <td>$6.99</td>
+                            </tr>
+                            <tr>
+                                <td>Cheeseburger</td>
+                                <td>$7.99</td>
+                            </tr>
+                            <tr>
+                                <td>Veggieburger</td>
+                                <td>$5.99</td>
+                            </tr>
+                            <tr>
+                                <td>Hotdog</td>
+                                <td>$6.99</td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Sides </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>French Fries</td>
+                                <td>$3.99</td>
+                            </tr>
+                            <tr>
+                                <td>Cesar Salad</td>
+                                <td>$6.99</td>
+                            </tr>
+                            <tr>
+                                <td>Fried Pickles</td>
+                                <td>$9.99</td>
+                            </tr>
+                            <tr>
+                                <td>Sweet Potato Fries</td>
+                                <td>$4.99</td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Desserts </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>Chocolate Sundae</td>
+                                <td>$6.99</td>
+                            </tr>
+                            <tr>
+                                <td>Cheesecake (1 pc.)</td>
+                                <td>$3.99</td>
+                            </tr>
+                            <tr>
+                                <td>Caramel Brownie</td>
+                                <td>$2.99</td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Drinks </h4>
+                        <table class="menu-items">
+                            (Choice of Fountain Drink)
+                            <tr>
+                                <td>Small</td>
+                                <td>$1.99</td>
+                            </tr>
+                            <tr>
+                                <td>Medium</td>
+                                <td>$2.99</td>
+                            </tr>
+                            <tr>
+                                <td>Large</td>
+                                <td>$3.99</td>
+                            </tr>
+                        </table>
+                </div>
+                <!-- Blog Posts -->
+                <div class="tab-pane fade" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
+                    <h2>Blog Posts</h2>
+                    <div class="card" id="post-1"> <!--Use this div to add a blog post-->
+                        <h2 class="text">Great food!</h2>
+                        <h5 class="text">Best burgers in town!, Dec 7, 2017</h5>
+                        <img src="https://thumbs.dreamstime.com/z/happy-man-tasty-fast-food-unhealthy-burger-sandwich-hand-get-ready-to-eat-isolated-white-background-concept-43948399.jpg" width="250">
+                        <p class="text">Just tried out John's Burgers, they are soooo goood!!!</p>
+                    </div>
+                    <div class="card" id="post-2">
+                        <h2 class="text">Pizza Needs Improvement</h2>
+                        <h5 class="text">Like the title says, Sep 2, 2017</h5>
+                        <img src="https://thumbs.dreamstime.com/z/young-handsome-man-beard-holding-delivery-cardoboard-italian-pizza-angry-face-negative-sign-showing-dislike-thumbs-down-219637761.jpg" width="400">
+                        <p class="text">Just bought this pizza, the dough is severely undercooked...</p>
+                    </div>
+                    <div class="card" id="post-3">
+                        <h2 class="text">Underrated slushies</h2>
+                        <h5 class="text">So refreshing, Dec 7, 2017</h5>
+                        <img src="https://image.shutterstock.com/image-photo/young-boy-drinking-blue-ice-600w-446436811.jpg" width="350">
+                        <p class="text">My younger brother loves the slushies offered here! So much variety</p>
+                    </div>
+
+                </div>
+                <!-- Contact Info -->
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <span>Got a comment?</span>
+                    <form method="post">
+                        <textarea id="commentbox">Enter your comment here...</textarea><br>
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+                <!-- Edit Restaurant == SHOULD ONLY BE VISIBLE WHEN LOGGED IN -->
+                <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                    <div>
+                        <a href="form-pages/edit-restaurant.html">Edit Name/Description</a>
+                        <br>
+                        <a href="form-pages/edit-menu.html">Edit menu</a>
+                    </div>
+                    <form>
+                        <input type="button" value="Add new picture"/>
+                    </form><br>
+                    <form>
+                        <input type="button" value="Remove picture"/>
+                    </form><br>
+                    <form>
+                        <input type="button" value="Add new blog post"/>
+                    </form><br>
+                    <form>
+                        <input type="button" value="Remove blog post"/>
+                    </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- PAGE FOOTER -->
+        <footer class="page-footer bg-dark">
+            <!-- Copyright adapted from https://mdbootstrap.com/docs/b4/jquery/navigation/footer/ -->
+            <div class="footer-copyright text-center py-3">© 2022 Copyright: <span id="name">Restify</span>
+            </div>
+        </footer>
+        <!-- FOOTER END --> 
     </div>
-    <form>
-        <input type="button" value="Add new picture"/>
-    </form><br>
 
-    <form>
-        <input type="button" value="Remove picture"/>
-    </form><br>
-
-    <form>
-        <input type="button" value="Add new blog post"/>
-    </form><br>
-
-    <form>
-        <input type="button" value="Remove blog post"/>
-    </form><br>
-    <h2>Blog Posts</h2>
-        <div class="header">
-          </div>
-          
-          <div class="row">
-            <div class="leftcolumn">
-              <div class="card"> <!--Use this div to add a blog post-->
-                <h2 class="text">Great food!</h2>
-                <h5 class="text">Best burgers in town!, Dec 7, 2017</h5>
-                <img src="https://thumbs.dreamstime.com/z/happy-man-tasty-fast-food-unhealthy-burger-sandwich-hand-get-ready-to-eat-isolated-white-background-concept-43948399.jpg" width="250">
-                <p class="text">Just tried out John's Burgers, they are soooo goood!!!</p>
-              </div>
-              <div class="card">
-                <h2 class="text">Pizza Needs Improvement</h2>
-                <h5 class="text">Like the title says, Sep 2, 2017</h5>
-                <img src="https://thumbs.dreamstime.com/z/young-handsome-man-beard-holding-delivery-cardoboard-italian-pizza-angry-face-negative-sign-showing-dislike-thumbs-down-219637761.jpg" width="400">
-                <p class="text">Just bought this pizza, the dough is severely undercooked...</p>
-              </div>
-              <div class="card">
-                <h2 class="text">Underrated slushies</h2>
-                <h5 class="text">So refreshing, Dec 7, 2017</h5>
-                <img src="https://image.shutterstock.com/image-photo/young-boy-drinking-blue-ice-600w-446436811.jpg" width="350">
-                <p class="text">My younger brother loves the slushies offered here! So much variety</p>
-              </div>
-            </div>
-            <div class="rightcolumn">
-              <div class="card">
-                <h2 class="text">About Me</h2>
-                <img src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
-                <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
-              </div>
-              <div class="card">
-                <h3 class="text">Popular Posts</h3>
-                <a href="link"> <!--Will use JS later to take these images to the blog post page, also may need sepearte link for each page-->
-                <img src="https://www.acouplecooks.com/wp-content/uploads/2020/05/Italian-Salad-051-735x919.jpg" width="200"><br><br>
-                <img src="https://www.eatthis.com/wp-content/uploads/sites/4/2018/02/xxxl-fatburger.jpg?quality=82&strip=1&resize=640%2C360" width="250"><br><br>
-                <img src="https://www.busylittlekiddies.com/wp-content/uploads/Slushie-recipe.jpg" width="200">
-                </a>
-              </div>
-              <div class="card">
-                <h3 class="text">Follow Me</h3>
-                <p class="text">Instagram: @john_123</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="footer">
-            <h2 class="text">Thanks for visiting the site!</h2>
-          </div>
 </body>
 </html>
