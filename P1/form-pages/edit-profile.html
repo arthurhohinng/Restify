@@ -66,24 +66,21 @@
 
     <form action="" method="POST">
         <div class="container">
+            <h2>Basic Info</h2>
             <div class="form-group">
                 <label>Change username:</label>
                 <input class="form-control" type="text" name="username" placeholder="Enter new username">
             </div>
             <br>
-            <div class="form-group">
-                <label>Change email:</label>
-                <input class="form-control" type="email" name="email" placeholder="Enter new email">
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Change First Name:</label>
-                <input class="form-control" type="text" name="first-name">
-            </div>
-            <br>
-            <div class="form-group">
-                <label>Change Phone Number:</label>
-                <input class="form-control" type="tel" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+            <div class="row">
+                <div class="col">
+                    <label>Change First Name:</label>
+                    <input class="form-control" type="text" name="first-name" placeholder="Enter first name">
+                </div>
+                <div class="col">
+                    <label>Change Last Name:</label>
+                    <input class="form-control" type="text" name="last-name" placeholder="Enter last name">
+                </div>
             </div>
             <br>
             <div class="form-group">
@@ -91,11 +88,18 @@
                 <input class="form-control" type="file" name="avatar">
             </div>
             <br>
+            <h2>Contact Info</h2>
             <div class="form-group">
-                <label>Change Last Name:</label>
-                <input class="form-control" type="text" name="last-name">
+                <label>Change Phone Number:</label>
+                <input class="form-control" type="tel" name="phone" placeholder="123-456-7890" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             </div>
             <br>
+            <div class="form-group">
+                <label>Change email:</label>
+                <input class="form-control" type="email" name="email" placeholder="Enter new email">
+            </div>
+            <br>
+            <h2>Password</h2>
             <div class="form-group">
                 <label>Change password</label>
                 <input class="form-control" type="text" name="new-password" placeholder="Enter new password">
@@ -103,10 +107,10 @@
             <br>
             <div class="form-group">
                 <label>Confirm password</label>
-                <input class="form-control" type="text" name="confirm-password">
+                <input class="form-control" type="text" name="confirm-password" placeholder="Confirm new password">
             </div>
             <br>
-            <input type="submit" name="submit" id="Submit">
+            <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="submit" id="Submit">
         </div>
     </form>
 </body>

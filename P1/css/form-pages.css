@@ -1,8 +1,11 @@
 
-body{
+.container{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 35%;
     text-align: left;
 }
 
-.container{
-    width: 30%;
+.btn{
+    background-color: #343A40;
 }
