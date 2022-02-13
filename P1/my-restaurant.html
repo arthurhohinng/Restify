@@ -77,7 +77,7 @@
                 <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false">Menu</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" id="blog-tab" data-toggle="tab" href="/blogposts.html" role="tab" aria-controls="blogposts" aria-selected="false">Blog Posts</a>
+                <a class="nav-link" id="blog-tab" data-toggle="tab" href="#blogposts" role="tab" aria-controls="blogposts" aria-selected="false">Blog Posts</a>
                 </li>
                 <li class="nav-item">
                 <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
@@ -275,11 +275,15 @@
                 </div>
                 <!-- Contact Info -->
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <span>Got a comment?</span>
-                    <form method="post">
-                        <textarea id="commentbox">Enter your comment here...</textarea><br>
-                        <input type="submit" value="submit">
-                    </form>
+                    <div class="container" id="comments-tab">
+                        <br>
+                        <h4>Got a comment?</h4>
+                        <br>
+                        <form method="post">
+                            <textarea id="commentbox" class="form-control">Enter your comment here...</textarea><br>
+                            <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="submit" id="Submit">
+                        </form>
+                    </div>
                 </div>
                 <!-- Edit Restaurant == SHOULD ONLY BE VISIBLE WHEN LOGGED IN -->
                 <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
