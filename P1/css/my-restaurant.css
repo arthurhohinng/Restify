@@ -44,6 +44,10 @@ img {
     border-radius: 15px;
 }
 
+#comments-tab{
+  width: 70%;
+}
+
 .container {
   margin-bottom: 3%;
 }
