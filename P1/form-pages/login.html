@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/form-pages.css">
+    <link rel="stylesheet" href="../css/signup.css">
 </head>
 <body>
     <!-- Navbar bootstrap source: https://getbootstrap.com/docs/4.0/components/navbar/ -->
@@ -65,17 +66,21 @@
     </nav>
 
     <form action="" method="POST">
-        <div>
-            <label>Username:</label>
-            <input type="text" name="username" placeholder="Enter username">
+        <div class="container">
+            <div>
+                <h2>Login</h2>
+                <br>
+                <label>Username</label>
+                <input class="form-control" type="text" name="username">
+            </div>
+            <br>
+            <div>
+                <label>Password</label>
+                <input class="form-control" type="text" name="password">
+            </div>
+            <br>
+            <input type="submit" class="btn btn-outline-success my-2 my-sm-0 btn-block" name="submit" id="Submit" value="Login">
         </div>
-        <br>
-        <div>
-            <label>Password</label>
-            <input type="text" name="password">
-        </div>
-        <br>
-        <input type="submit" name="submit" id="Submit">
     </form>
     
 </body>

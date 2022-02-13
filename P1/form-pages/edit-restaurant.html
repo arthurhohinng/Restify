@@ -65,17 +65,41 @@
     </nav>
 
     <form action="" method="POST">
-        <div>
-            <label>Change restaurant name:</label>
-            <input type="textarea" name="restaurant-name" placeholder="Enter new restaurant name">
+        <div class="container">
+            <h2>Restaurant Info</h2>
+            <div class="form-group">
+                <label>Restaurant name:</label>
+                <input class="form-control" type="textarea" name="restaurant-name" placeholder="Enter restaurant name">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Restaurant description</label>
+                <textarea class="form-control" id="new-description" name="new-description" placeholder="Enter restaurant description"></textarea>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Restaurant address</label>
+                    <input class="form-control" type="textarea" name="restaurant-name" placeholder="Enter address">
+                </div>
+                <div class="col">
+                    <label>Postal code</label>
+                    <input class="form-control" type="textarea" name="restaurant-name" placeholder="Enter postal code">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Phone number</label>
+                <input class="form-control" type="tel" name="phone" placeholder="123-456-7890">
+            </div>
+            <br>
+            <div class="form-group">
+                <label>Logo</label>
+                <input class="form-control" type="file" name="avatar">
+            </div>
+            <br>
+            <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="submit" id="Submit">
         </div>
-        <br>
-        <div>
-            <label>Edit restaurant description</label>
-            <textarea id="new-description" name="new-description"></textarea>
-        </div>
-        <br>
-        <input type="submit" name="submit" id="Submit">
     </form>
 </body>
 </html>

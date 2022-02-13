@@ -4,6 +4,7 @@
     margin-bottom: 5%;
     width: 35%;
     text-align: left;
+    min-width: 400px;
 }
 
 .btn{
