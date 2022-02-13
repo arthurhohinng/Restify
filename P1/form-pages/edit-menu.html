@@ -65,11 +65,26 @@
     </nav>
     <form class="forms" action="" method="POST">
         <div class="container">
-            <div class="form-group">
-                <h2>Menu</h2>
-                <label>Edit restaurant menu:</label>
-                <textarea class="form-control" id="menu" name="menu" placeholder="Enter menu"></textarea>
+            <h2>Edit Menu</h2>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <label>Item name</label>
+                    <input class="form-control" type="text" name="item-name" placeholder="Enter food name">
+                </div>
+                <div class="col">
+                    <label>Price</label>
+                    <input class="form-control" type="text" name="price" placeholder="Enter food price">
+                </div>
             </div>
+            <br>
+            <div class="form-group">
+                <label>Item description</label>
+                <textarea class="form-control" id="item-descr" name="item-descr" placeholder="Enter description"></textarea>
+            </div>
+            <br>
+            <button type="button" class="btn btn-outline-success my-2 my-sm-0">Add another item</button>
+            <br>
             <br>
             <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="submit" id="Submit">
         </div>
