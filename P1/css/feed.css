@@ -39,7 +39,7 @@ body{
     color: rgb(228, 228, 171);
 }
 
-img {
+img:not(.logo, .nav-logo) {
     margin: auto;
     border-radius: 10%;
     padding: 3%;
