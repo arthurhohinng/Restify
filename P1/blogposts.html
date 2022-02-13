@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Restaurant</title>
+    <!-- Bootstrap 4.0.0 JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/my-restaurant.css">
+</head>
+<body>
+    <!-- Navbar bootstrap source: https://getbootstrap.com/docs/4.0/components/navbar/ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Restify</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feed.html">Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="my-restaurant.html">My Restaurant</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Notifications
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <a class="dropdown-item" href="my-restaurant.html">Started following John's Restaurant</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#">Stewart liked your blogpost</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#">...</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="form-pages/edit-profile.html">Edit Profile</a>
+                        </li>
+                    </ul>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+    <h2 id="title">John's Restaurant</h2>
+
+    <div class="wrapper">
+        <div class="container">
+            <!-- Tabs of info will be located under restaurant name -->
+            <ul class="nav nav-tabs" id="restaurant-tabs" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="false">About</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false">Menu</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link active" id="blog-tab" data-toggle="tab" href="/blogposts.html" role="tab" aria-controls="blogposts" aria-selected="true">Blog Posts</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Edit Restaurant</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="restaurant-tabs-content">
+                <!-- Restaurant info -->
+                <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
+                    <h3 style="margin-top:2%">John's Restaurant</h3>
+                    <div id="rest-img"><img class="img-fluid center" src="https://illustoon.com/photo/dl/4728.png"></div>
+                    <div id="rest-addr">
+                        <span>Address:</span> 123 Food Street<br>
+                        <span>Postal Code:</span> L11 211<br>
+                        <span>Phone Number:</span> 416-111-111<br>
+                    </div>
+                    <div class="card">
+                        <h2 class="text">About the Owner</h2>
+                        <img class="center" src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
+                        <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
+                    </div>
+                </div>
+                <!-- Menu -->
+                <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
+                    <!-- Menu is made using basic headings for each category and a table for the items and their prices -->
+                    <h4 class="menu-category" style="margin-top:3%;"> Starters </h4>
+                        <!-- Note: each menu row's price must belong to the "price" class -->
+                        <table class="menu-items">
+                            <tr>
+                                <td>Cheesesticks
+                                <span class="price">$7.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Jalapeno Poppers
+                                <span class="price">$9.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Loaded Poutine
+                                <span class="price">$12.99</span>
+                                </td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Mains </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>Hamburger
+                                <span class="price">$6.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cheeseburger
+                                <span class="price">$7.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Veggieburger
+                                <span class="price">$5.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Hotdog
+                                <span class="price">$6.99</span>
+                                </td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Sides </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>French Fries
+                                <span class="price">$3.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cesar Salad
+                                <span class="price">$6.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Fried Pickles
+                                <span class="price">$9.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Sweet Potato Fries
+                                <span class="price">$4.99</span>
+                                </td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Desserts </h4>
+                        <table class="menu-items">
+                            <tr>
+                                <td>Chocolate Sundae
+                                <span class="price">$6.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Cheesecake (1 pc.)
+                                <span class="price">$3.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Caramel Brownie
+                                <span class="price">$2.99</span>
+                                </td>
+                            </tr>
+                        </table>
+                    <h4 class="menu-category"> Drinks </h4>
+                        <table class="menu-items">
+                            (Choice of Fountain Drink)
+                            <tr>
+                                <td>Small
+                                <span class="price">$1.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Medium
+                                <span class="price">$2.99</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Large
+                                <span class="price">$3.99</span>
+                                </td>
+                            </tr>
+                        </table>
+                </div>
+                <!-- Blog Posts -->
+                <div class="tab-pane fade show active" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
+                    <h2>Blog Posts</h2>
+                    <div class="card" id="post-1"> <!--Use this div to add a blog post-->
+                        <h2 class="blog-title">New Factory Unleashes the True Power of Burger Production!</h2>
+                        <h3 class="blog-info">Posted: 4:15AM by John</h3>
+                        <img class="img-fluid" src="https://www.tonkiamachine.com/wp-content/uploads/2018/06/burger-patty-production-line.jpg">
+                        <div class="blog-content">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                            nisi ut aliquip ex ea commodo consequat. 
+                            Duis aute irure dolor in reprehenderit in voluptate velit 
+                            esse cillum dolore eu fugiat nulla pariatur.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                            nisi ut aliquip ex ea commodo consequat. 
+                            Duis aute irure dolor in reprehenderit in voluptate velit 
+                            esse cillum dolore eu fugiat nulla pariatur.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+                            nisi ut aliquip ex ea commodo consequat. 
+                            Duis aute irure dolor in reprehenderit in voluptate velit 
+                            esse cillum dolore eu fugiat nulla pariatur.
+                        </div>
+                    </div>
+                    <div class="card" id="post-2">
+                        <h2 class="blog-title">Why our New Kuro Burger Will Give you SUPERPOWERS!!</h2>
+                        <h3 class="blog-info">Posted: Yesterday by John</h3>
+                        <img class="img-fluid" src="https://i.pinimg.com/736x/54/c5/2c/54c52cbee1426dd41c8badfc24910f0e--black-bun-the-black.jpg">
+                        <div class="blog-content">
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
+                            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+                            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.<br>
+                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, 
+                            totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
+                            dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, 
+                            sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                        </div>
+                        
+                    </div>
+                    <div class="card" id="post-3">
+                        <h2 class="blog-title">Day in the Life of Our (((Free-Range))) Chickens</h2>
+                        <h3 class="blog-info">Posted: Yesterday by John</h3>
+                        <img class="img-fluid" src="https://www.adelaidereview.com.au/content/uploads/2018/04/factory-farming-chicken-egg-adelaide-review-800x567.jpg">
+                        <div class="blog-content">
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
+                            nisi ut aliquid ex ea commodi consequatur? 
+                            Quis autem vel eum iure reprehenderit qui in ea 
+                            voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
+                            voluptas nulla pariatur?...
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
+                            nisi ut aliquid ex ea commodi consequatur? 
+                            Quis autem vel eum iure reprehenderit qui in ea 
+                            voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
+                            voluptas nulla pariatur?...
+                            Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
+                            nisi ut aliquid ex ea commodi consequatur? 
+                            Quis autem vel eum iure reprehenderit qui in ea 
+                            voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
+                            voluptas nulla pariatur?...
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Contact Info -->
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <span>Got a comment?</span>
+                    <form method="post">
+                        <textarea id="commentbox">Enter your comment here...</textarea><br>
+                        <input type="submit" value="submit">
+                    </form>
+                </div>
+                <!-- Edit Restaurant == SHOULD ONLY BE VISIBLE WHEN LOGGED IN -->
+                <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
+                    <div>
+                        <a href="form-pages/edit-restaurant.html">Edit Name/Description</a>
+                        <br>
+                        <a href="form-pages/edit-menu.html">Edit menu</a>
+                    </div>
+                    <form>
+                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Add new picture"/>
+                    </form><br>
+                    <form>
+                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Remove picture"/>
+                    </form><br>
+                    <a href="form-pages/add-blog.html">Add blog post</a>
+                    <br>
+                    <form>
+                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Remove blog post"/>
+                    </form>
+            </div>
+            </div>
+        </div>
+
+        <!-- PAGE FOOTER -->
+        <footer class="page-footer bg-dark">
+            <!-- Copyright adapted from https://mdbootstrap.com/docs/b4/jquery/navigation/footer/ -->
+            <div class="footer-copyright text-center py-3">© 2022 Copyright: <span id="name">Restify</span>
+            </div>
+        </footer>
+        <!-- FOOTER END --> 
+    </div>
+
+</body>
+</html>
