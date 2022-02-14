@@ -121,3 +121,13 @@ a:hover {
 #add-comment-button {
   border-radius: 10px;
 }
+
+.fa {
+  font-size: 400px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fa:hover {
+  color: blue;
+}
