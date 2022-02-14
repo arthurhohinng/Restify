@@ -96,3 +96,28 @@ a:hover {
   flex: 33.33%;
   padding: 5px;
 }
+
+#comment-box {
+  border-radius: 10px;
+}
+
+.comment {
+  background-color: lightgrey;
+  width: 300px;
+  padding: 20px;
+  margin: auto;
+  color: black;
+  border-radius: 10px;
+}
+
+.all-comments {
+  display: flex;
+}
+
+#user-comment-page {
+  color: black;
+}
+
+#add-comment-button {
+  border-radius: 10px;
+}
