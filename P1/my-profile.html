@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <!-- Bootstrap 4.0.0 JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar bootstrap source: https://getbootstrap.com/docs/4.0/components/navbar/ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a href="/index.html"><img class="nav-logo" src="/img/restify.png" width="150px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feed.html">Feed</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="my-restaurant.html">My Restaurant</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Notifications
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <li>
+                            <a class="dropdown-item" href="my-restaurant.html"><img class="notif-icon" src="https://illustoon.com/photo/dl/4728.png">Started following John's Restaurant</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#"><img class="notif-icon" src="https://res.cloudinary.com/petrescue/image/upload/a_0/c_crop,w_1397,h_1397,x_0,y_24/c_fill,w_638,h_638/v1601347933/oi3zhephlgqxvqob8ios.jpg">Stewart liked your blogpost</a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" href="#">...</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Profile
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="my-profile.html">My Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="form-pages/edit-profile.html">Edit Profile</a>
+                        </li>
+                    </ul>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        </div>
+    </nav>
+
+    
+    <div class="container">
+        <br>
+        <h1>My Profile</h1>
+        <div class="row">
+            <div class="col">
+                John
+            </div>
+            <div class="col">
+                Smith
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE FOOTER -->
+    <footer class="page-footer bg-dark" style="position:absolute;bottom:0px;width:100%;">
+        <!-- Copyright adapted from https://mdbootstrap.com/docs/b4/jquery/navigation/footer/ -->
+        <div class="footer-copyright text-center py-3">© 2022 Copyright<img style="margin-bottom:3px;" src="img/restify.png" width="90px">
+        </div>
+    </footer>
+    <!-- FOOTER END --> 
+</body>
+</html>
