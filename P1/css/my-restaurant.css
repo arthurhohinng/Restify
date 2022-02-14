@@ -37,7 +37,7 @@
 }
 
 img:not(.logo, .nav-logo) {
-  max-width: 200px;
+  border-radius: 20px;
 }
 
 #commentbox {
