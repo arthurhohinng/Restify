@@ -32,6 +32,7 @@
 
 .card {
   margin: auto;
+  margin-top: 2%;
   padding: 3%;
   width: 50%;
   border-radius: 20px;
