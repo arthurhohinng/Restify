@@ -36,7 +36,7 @@
     width: 50%;
 }
 
-img {
+img:not(.logo, .nav-logo) {
   max-width: 200px;
 }
 
