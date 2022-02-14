@@ -90,19 +90,16 @@
             <div class="tab-content" id="restaurant-tabs-content">
                 <!-- Restaurant info -->
                 <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <h3 style="margin-top:2%">John's Restaurant</h3>
                     <div id="rest-img"><img class="img-fluid center" src="https://illustoon.com/photo/dl/4728.png"></div>
-                    <div id="rest-addr">
-                        <span>Address:</span> 123 Food Street<br>
-                        <span>Postal Code:</span> L11 211<br>
-                        <span>Phone Number:</span> 416-111-111<br>
+                    <div id="rest-pop">
+                        Followers: 3000 <br>
+                        Likes: 1000 <br>
+                        Like this page   <i class="fa fa-thumbs-up"></i>
+                        <!--In i tag above, will use JS to handle liking so that likes count increases-->
+                        <!--The i tag contains the actual like button-->
                     </div>
-                    <h3>Followers: 3000</h3>
-                    <h3>Likes: 1000 <br>Like this page   <i class="fa fa-thumbs-up"></i></h3>
-                    <!--In i tag above, will use JS to handle liking so that likes count increases-->
-                    <!--The i tag contains the actual like button-->
                     <div class="card">
-                        <h2 class="text">About the Owner</h2>
+                        <h2>About the Owner</h2>
                         <img class="center" src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
                         <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
                     </div>
@@ -345,12 +342,14 @@
                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="container" id="comments-tab">
                         <br>
-                        <h4>Got a comment?</h4>
+                        <h4>Our Location</h4>
                         <br>
-                        <form method="post">
-                            <textarea id="commentbox" class="form-control">Enter your comment here...</textarea><br>
-                            <input type="submit" class="btn btn-outline-success my-2 my-sm-0" name="submit" id="Submit">
-                        </form>
+                        <div id="rest-addr">
+                            <span class="addr-part">Address:</span> 123 Food Street<br>
+                            <span class="addr-part">Postal Code:</span> L11 211<br>
+                            <span class="addr-part">Phone Number:</span> 416-111-111<br>
+                        </div><br>
+                        Feel free to leave a comment on the main page and we will get back to you!
                     </div>
                 </div>
                 <!-- Edit Restaurant == SHOULD ONLY BE VISIBLE WHEN LOGGED IN -->

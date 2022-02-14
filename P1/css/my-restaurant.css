@@ -9,6 +9,7 @@
 
 #title {
   margin: 3%;
+  color: white;
 }
 
 #rest-img {
@@ -22,10 +23,18 @@
   text-align: left;
 }
 
+#rest-pop {
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 3%;
+  color:rgb(219, 208, 223);
+}
+
 .card {
   margin: auto;
   padding: 3%;
   width: 50%;
+  border-radius: 20px;
   background-color: rgba(250, 250, 250, 0.212);
 }
 
@@ -55,6 +64,10 @@ img:not(.logo, .nav-logo) {
 .menu-category {
   color: white;
   padding-top: 2%;
+}
+
+.addr-part {
+  color: white;
 }
 
 table {
