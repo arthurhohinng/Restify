@@ -149,7 +149,8 @@ a:hover {
 .card2 {
   padding: 1%;
   margin: auto;
-  width: 20%;
+  margin-top: 2%;
+  width: 30%;
   background-color: rgba(250, 250, 250, 0.212);
   border-radius: 10px;
 }
