@@ -131,3 +131,11 @@ a:hover {
 .fa:hover {
   color: blue;
 }
+
+.card2 {
+  margin: auto;
+  padding: 3%;
+  width: 20%;
+  background-color: rgba(250, 250, 250, 0.212);
+  border-radius: 10px;
+}
