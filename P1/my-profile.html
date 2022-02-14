@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/form-pages.css">
 </head>
 <body>
     <!-- Navbar bootstrap source: https://getbootstrap.com/docs/4.0/components/navbar/ -->
@@ -65,25 +66,44 @@
             </form>
         </div>
     </nav>
-
     
     <div class="container">
-        <br>
         <h1>My Profile</h1>
+        <div>
+            <h2>Avatar</h2>
+            <img src="img/john.png" alt="johnny-boy">
+        </div>
+        <br>
+        <div class="form-group">
+            <label>Username</label>
+            <input class="form-control" type="text" name="username" value="johnnysmith123" readonly>
+        </div>
         <div class="row">
             <div class="col">
-                John
+                <label>First Name</label>
+                <input class="form-control" type="text" name="first-name" value="John" readonly>
             </div>
             <div class="col">
-                Smith
+                <label>Last Name</label>
+                <input class="form-control" type="text" name="last-name" value="Smith" readonly>
             </div>
+        </div>
+        <br>
+        <h2>Contact Info</h2>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input class="form-control" type="tel" name="phone" value="123-456-7890" readonly>
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" value="johnnysmith@gmail.com">
         </div>
     </div>
 
     <!-- PAGE FOOTER -->
-    <footer class="page-footer bg-dark" style="position:absolute;bottom:0px;width:100%;">
+    <footer class="page-footer bg-dark">
         <!-- Copyright adapted from https://mdbootstrap.com/docs/b4/jquery/navigation/footer/ -->
-        <div class="footer-copyright text-center py-3">© 2022 Copyright<img style="margin-bottom:3px;" src="img/restify.png" width="90px">
+        <div class="footer-copyright text-center py-3">© 2022 Copyright<img class="logo" style="margin-bottom:3px;" src="img/restify.png" width="90px">
         </div>
     </footer>
     <!-- FOOTER END --> 

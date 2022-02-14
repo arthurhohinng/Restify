@@ -9,3 +9,9 @@
 .btn{
     background-color: #343A40;
 }
+
+img:not(.logo, .nav-logo) {
+    margin: auto;
+    border-radius: 10%;
+    
+}
