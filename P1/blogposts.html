@@ -78,130 +78,10 @@
                 <a class="nav-link active" id="blog-tab" data-toggle="tab" href="#" role="tab" aria-controls="blogposts" aria-selected="true">Blog Posts</a>
                 </li>
             </ul>
-            <div class="tab-content" id="restaurant-tabs-content">
-                <!-- Restaurant info -->
-                <div class="tab-pane fade" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <h3 style="margin-top:2%">John's Restaurant</h3>
-                    <div id="rest-img"><img class="img-fluid center" src="https://illustoon.com/photo/dl/4728.png"></div>
-                    <div id="rest-addr">
-                        <span>Address:</span> 123 Food Street<br>
-                        <span>Postal Code:</span> L11 211<br>
-                        <span>Phone Number:</span> 416-111-111<br>
-                    </div>
-                    <div class="card">
-                        <h2 class="text">About the Owner</h2>
-                        <img class="center" src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
-                        <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
-                    </div>
-                </div>
-                <!-- Menu -->
-                <div class="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
-                    <!-- Menu is made using basic headings for each category and a table for the items and their prices -->
-                    <h4 class="menu-category" style="margin-top:3%;"> Starters </h4>
-                        <!-- Note: each menu row's price must belong to the "price" class -->
-                        <table class="menu-items">
-                            <tr>
-                                <td>Cheesesticks
-                                <span class="price">$7.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Jalapeno Poppers
-                                <span class="price">$9.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Loaded Poutine
-                                <span class="price">$12.99</span>
-                                </td>
-                            </tr>
-                        </table>
-                    <h4 class="menu-category"> Mains </h4>
-                        <table class="menu-items">
-                            <tr>
-                                <td>Hamburger
-                                <span class="price">$6.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cheeseburger
-                                <span class="price">$7.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Veggieburger
-                                <span class="price">$5.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Hotdog
-                                <span class="price">$6.99</span>
-                                </td>
-                            </tr>
-                        </table>
-                    <h4 class="menu-category"> Sides </h4>
-                        <table class="menu-items">
-                            <tr>
-                                <td>French Fries
-                                <span class="price">$3.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cesar Salad
-                                <span class="price">$6.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fried Pickles
-                                <span class="price">$9.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Sweet Potato Fries
-                                <span class="price">$4.99</span>
-                                </td>
-                            </tr>
-                        </table>
-                    <h4 class="menu-category"> Desserts </h4>
-                        <table class="menu-items">
-                            <tr>
-                                <td>Chocolate Sundae
-                                <span class="price">$6.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Cheesecake (1 pc.)
-                                <span class="price">$3.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Caramel Brownie
-                                <span class="price">$2.99</span>
-                                </td>
-                            </tr>
-                        </table>
-                    <h4 class="menu-category"> Drinks </h4>
-                        <table class="menu-items">
-                            (Choice of Fountain Drink)
-                            <tr>
-                                <td>Small
-                                <span class="price">$1.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Medium
-                                <span class="price">$2.99</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Large
-                                <span class="price">$3.99</span>
-                                </td>
-                            </tr>
-                        </table>
-                </div>
+
                 <!-- Blog Posts -->
                 <div class="tab-pane fade show active" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
+                    <br>
                     <h2>Blog Posts</h2>
                     <div class="card" id="post-1"> <!--Use this div to add a blog post-->
                         <h2 class="blog-title">New Factory Unleashes the True Power of Burger Production!</h2>
@@ -268,33 +148,6 @@
                     </div>
 
                 </div>
-                <!-- Contact Info -->
-                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    <span>Got a comment?</span>
-                    <form method="post">
-                        <textarea id="commentbox">Enter your comment here...</textarea><br>
-                        <input type="submit" value="submit">
-                    </form>
-                </div>
-                <!-- Edit Restaurant == SHOULD ONLY BE VISIBLE WHEN LOGGED IN -->
-                <div class="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
-                    <div>
-                        <a href="form-pages/edit-restaurant.html">Edit Name/Description</a>
-                        <br>
-                        <a href="form-pages/edit-menu.html">Edit menu</a>
-                    </div>
-                    <form>
-                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Add new picture"/>
-                    </form><br>
-                    <form>
-                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Remove picture"/>
-                    </form><br>
-                    <a href="form-pages/add-blog.html">Add blog post</a>
-                    <br>
-                    <form>
-                        <input type="button" class="btn btn-outline-success my-2 my-sm-0" value="Remove blog post"/>
-                    </form>
-            </div>
             </div>
         </div>
 
