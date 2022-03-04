@@ -19,6 +19,6 @@ class Blogpost(models.Model):
     image = models.ImageField(null=True, blank=True)
     body = models.TextField(null=False)
     # TODO: add author as AbstractUser
-    restaurant = models.RestaForeignKey(Restaurant, null=False, on_detele=CASCADE)
+    restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
     posted = models.DateTimeField(auto_now=True)
     likes = models.PositiveIntegerField(null=False, default=0)
