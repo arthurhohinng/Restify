@@ -6,8 +6,8 @@ from restaurants.models import Restaurant, Blogpost
 
 class User(AbstractUser):
     avatar = models.ImageField(null=True)
-    owned_restaurant = models.ForeignKey(to=Restaurant, on_delete=CASCADE)
-    is_owner = models.BooleanField(default=False)
+    owned_restaurant = models.ForeignKey(to=Restaurant, on_delete=CASCADE, null=True)
+    is_owner = models.BooleanField(null=False, default=False)
 
 
 class Notification(models.Model):
