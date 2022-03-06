@@ -6,18 +6,18 @@ from restaurants.models import Restaurant, Blogpost
 
 class User(AbstractUser):
     avatar = models.ImageField(null=True)
-    restaurant = models.ForeignKey(to=Restaurant, on_delete=CASCADE)
-    is_owner = models.BooleanField()
+    owned_restaurant = models.ForeignKey(to=Restaurant, on_delete=CASCADE)
+    is_owner = models.BooleanField(default=False)
 
 
 class Notification(models.Model):
     notifier = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=500)
 
 
 class Feed(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
-    # blogpost
+    post = models.ForeignKey(to=Blogpost, on_delete=CASCADE)
 
 
 class LikesRestaurant(models.Model):
