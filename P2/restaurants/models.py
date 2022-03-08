@@ -30,3 +30,6 @@ class Comments(models.Model):
 
 class Menu(models.Model):
     owner = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
+
+class MenuItem(models.Model):
+    pass
