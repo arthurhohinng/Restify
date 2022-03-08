@@ -44,3 +44,5 @@ class AbstractImage(models.Model):
     description = models.CharField(null=False, blank=False)
     class Meta:
         abstract = True
+
+# To extend the AbstractImage class, simply do: class YourImageClass(models.AbstractImage) ...
