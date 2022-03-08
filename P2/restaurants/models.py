@@ -29,4 +29,4 @@ class Comments(models.Model):
     text = models.CharField(null=False)
 
 class Menu(models.Model):
-    pass
+    owner = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
