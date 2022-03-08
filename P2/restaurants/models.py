@@ -22,3 +22,8 @@ class Blogpost(models.Model):
     restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
     date = models.DateTimeField(auto_now=True)
     likes = models.PositiveIntegerField(null=False, default=0)
+
+class Comments(models.Model):
+    author = models.AbstractUser(null=False, blank=False)
+    restuarant = models.Restaurant
+    text = models.CharField(null=False, blank=False, max_length=25)
