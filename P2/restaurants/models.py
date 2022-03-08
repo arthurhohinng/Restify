@@ -37,3 +37,6 @@ class MenuItem(models.Model):
     description = models.CharField(null=False, blank=False)
     price = models.PositiveIntegerField(null=False, default=0)
     category = models.CharField(null=False) # TODO: This may become its own model or stay like this
+
+class Image(models.Model):
+    pass
