@@ -26,4 +26,4 @@ class Blogpost(models.Model):
 class Comments(models.Model):
     author = models.AbstractUser(null=False, blank=False)
     restuarant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
-    text = models.CharField(null=False, blank=False, max_length=25)
+    text = models.CharField(null=False)
