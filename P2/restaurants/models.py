@@ -4,8 +4,8 @@ from django.db.models import CASCADE
 # Create your models here.
 class Restaurant(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
-    followers = models.PositiveIntegerField(null=False, default=0)
-    likes = models.PositiveIntegerField(null=False, default=0)
+    followers = models.PositiveIntegerField(blank=True, default=0)
+    likes = models.PositiveIntegerField(blank=True, default=0)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey("accounts.User", null=False, on_delete=CASCADE)
     # TODO: add menu as Menu
