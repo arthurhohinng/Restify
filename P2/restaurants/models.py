@@ -39,6 +39,8 @@ class MenuItem(models.Model):
     category = models.CharField(null=False) # TODO: This may become its own model or stay like this
 
 class AbstractImage(models.Model):
-    
+    image = models.ImageField(null=False)
+    restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
+    description = models.CharField(null=False, blank=False)
     class Meta:
         abstract = True
