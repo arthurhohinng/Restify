@@ -27,3 +27,6 @@ class Comments(models.Model):
     author = models.AbstractUser(null=False, blank=False)
     restuarant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
     text = models.CharField(null=False)
+
+class Menu(models.Model):
+    pass
