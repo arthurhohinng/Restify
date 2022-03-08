@@ -32,4 +32,8 @@ class Menu(models.Model):
     owner = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
 
 class MenuItem(models.Model):
-    pass
+    name = models.CharField(null=False, blank=False, max_length=30)
+    menu = models.ForeignKey(Menu, null=False, on_delete=CASCADE)
+    description = models.CharField(null=False, blank=False)
+    price = models.PositiveIntegerField(null=False, default=0)
+    category = models.CharField(null=False) # This may change later
