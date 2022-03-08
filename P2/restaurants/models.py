@@ -36,4 +36,4 @@ class MenuItem(models.Model):
     menu = models.ForeignKey(Menu, null=False, on_delete=CASCADE)
     description = models.CharField(null=False, blank=False)
     price = models.PositiveIntegerField(null=False, default=0)
-    category = models.CharField(null=False) # This may change later
+    category = models.CharField(null=False) # TODO: This may become its own model or stay like this
