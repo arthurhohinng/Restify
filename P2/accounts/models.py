@@ -8,7 +8,7 @@ class User(AbstractUser):
     avatar = models.ImageField(null=True)
     owned_restaurant = models.ForeignKey(to=Restaurant, on_delete=CASCADE, null=True)
     is_owner = models.BooleanField(null=False, default=False)
-    # Need to add phone number field
+    phone_num = models.CharField(max_length=11, null=True)
 
 
 class Notification(models.Model):

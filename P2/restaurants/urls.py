@@ -5,5 +5,5 @@ from restaurants.views.searchpage import SearchView
 app_name = 'restaurants'
 urlpatterns = [
     path('<str:pk>/blogposts/', ListBlogposts.as_view(), name='blogposts'),
-    path('/search/', SearchView.as_view(), name='searchbar')
+    path('search/', SearchView.as_view(), name='searchbar')
 ]
