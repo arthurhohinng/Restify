@@ -15,6 +15,9 @@ class Notification(models.Model):
     notifier = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
 
+    def __str__(self):
+        return self.notifier+": "+self.description
+
 
 class Feed(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
