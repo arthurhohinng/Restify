@@ -18,7 +18,7 @@ class Restaurant(models.Model):
         return self.name
 
 class Blogpost(models.Model):
-    title = models.CharField(null=False, blank=False, max_length=25)
+    title = models.CharField(null=False, blank=False, max_length=50)
     image = models.ImageField(null=True, blank=True)
     body = models.TextField(null=False)
     author = models.CharField(null=False, blank=False, max_length=15)
@@ -27,7 +27,7 @@ class Blogpost(models.Model):
     likes = models.PositiveIntegerField(null=False, default=0)
 
     def __str__(self):
-        return self.title+": "+self.author
+        return self.title+" ("+self.restaurant.name+")"
 
 class Comment(models.Model):
     author = models.ForeignKey("accounts.User", null=False, blank=False, on_delete=CASCADE)
