@@ -29,7 +29,7 @@ class Comments(models.Model):
     text = models.CharField(null=False)
 
 class Menu(models.Model):
-    owner = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
+    owner = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE, unique=True)
 
 class MenuItem(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
