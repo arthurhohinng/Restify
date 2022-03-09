@@ -14,6 +14,9 @@ class Restaurant(models.Model):
     logo = models.ImageField(null=False)
     phone_num = models.CharField(max_length=11, null=False)
 
+    def __str__(self):
+        return self.name
+
 class Blogpost(models.Model):
     title = models.CharField(null=False, blank=False, max_length=25)
     image = models.ImageField(null=True, blank=True)
@@ -23,10 +26,16 @@ class Blogpost(models.Model):
     date = models.DateTimeField(auto_now=True)
     likes = models.PositiveIntegerField(null=False, default=0)
 
+    def __str__(self):
+        return self.title+": "+self.author
+
 class Comment(models.Model):
     author = models.ForeignKey("accounts.User", null=False, blank=False, on_delete=CASCADE)
     restuarant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
     text = models.CharField(null=False, max_length=350)
+
+    def __str__(self):
+        return "Comment by "+self.author
 
 class Menu(models.Model):
     owner = models.OneToOneField(Restaurant, null=False, on_delete=CASCADE, unique=True)
@@ -37,6 +46,9 @@ class MenuItem(models.Model):
     description = models.CharField(null=False, blank=False, max_length=50)
     price = models.PositiveIntegerField(null=False, default=0)
     category = models.CharField(null=False, max_length=20) # TODO: This may become its own model or stay like this
+
+    def __str__(self):
+        return self.name+" ("+self.category+")"
 
 class AbstractImage(models.Model):
     image = models.ImageField(null=False)
