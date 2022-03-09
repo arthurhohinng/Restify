@@ -24,19 +24,19 @@ class Blogpost(models.Model):
     likes = models.PositiveIntegerField(null=False, default=0)
 
 class Comments(models.Model):
-    author = models.AbstractUser(null=False, blank=False)
+    author = models.ForeignKey("accounts.User", null=False, blank=False, on_delete=CASCADE)
     restuarant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
-    text = models.CharField(null=False)
+    text = models.CharField(null=False, max_length=350)
 
 class Menu(models.Model):
-    owner = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE, unique=True)
+    owner = models.OneToOneField(Restaurant, null=False, on_delete=CASCADE, unique=True)
 
 class MenuItem(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
     menu = models.ForeignKey(Menu, null=False, on_delete=CASCADE)
-    description = models.CharField(null=False, blank=False)
+    description = models.CharField(null=False, blank=False, max_length=50)
     price = models.PositiveIntegerField(null=False, default=0)
-    category = models.CharField(null=False) # TODO: This may become its own model or stay like this
+    category = models.CharField(null=False, max_length=20) # TODO: This may become its own model or stay like this
 
 class AbstractImage(models.Model):
     image = models.ImageField(null=False)
