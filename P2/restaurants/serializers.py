@@ -6,3 +6,8 @@ class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = '__all__'
+
+class BlogpostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blogpost
+        fields = '__all__'
