@@ -44,7 +44,7 @@ class MenuItem(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
     menu = models.ForeignKey(Menu, null=False, on_delete=CASCADE)
     description = models.CharField(null=False, blank=False, max_length=50)
-    price = models.PositiveIntegerField(null=False, default=0)
+    price = models.FloatField(null=False, blank=False, default=0.0)
     category = models.CharField(null=False, max_length=20) # TODO: This may become its own model or stay like this
 
     def __str__(self):
