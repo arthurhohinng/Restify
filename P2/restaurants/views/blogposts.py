@@ -11,6 +11,6 @@ class ListBlogposts(generics.ListAPIView):
     serializer_class = BlogpostSerializer
 
     def get_queryset(self):
-        requested_restaurant = Restaurant.objects.filter(id=self.kwargs['pk'])
-        posts = Blogpost.objects.filter(restaurant=requested_restaurant)
-        return posts
+        requested_restaurant = Restaurant.objects.filter(id=self.kwargs['pk']).first()
+        # Ordering blogposts by most recently posted (Source: https://www.csestack.org/django-order-by/)
+        return Blogpost.objects.filter(restaurant=requested_restaurant).order_by('-date')

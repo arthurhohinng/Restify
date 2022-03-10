@@ -37,6 +37,9 @@ class Comment(models.Model):
 class Menu(models.Model):
     owner = models.OneToOneField(Restaurant, null=False, on_delete=CASCADE, unique=True)
 
+    def __str__(self):
+        return self.owner.name
+
 class MenuItem(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
     menu = models.ForeignKey(Menu, null=False, on_delete=CASCADE)
