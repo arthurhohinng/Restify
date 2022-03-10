@@ -12,4 +12,5 @@ class ListBlogposts(generics.ListAPIView):
 
     def get_queryset(self):
         requested_restaurant = Restaurant.objects.filter(id=self.kwargs['pk']).first()
-        return Blogpost.objects.filter(restaurant=requested_restaurant)
+        # Ordering blogposts by most recently posted (Source: https://www.csestack.org/django-order-by/)
+        return Blogpost.objects.filter(restaurant=requested_restaurant).order_by('-date')
