@@ -51,15 +51,18 @@ class CreateUserSerializer(serializers.ModelSerializer):
             if validated_data['password1'] != validated_data['password2']:
                 raise ValidationError({'password1': ["The two password fields didn't match"]})
 
-        user = User.objects.create_user(
-            username=validated_data['username'],
-            password=validated_data['password1'],
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            email=validated_data['email'],
-            avatar=validated_data['avatar'],
-            phone_num=validated_data['phone_num']
-        )
+        try:
+            user = User.objects.create_user(
+                username=validated_data['username'],
+                password=validated_data['password1'],
+                first_name=validated_data['first_name'],
+                last_name=validated_data['last_name'],
+                email=validated_data['email'],
+                avatar=validated_data['avatar'],
+                phone_num=validated_data['phone_num']
+            )
+        except KeyError as e:
+            raise ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
         return user
 
 
