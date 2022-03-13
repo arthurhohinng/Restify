@@ -22,10 +22,10 @@ class EditUserSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         if validated_data['password1']:
             if len(validated_data['password1']) < 8:
-                raise ValidationError({'password1': "This password is too short. "
-                                                    "It must contain at least 8 characters"})
+                raise ValidationError({'password1': ["This password is too short. "
+                                                     "It must contain at least 8 characters"]})
             if validated_data['password1'] != validated_data['password2']:
-                raise ValidationError({'password1': "The two password fields didn't match"})
+                raise ValidationError({'password1': ["The two password fields didn't match"]})
 
             instance.set_password(validated_data['password1'])
             validated_data.pop('password1', None)
@@ -46,10 +46,10 @@ class CreateUserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         if validated_data['password1']:
             if len(validated_data['password1']) < 8:
-                raise ValidationError({'password1': "This password is too short. "
-                                                    "It must contain at least 8 characters"})
+                raise ValidationError({'password1': ["This password is too short. "
+                                                     "It must contain at least 8 characters"]})
             if validated_data['password1'] != validated_data['password2']:
-                raise ValidationError({'password1': "The two password fields didn't match"})
+                raise ValidationError({'password1': ["The two password fields didn't match"]})
 
         user = User.objects.create_user(
             username=validated_data['username'],
