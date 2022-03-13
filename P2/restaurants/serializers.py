@@ -24,7 +24,7 @@ class MenuItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 # A serializer to display only the restaurant contact information
-class RestaurantContactSerializer(serializers.ModelSerializer):
+class RestaurantContactInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = ['id', 'address', 'postal_code', 'phone_num']
