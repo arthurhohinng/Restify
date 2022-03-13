@@ -8,11 +8,14 @@ class Restaurant(models.Model):
     likes = models.PositiveIntegerField(blank=True, default=0)
     description = models.TextField(null=True, blank=True)
     owner = models.ForeignKey("accounts.User", null=False, on_delete=CASCADE)
-    # TODO: add menu as Menu
     address = models.CharField(max_length=50, null=False)
     postal_code = models.CharField(max_length=6, null=False)
     logo = models.ImageField(null=False)
     phone_num = models.CharField(max_length=11, null=False)
+
+    # Ordering restaurant JSON objects by popularity (followers)
+    class Meta:
+        ordering = ['followers']
 
     def __str__(self):
         return self.name
@@ -45,7 +48,7 @@ class MenuItem(models.Model):
     menu = models.ForeignKey(Menu, null=False, on_delete=CASCADE)
     description = models.CharField(null=False, blank=False, max_length=50)
     price = models.FloatField(null=False, blank=False, default=0.0)
-    category = models.CharField(null=False, max_length=20) # TODO: This may become its own model or stay like this
+    category = models.CharField(null=False, max_length=20)
 
     def __str__(self):
         return self.name+" ("+self.category+")"
@@ -56,5 +59,3 @@ class AbstractImage(models.Model):
     description = models.CharField(null=False, blank=False)
     class Meta:
         abstract = True
-
-# To extend the AbstractImage class, simply do: class YourImageClass(models.AbstractImage) ...
