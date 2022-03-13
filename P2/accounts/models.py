@@ -14,13 +14,13 @@ class User(AbstractUser):
 class UserNotifications(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
     description = models.TextField()
-    link = models.URLField()
+    link = models.URLField(null=True, blank=True)
     notifier = models.ForeignKey(to=Restaurant, on_delete=CASCADE)
 
 
 class RestaurantNotifications(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE, related_name='restaurant_owner')
-    description = models.TextField()
+    description = models.TextField(null=True, blank=True)
     link = models.URLField()
     notifier = models.ForeignKey(to=User, on_delete=CASCADE)
 
