@@ -1,5 +1,5 @@
 from rest_framework.generics import RetrieveAPIView
-from accounts.serializers import RestaurantContactInfoSerializer
+from restaurants.serializers import RestaurantContactInfoSerializer
 
 class ContactInfoView(RetrieveAPIView):
     serializer_class = RestaurantContactInfoSerializer
