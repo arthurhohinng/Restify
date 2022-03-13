@@ -24,4 +24,6 @@ class MenuItemSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class RestaurantContactSerializer(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = Restaurant
+        fields = ['id', 'address', 'postal_code', 'phone_num']
