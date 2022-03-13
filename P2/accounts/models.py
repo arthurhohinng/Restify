@@ -11,12 +11,18 @@ class User(AbstractUser):
     phone_num = models.CharField(max_length=11, null=True)
 
 
-class Notification(models.Model):
-    notifier = models.CharField(max_length=100)
-    description = models.TextField(max_length=500)
+class UserNotifications(models.Model):
+    user = models.ForeignKey(to=User, on_delete=CASCADE)
+    description = models.TextField()
+    link = models.URLField()
+    notifier = models.ForeignKey(to=Restaurant, on_delete=CASCADE)
 
-    def __str__(self):
-        return self.notifier+": "+self.description
+
+class RestaurantNotifications(models.Model):
+    user = models.ForeignKey(to=User, on_delete=CASCADE, related_name='restaurant_owner')
+    description = models.TextField()
+    link = models.URLField()
+    notifier = models.ForeignKey(to=User, on_delete=CASCADE)
 
 
 class Feed(models.Model):
