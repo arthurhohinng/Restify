@@ -28,3 +28,8 @@ class RestaurantContactInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = ['id', 'address', 'postal_code', 'phone_num']
+
+class RestaurantCommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
