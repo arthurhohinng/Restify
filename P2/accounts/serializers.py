@@ -1,11 +1,40 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+
 from accounts.models import User, Feed
 
 
-class UserSerializer(serializers.ModelSerializer):
+class GetUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'email', 'avatar', 'owned_restaurant', 'phone_num']
+
+
+class EditUserSerializer(serializers.ModelSerializer):
+    password1 = serializers.CharField(write_only=True)
+    password2 = serializers.CharField(write_only=True)
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'avatar', 'owned_restaurant', 'phone_num',
+                  'password1', 'password2']
+
+    def update(self, instance, validated_data):
+        print(validated_data)
+        if validated_data['password1']:
+            print(validated_data)
+            if len(validated_data['password1']) < 8:
+                raise ValidationError({'password1': "This password is too short. "
+                                                    "It must contain at least 8 characters"})
+            if validated_data['password1'] != validated_data['password2']:
+                raise ValidationError({'password1': "The two password fields didn't match"})
+
+            instance.set_password(validated_data['password1'])
+            validated_data.pop('password1', None)
+            validated_data.pop('password2', None)
+            instance.save()
+
+        return super().update(instance, validated_data)
 
 
 class CreateUserSerializer(serializers.ModelSerializer):
