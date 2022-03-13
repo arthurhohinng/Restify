@@ -1,0 +1,2 @@
+from rest_framework.generics import RetrieveAPIView
+from accounts.serializers import RestaurantContactInfoSerializer
