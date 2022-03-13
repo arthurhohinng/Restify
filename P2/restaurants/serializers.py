@@ -7,6 +7,12 @@ class RestaurantSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = '__all__'
 
+# A simplified version of the Restaurant serializer, for the search result cards
+class RestaurantSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        fields = ['id', 'name', 'address', 'followers', 'address', 'postal_code', 'logo']
+
 class BlogpostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blogpost

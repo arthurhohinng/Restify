@@ -1,6 +1,6 @@
 from rest_framework import generics
 from restaurants.models import Restaurant, MenuItem
-from restaurants.serializers import RestaurantSerializer
+from restaurants.serializers import RestaurantSearchSerializer
 
 class SearchView(generics.ListAPIView):
     """
@@ -8,7 +8,7 @@ class SearchView(generics.ListAPIView):
     URL's query is used to return JSON of matching restaurants.
     Authentication is not required.
     """
-    serializer_class = RestaurantSerializer
+    serializer_class = RestaurantSearchSerializer
 
     def get_queryset(self):
         # First, extract the query from the URL
