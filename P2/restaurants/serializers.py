@@ -33,3 +33,7 @@ class RestaurantCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'author', 'restaurant', 'text']
+
+class RestaurantGallerySerializer(serializers.ModelSerializer):
+    class Meta:
+        pass
