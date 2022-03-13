@@ -35,5 +35,6 @@ class RestaurantCommentSerializer(serializers.ModelSerializer):
         fields = ['id', 'author', 'restaurant', 'text']
 
 class RestaurantGallerySerializer(serializers.ModelSerializer):
+    # TODO: should restaurant model have an attribute for all its images?
     class Meta:
         pass
