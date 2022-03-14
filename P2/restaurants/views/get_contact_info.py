@@ -5,4 +5,4 @@ class ContactInfoView(RetrieveAPIView):
     serializer_class = RestaurantContactInfoSerializer
 
     def get_object(self):
-        self.request.restaurant
+        return self.request.restaurant
