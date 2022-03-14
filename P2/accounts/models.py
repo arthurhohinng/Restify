@@ -21,7 +21,7 @@ class UserNotifications(models.Model):
 class RestaurantNotifications(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE, related_name='restaurant_owner')
     description = models.TextField(null=True, blank=True)
-    link = models.URLField()
+    link = models.URLField(null=True, blank=True)
     notifier = models.ForeignKey(to=User, on_delete=CASCADE)
 
 

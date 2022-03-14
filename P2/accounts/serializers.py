@@ -96,4 +96,4 @@ class FollowRestaurantSerializer(serializers.ModelSerializer):
 class LikeBlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikesBlog
-        fields = ['user', 'restaurant']
+        fields = ['user', 'blogpost']
