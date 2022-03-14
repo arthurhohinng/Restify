@@ -1,8 +1,8 @@
-from rest_framework.generics import RetrieveAPIView
+from rest_framework import generics
 from restaurants.serializers import RestaurantCommentSerializer
 from restaurants.models import Restaurant, Comment
 
-class CommentView(RetrieveAPIView):
+class CommentView(generics.ListAPIView):
     serializer_class = RestaurantCommentSerializer
 
     def get_queryset(self):
