@@ -82,15 +82,18 @@ class RestaurantLikeSerializer(serializers.ModelSerializer):
 class LikeRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikesRestaurant
+        fields = ['user', 'restaurant']
 
 
 # Serializer for user following restaurant
 class FollowRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Follows
+        fields = ['user', 'restaurant']
 
 
 # Serializer for user liking blog
 class LikeBlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = LikesBlog
+        fields = ['user', 'restaurant']
