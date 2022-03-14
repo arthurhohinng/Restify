@@ -37,3 +37,8 @@ class RestaurantCommentSerializer(serializers.ModelSerializer):
 class RestaurantGallerySerializer(serializers.ModelSerializer):
     class Meta:
         pass
+
+class FollowerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username']
