@@ -33,4 +33,4 @@ class SearchView(generics.ListAPIView):
                 matching_menu += list(Restaurant.objects.filter(id=item.menu.owner.id).values_list('id', flat=True))
 
         all_ids = matching_name + matching_addr + matching_menu
-        return Restaurant.objects.filter(id__in=all_ids)
+        return Restaurant.objects.filter(id__in=all_ids).order_by('-followers')
