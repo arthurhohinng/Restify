@@ -64,3 +64,13 @@ class CreateUserSerializer(serializers.ModelSerializer):
         except KeyError as e:
             raise ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
         return user
+        
+class FollowerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username']
+
+class RestaurantLikeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username']

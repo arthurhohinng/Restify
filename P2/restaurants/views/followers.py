@@ -1,9 +1,8 @@
 from rest_framework import generics
-from django.shortcuts import get_object_or_404
 from restaurants.models import Restaurant
 from accounts.models import Follows, User
 from rest_framework.permissions import IsAuthenticated
-from restaurants.serializers import FollowerSerializer
+from accounts.serializers import FollowerSerializer
 
 class FollowerList(generics.ListAPIView):
     """
