@@ -36,7 +36,8 @@ class RestaurantCommentSerializer(serializers.ModelSerializer):
 
 class RestaurantGallerySerializer(serializers.ModelSerializer):
     class Meta:
-        pass
+        model = AbstractImage
+        fields = ['id', 'image', 'restaurant', 'description']
 
 class EditMenuSerializer(serializers.ModelSerializer):
     class Meta:
