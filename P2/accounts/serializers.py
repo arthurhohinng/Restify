@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from accounts.models import User, Feed
+from accounts.models import User, Feed, LikesRestaurant, Follows, LikesBlog
 
 
 class GetUserSerializer(serializers.ModelSerializer):
@@ -64,13 +64,33 @@ class CreateUserSerializer(serializers.ModelSerializer):
         except KeyError as e:
             raise ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
         return user
-        
+
+
 class FollowerSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username']
 
+
 class RestaurantLikeSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['username']
+
+
+# Serializer for user liking restaurant
+class LikeRestaurantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LikesRestaurant
+
+
+# Serializer for user following restaurant
+class FollowRestaurantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Follows
+
+
+# Serializer for user liking blog
+class LikeBlogSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LikesBlog
