@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from restaurants.models import Restaurant, Blogpost, MenuItem
+from restaurants.models import Restaurant, Blogpost, MenuItem, Comment
 from accounts.models import User
 
 class RestaurantSerializer(serializers.ModelSerializer):
