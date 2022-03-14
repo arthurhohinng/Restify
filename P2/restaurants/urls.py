@@ -6,11 +6,8 @@ from restaurants.views.get_contact_info import ContactInfoView
 from restaurants.views.comment import CommentView
 from restaurants.views.followers import FollowerList
 from restaurants.views.restaurant_likes import RestaurantLikesList
-<<<<<<< HEAD
 from restaurants.views.gallery import GalleryView
-=======
 from restaurants.views.blogpostlikes import BlogpostLikes
->>>>>>> 0de1d46cd39666b18572ec5772a61b4ce5d3870e
 
 app_name = 'restaurants'
 urlpatterns = [
