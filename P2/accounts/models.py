@@ -29,6 +29,9 @@ class Feed(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
     post = models.ForeignKey(to=Blogpost, on_delete=CASCADE)
 
+    def __str__(self):
+        return self.user.username+": "+self.post.title
+
 
 class LikesRestaurant(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
