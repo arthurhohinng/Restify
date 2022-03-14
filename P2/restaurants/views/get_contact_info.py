@@ -1,8 +1,9 @@
 from rest_framework.generics import RetrieveAPIView
 from restaurants.serializers import RestaurantContactInfoSerializer
+from rest_framework import views
+from restaurants.models import Restaurant
 
-class ContactInfoView(RetrieveAPIView):
-    serializer_class = RestaurantContactInfoSerializer
+class ContactInfoView(views.APIView):
 
-    def get_object(self):
-        return self.request.restaurant
+    def get(self, request, pk):
+        requested_restaurant = Restaurant.objects.filter(id=pk).first()
