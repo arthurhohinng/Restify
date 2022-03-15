@@ -1,3 +1,5 @@
+from dataclasses import field
+from matplotlib.pyplot import cla
 from rest_framework import serializers
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage
 from accounts.models import User
@@ -42,6 +44,11 @@ class RestaurantGallerySerializer(serializers.ModelSerializer):
 class EditMenuSerializer(serializers.ModelSerializer):
     class Meta:
         pass
+
+class AddImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AbstractImage
+        fields = ['id', 'image', 'restaurant', 'description']
 
 class CreateRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
