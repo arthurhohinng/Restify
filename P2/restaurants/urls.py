@@ -23,11 +23,11 @@ urlpatterns = [
     path('<str:pk>/edit/', EditRestaurantView.as_view(), name='editrestaurant'),
     path('<str:pk>/likes/', RestaurantLikesList.as_view(), name='likelist'),
     path('blogposts/<str:pk>/likes/', BlogpostLikes.as_view(), name='blogpostlikes'),
-    path('restaurants/<str:pk>/contact/', ContactInfoView.as_view(), name='aboutres'),
+    path('restaurants/<int:pk>/contact/', ContactInfoView.as_view(), name='aboutres'),
     path('restaurants/<str:pk>/comments/', CommentView.as_view(), name='comments'),
     path('restaurants/<int:restaurant_id>/gallery/', GalleryView.as_view(), name='gallery'),
-    path('restaurants/<str:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
+    path('restaurants/<int:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
     path('restaurants/<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
     path('restaurants/<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage'),
-    path('restaurants/<str:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu')
+    path('restaurants/<int:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu')
 ]
