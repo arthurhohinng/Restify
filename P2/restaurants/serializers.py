@@ -78,6 +78,9 @@ class CreateRestaurantSerializer(serializers.ModelSerializer):
                 )
         except KeyError as e:
             raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        # Set the user's status to "owner"
+        self.context['request'].user.is_owner = True
+        self.context['request'].user.save()
         return new_restaurant
 
 
