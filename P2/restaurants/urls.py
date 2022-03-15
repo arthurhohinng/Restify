@@ -7,7 +7,7 @@ from restaurants.views.get_contact_info import ContactInfoView
 from restaurants.views.comment import CommentView
 from restaurants.views.followers import FollowerList
 from restaurants.views.restaurant_likes import RestaurantLikesList
-from restaurants.views.gallery import GalleryView
+from restaurants.views.gallery import GalleryView, AddImageView
 from restaurants.views.blogpostlikes import BlogpostLikes
 from restaurants.views.my_restaurant import RestaurantPageView
 from restaurants.views.editrestaurant import EditRestaurantView
@@ -26,5 +26,6 @@ urlpatterns = [
     path('restaurant/comments/', CommentView.as_view(), name='comments'),
     path('restaurant/gallery/', GalleryView.as_view(), name='gallery'),
     path('restaurant/<str:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
-    path('restaurant/<int:restaurant_id>/', AddCommentView.as_view(), name='addcomment')
+    path('restaurant/<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
+    path('restaurant/<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage')
 ]
