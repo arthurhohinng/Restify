@@ -1,3 +1,4 @@
+from ast import Add
 from django.urls import path
 from restaurants.views.blogposts import ListBlogposts
 from restaurants.views.search import SearchView
@@ -10,6 +11,7 @@ from restaurants.views.gallery import GalleryView
 from restaurants.views.blogpostlikes import BlogpostLikes
 from restaurants.views.my_restaurant import RestaurantPageView
 from restaurants.views.editrestaurant import EditRestaurantView
+from restaurants.views.add_comment import AddCommentView
 
 app_name = 'restaurants'
 urlpatterns = [
@@ -23,5 +25,6 @@ urlpatterns = [
     path('restaurant/contact/', ContactInfoView.as_view(), name='aboutres'), # TODO: may need to change url
     path('restaurant/comments/', CommentView.as_view(), name='comments'),
     path('restaurant/gallery/', GalleryView.as_view(), name='gallery'),
-    path('restaurant/<str:pk>/', RestaurantPageView.as_view(), name='restaurantpage')
+    path('restaurant/<str:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
+    path('restaurant/<int:restaurant_id>/', AddCommentView.as_view(), name='addcomment')
 ]
