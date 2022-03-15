@@ -1,6 +1,6 @@
 from django.core.exceptions import ObjectDoesNotExist
 from rest_framework import status
-from rest_framework.generics import CreateAPIView
+from rest_framework.generics import CreateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
@@ -9,7 +9,7 @@ from accounts.serializers import LikeRestaurantSerializer, FollowRestaurantSeria
 from restaurants.models import Restaurant, Blogpost
 
 
-class LikeRestaurantView(CreateAPIView):
+class LikeRestaurantView(CreateAPIView, DestroyAPIView):
     serializer_class = LikeRestaurantSerializer
     permission_classes = [IsAuthenticated]
 
@@ -33,8 +33,25 @@ class LikeRestaurantView(CreateAPIView):
                 return super().create(request, *args, **kwargs)
         return Response({"detail": "Already liked restaurant"})
 
+    def delete(self, request, *args, **kwargs):
+        try:
+            restaurant = Restaurant.objects.get(id=kwargs['restaurant_id'])
+        except ObjectDoesNotExist:
+            return Response({"detail": "Restaurant with id={id} does not exist".format(id=kwargs['restaurant_id'])},
+                            status=status.HTTP_400_BAD_REQUEST)
+        else:
+            try:
+                like = LikesRestaurant.objects.get(user=self.request.user, restaurant=restaurant)
+            except ObjectDoesNotExist:
+                return Response({"detail": "Restaurant is not liked"}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                restaurant.likes -= 1
+                restaurant.save()
+                like.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
 
-class FollowRestaurantView(CreateAPIView):
+
+class FollowRestaurantView(CreateAPIView, DestroyAPIView):
     serializer_class = FollowRestaurantSerializer
     permission_classes = [IsAuthenticated]
 
@@ -58,8 +75,25 @@ class FollowRestaurantView(CreateAPIView):
                 return super().create(request, *args, **kwargs)
         return Response({"detail": "Already following restaurant"})
 
+    def delete(self, request, *args, **kwargs):
+        try:
+            restaurant = Restaurant.objects.get(id=kwargs['restaurant_id'])
+        except ObjectDoesNotExist:
+            return Response({"detail": "Restaurant with id={id} does not exist".format(id=kwargs['restaurant_id'])},
+                            status=status.HTTP_400_BAD_REQUEST)
+        else:
+            try:
+                follow = Follows.objects.get(user=self.request.user, restaurant=restaurant)
+            except ObjectDoesNotExist:
+                return Response({"detail": "Restaurant is not followed"}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                restaurant.followers -= 1
+                restaurant.save()
+                follow.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
 
-class LikesBlogView(CreateAPIView):
+
+class LikesBlogView(CreateAPIView, DestroyAPIView):
     serializer_class = LikeBlogSerializer
     permission_classes = [IsAuthenticated]
 
@@ -82,3 +116,20 @@ class LikesBlogView(CreateAPIView):
                                                        notifier=self.request.user)
                 return super().create(request, *args, **kwargs)
         return Response({"detail": "Already liked blogpost"})
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            blogpost = Blogpost.objects.get(id=kwargs['blogpost_id'])
+        except ObjectDoesNotExist:
+            return Response({"detail": "Blogpost with id={id} does not exist".format(id=kwargs['restaurant_id'])},
+                            status=status.HTTP_400_BAD_REQUEST)
+        else:
+            try:
+                like = LikesBlog.objects.get(user=self.request.user, blogpost=blogpost)
+            except ObjectDoesNotExist:
+                return Response({"detail": "Blogpost is not liked"}, status=status.HTTP_404_NOT_FOUND)
+            else:
+                blogpost.likes -= 1
+                blogpost.save()
+                like.delete()
+                return Response(status=status.HTTP_204_NO_CONTENT)
