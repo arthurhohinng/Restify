@@ -87,13 +87,4 @@ class EditRestaurantSerializer(serializers.ModelSerializer):
         fields = ['name', 'description', 'address', 'postal_code', 'logo', 'phone_num']
 
     def update(self, instance, validated_data):
-        req_restaurant_id = self.context.get('request').parser_context.get('kwargs').get('pk')
-        requested_restaurant = Restaurant.objects.filter(id=req_restaurant_id).first()
-        if requested_restaurant.owner != self.context['request'].user:
-            # Forcing ValidationError to return with 401 UNAUTHENTICATED
-            # Source: https://stackoverflow.com/questions/33475334/django-rest-framework-how-to-specify-error-code-when-raising-validation-error-in
-            error = serializers.ValidationError("You are not the owner of this restaurant")
-            error.status_code = 401
-            raise error
-
         return super().update(instance, validated_data)
