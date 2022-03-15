@@ -12,6 +12,7 @@ from restaurants.views.blogpostlikes import BlogpostLikes
 from restaurants.views.my_restaurant import RestaurantPageView
 from restaurants.views.editrestaurant import EditRestaurantView
 from restaurants.views.add_comment import AddCommentView
+from restaurants.views.edit_menu import EditMenuView
 
 app_name = 'restaurants'
 urlpatterns = [
@@ -22,10 +23,11 @@ urlpatterns = [
     path('<str:pk>/edit/', EditRestaurantView.as_view(), name='editrestaurant'),
     path('<str:pk>/likes/', RestaurantLikesList.as_view(), name='likelist'),
     path('blogposts/<str:pk>/likes/', BlogpostLikes.as_view(), name='blogpostlikes'),
-    path('restaurant/contact/', ContactInfoView.as_view(), name='aboutres'), # TODO: may need to change url
-    path('restaurant/comments/', CommentView.as_view(), name='comments'),
-    path('restaurant/gallery/', GalleryView.as_view(), name='gallery'),
-    path('restaurant/<str:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
-    path('restaurant/<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
-    path('restaurant/<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage')
+    path('restaurants/contact/', ContactInfoView.as_view(), name='aboutres'), # TODO: may need to change url
+    path('restaurants/comments/', CommentView.as_view(), name='comments'),
+    path('restaurants/gallery/', GalleryView.as_view(), name='gallery'),
+    path('restaurants/<str:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
+    path('restaurants/<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
+    path('restaurants/<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage'),
+    path('restaurants/<str:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu')
 ]
