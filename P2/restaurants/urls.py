@@ -8,11 +8,8 @@ from restaurants.views.followers import FollowerList
 from restaurants.views.restaurant_likes import RestaurantLikesList
 from restaurants.views.gallery import GalleryView
 from restaurants.views.blogpostlikes import BlogpostLikes
-<<<<<<< HEAD
 from restaurants.views.my_restaurant import RestaurantPageView
-=======
 from restaurants.views.editrestaurant import EditRestaurantView
->>>>>>> caaf76097454e36dbbfa28fb8e8a516aef73095a
 
 app_name = 'restaurants'
 urlpatterns = [
