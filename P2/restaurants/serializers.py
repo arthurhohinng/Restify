@@ -43,7 +43,17 @@ class RestaurantGallerySerializer(serializers.ModelSerializer):
 
 class EditMenuSerializer(serializers.ModelSerializer):
     class Meta:
-        pass
+        model = MenuItem
+        fields = ['name', 'menu', 'description', 'price', 'category']
+
+    def update(self, instance, validated_data):
+        req_restaurant_id = self.context.get('request').parser_context.get('kwargs').get('pk')
+        requested_restaurant = Restaurant.objects.filter(id=req_restaurant_id).first()
+        if requested_restaurant.owner != self.context['request'].user:
+            error = serializers.ValidationError("You are not the owner of this restaurant")
+            error.status_code = 401
+            raise error
+        return super().update(instance, validated_data)
 
 class AddImageSerializer(serializers.ModelSerializer):
     class Meta:
