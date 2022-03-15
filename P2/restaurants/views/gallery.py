@@ -1,4 +1,3 @@
-from matplotlib import image
 from rest_framework import generics
 from restaurants.models import Restaurant, AbstractImage
 from restaurants.serializers import RestaurantGallerySerializer, AddImageSerializer
