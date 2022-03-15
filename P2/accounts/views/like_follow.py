@@ -31,7 +31,7 @@ class LikeRestaurantView(CreateAPIView):
                 RestaurantNotifications.objects.create(user=restaurant.owner, description=description,
                                                        notifier=self.request.user)
                 return super().create(request, *args, **kwargs)
-        return Response({"Already liked restaurant"})
+        return Response({"detail": "Already liked restaurant"})
 
 
 class FollowRestaurantView(CreateAPIView):
@@ -56,7 +56,7 @@ class FollowRestaurantView(CreateAPIView):
                 RestaurantNotifications.objects.create(user=restaurant.owner, description=description,
                                                        notifier=self.request.user)
                 return super().create(request, *args, **kwargs)
-        return Response({"Already following restaurant"})
+        return Response({"detail": "Already following restaurant"})
 
 
 class LikesBlogView(CreateAPIView):
@@ -81,4 +81,4 @@ class LikesBlogView(CreateAPIView):
                 RestaurantNotifications.objects.create(user=blogpost.restaurant.owner, description=description,
                                                        notifier=self.request.user)
                 return super().create(request, *args, **kwargs)
-        return Response({"Already liked blogpost"})
+        return Response({"detail": "Already liked blogpost"})
