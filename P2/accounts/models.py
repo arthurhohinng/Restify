@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models import CASCADE
+from django.utils import timezone
+
 from restaurants.models import Restaurant, Blogpost
 
 
@@ -16,6 +18,7 @@ class UserNotifications(models.Model):
     description = models.TextField()
     link = models.URLField(null=True, blank=True)
     notifier = models.ForeignKey(to=Restaurant, on_delete=CASCADE)
+    datetime = models.DateTimeField(default=timezone.now)
 
 
 class RestaurantNotifications(models.Model):
@@ -23,6 +26,7 @@ class RestaurantNotifications(models.Model):
     description = models.TextField(null=True, blank=True)
     link = models.URLField(null=True, blank=True)
     notifier = models.ForeignKey(to=User, on_delete=CASCADE)
+    datetime = models.DateTimeField(default=timezone.now)
 
 
 class Feed(models.Model):
