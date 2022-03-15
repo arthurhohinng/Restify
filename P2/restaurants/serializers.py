@@ -1,5 +1,4 @@
 from dataclasses import field
-from matplotlib.pyplot import cla
 from rest_framework import serializers
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage
 from accounts.models import User
