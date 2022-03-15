@@ -67,7 +67,7 @@ class CreateRestaurantSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         # Make sure this user doesn't already have a restauraunt under their name
         if Restaurant.objects.filter(owner=self.context['request'].user).exists():
-            raise serializers.ValidationError("You may only create up to one restaurant.")
+            raise serializers.ValidationError({"error": "You may only create up to one restaurant."})
 
         try:
             # Since description is not required
