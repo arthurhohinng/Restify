@@ -2,7 +2,7 @@ from ast import Add
 from django.urls import path
 from restaurants.views.blogposts import ListBlogposts, AddBlogpostView
 from restaurants.views.search import SearchView
-from restaurants.views.menu import ListMenuItems
+from restaurants.views.menu import ListMenuItems, AddMenuView
 from restaurants.views.get_contact_info import ContactInfoView
 from restaurants.views.comment import CommentView
 from restaurants.views.followers import FollowerList
@@ -31,4 +31,5 @@ urlpatterns = [
     path('<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage'),
     path('<int:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu'),
     path('blogpost/add/', AddBlogpostView.as_view(), name='addblog'),
+    path('add-menu/', AddMenuView.as_view(), name='addmenu')
 ]
