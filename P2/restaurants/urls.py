@@ -8,9 +8,9 @@ from restaurants.views.comment import CommentView
 from restaurants.views.followers import FollowerList
 from restaurants.views.restaurant_likes import RestaurantLikesList
 from restaurants.views.gallery import GalleryView, AddImageView
-from restaurants.views.blogpostlikes import BlogpostLikes
+from restaurants.views.blogpost_likes import BlogpostLikes
 from restaurants.views.my_restaurant import RestaurantPageView
-from restaurants.views.editrestaurant import EditRestaurantView
+from restaurants.views.edit_restaurant import EditRestaurantView
 from restaurants.views.add_comment import AddCommentView
 from restaurants.views.edit_menu import EditMenuView
 

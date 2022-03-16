@@ -1,13 +1,12 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
-
 from accounts.views.edit_profile import EditProfileView
 from accounts.views.get_profile import ProfileView
 from accounts.views.like_follow import LikeRestaurantView, FollowRestaurantView, LikesBlogView
 from accounts.views.register import RegisterView
 from accounts.views.feed import FeedView
-from accounts.views.addrestaurant import AddRestaurantView
-from accounts.views.viewnotification import NotificationView
+from accounts.views.add_restaurant import AddRestaurantView
+from accounts.views.view_notification import NotificationView
 
 app_name = 'accounts'
 
