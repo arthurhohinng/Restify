@@ -15,10 +15,10 @@ class AddCommentView(CreateAPIView):
     def post(self, request, *args, **kwargs):
         request.data['restaurant'] = kwargs['restaurant_id']
         request.data['user'] = self.request.user.id
+        request.data['text'] = kwargs['text']
         try:
             restaurant = Restaurant.objects.get(id=kwargs['restaurant_id'])
         except ObjectDoesNotExist:
             return Response({"detail": "Restaurant with id={id} does not exist".format(id=kwargs['restaurant_id'])},
                             status=status.HTTP_400_BAD_REQUEST)
-        Comment.objects.create(author=self.request.user, restuarant=restaurant)
-        return super().create(request, *args, **kwargs)
+        return self.create(request, *args, **kwargs)
