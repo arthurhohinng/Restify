@@ -19,6 +19,6 @@ class AddCommentView(CreateAPIView):
         else:
             comment = Comment.objects.create(author=self.request.user, restaurant=restaurant, text=request.data['text'])
         return Response(
-            {"user": self.request.user.id, "restaurant": restaurant.id, "text": request.data['text']}
+            {"user": comment.author.id, "restaurant": comment.restaurant.id, "text": comment.text}
             , status=status.HTTP_201_CREATED
         )
