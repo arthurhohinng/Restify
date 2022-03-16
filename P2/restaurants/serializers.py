@@ -1,12 +1,16 @@
 from dataclasses import field
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
+
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage
 from accounts.models import User
+
 
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
         fields = '__all__'
+
 
 # A simplified version of the Restaurant serializer, for the search result cards
 class RestaurantSearchSerializer(serializers.ModelSerializer):
@@ -14,15 +18,40 @@ class RestaurantSearchSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = ['id', 'name', 'address', 'followers', 'address', 'postal_code', 'logo']
 
+
 class BlogpostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blogpost
         fields = '__all__'
 
+
+class CreateBlogpostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Blogpost
+        fields = ['title', 'image', 'body', 'author']
+
+    def create(self, validated_data):
+        restaurant = Restaurant.objects.get(owner=self.context['request'].user)
+        try:
+            print(validated_data)
+            blogpost = Blogpost.objects.create(
+                title=validated_data['title'],
+                image=validated_data['image'],
+                body=validated_data['body'],
+                author=validated_data['author'],
+                restaurant=restaurant
+            )
+        except KeyError as e:
+            raise ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        return blogpost
+
+
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
         fields = '__all__'
+
 
 # A serializer to display only the restaurant contact information (the restaurant about page)
 class RestaurantContactInfoSerializer(serializers.ModelSerializer):
@@ -30,15 +59,18 @@ class RestaurantContactInfoSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = ['id', 'address', 'postal_code', 'phone_num']
 
+
 class RestaurantCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'author', 'restaurant', 'text']
 
+
 class RestaurantGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = AbstractImage
         fields = ['id', 'image', 'restaurant', 'description']
+
 
 class EditMenuSerializer(serializers.ModelSerializer):
     class Meta:
@@ -54,10 +86,12 @@ class EditMenuSerializer(serializers.ModelSerializer):
             raise error
         return super().update(instance, validated_data)
 
+
 class AddImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = AbstractImage
         fields = ['id', 'image', 'restaurant', 'description']
+
 
 class CreateRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
@@ -96,6 +130,7 @@ class CreateRestaurantSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
         # Set the user's status to "owner"
         self.context['request'].user.is_owner = True
+        self.context['request'].user.owned_restaurant = new_restaurant.id
         self.context['request'].user.save()
         return new_restaurant
 
