@@ -1,6 +1,6 @@
 from ast import Add
 from django.urls import path
-from restaurants.views.blogposts import ListBlogposts
+from restaurants.views.blogposts import ListBlogposts, AddBlogpostView
 from restaurants.views.search import SearchView
 from restaurants.views.menu import ListMenuItems
 from restaurants.views.get_contact_info import ContactInfoView
@@ -23,11 +23,12 @@ urlpatterns = [
     path('<str:pk>/edit/', EditRestaurantView.as_view(), name='editrestaurant'),
     path('<str:pk>/likes/', RestaurantLikesList.as_view(), name='likelist'),
     path('blogposts/<str:pk>/likes/', BlogpostLikes.as_view(), name='blogpostlikes'),
-    path('restaurants/<int:pk>/contact/', ContactInfoView.as_view(), name='aboutres'),
-    path('restaurants/<str:pk>/comments/', CommentView.as_view(), name='comments'),
-    path('restaurants/<int:restaurant_id>/gallery/', GalleryView.as_view(), name='gallery'),
-    path('restaurants/<int:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
-    path('restaurants/<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
-    path('restaurants/<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage'),
-    path('restaurants/<int:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu')
+    path('<int:pk>/contact/', ContactInfoView.as_view(), name='aboutres'),
+    path('<str:pk>/comments/', CommentView.as_view(), name='comments'),
+    path('<int:restaurant_id>/gallery/', GalleryView.as_view(), name='gallery'),
+    path('<int:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
+    path('<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
+    path('<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage'),
+    path('<int:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu'),
+    path('blogpost/add/', AddBlogpostView.as_view(), name='addblog'),
 ]
