@@ -1,4 +1,7 @@
-from rest_framework import generics
+from django.core.exceptions import ObjectDoesNotExist
+from rest_framework import generics, status
+from rest_framework.permissions import IsAuthenticated
+
 from restaurants.models import Restaurant, Menu, MenuItem
 from restaurants.serializers import MenuItemSerializer, CreateMenuSerializer
 from rest_framework.generics import CreateAPIView
@@ -16,10 +19,18 @@ class ListMenuItems(generics.ListAPIView):
         requested_menu = Menu.objects.filter(owner=requested_restaurant).first()
         return MenuItem.objects.filter(menu=requested_menu).order_by('category')
 
+
 class AddMenuView(CreateAPIView):
-    serializer_class = CreateMenuSerializer
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
         if self.request.user.is_owner:
-            return self.create(request, *args, **kwargs)
+            restaurant = Restaurant.objects.get(owner=request.user)
+            try:
+                Menu.objects.get(owner=restaurant)
+            except ObjectDoesNotExist:
+                Menu.objects.create(owner=restaurant)
+                return Response({"owner": restaurant.id}, status=status.HTTP_201_CREATED)
+            else:
+                return Response({"detail": "Restaurant already has a menu"})
         return Response({"detail": "User is not a restaurant owner"})
