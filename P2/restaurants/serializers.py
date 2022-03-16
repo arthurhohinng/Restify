@@ -34,6 +34,18 @@ class RestaurantCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'author', 'restaurant', 'text']
+    
+    def create(self, validated_data):
+        try:
+            new_comment = Comment.objects.create(
+                author=self.context['request'].user,
+                restuarant=validated_data['restaurant'],
+                text=validated_data['text']
+            )
+        except KeyError as e:
+            raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        self.context['request'].user.save()
+        return new_comment
 
 class RestaurantGallerySerializer(serializers.ModelSerializer):
     class Meta:
