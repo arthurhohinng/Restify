@@ -1,5 +1,6 @@
 from dataclasses import field
 from rest_framework import serializers
+from P2.restaurants.models import Menu
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage
 from accounts.models import User
 
@@ -70,6 +71,15 @@ class AddImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = AbstractImage
         fields = ['id', 'image', 'restaurant', 'description']
+
+class CreateMenuSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Menu
+        fields = ['owner']
+    
+    def create(self, validated_data):
+        
+        return super().create(validated_data)
 
 class CreateRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
