@@ -1,11 +1,8 @@
 from dataclasses import field
 from rest_framework import serializers
-<<<<<<< HEAD
 from P2.restaurants.models import Menu
-=======
 from rest_framework.exceptions import ValidationError
 
->>>>>>> 2c7566530cdca6e4a54047e4749934c2b7e3b939
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage
 from accounts.models import User
 
