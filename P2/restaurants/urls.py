@@ -1,4 +1,3 @@
-from ast import Add
 from django.urls import path
 from restaurants.views.blogposts import ListBlogposts, AddBlogpostView
 from restaurants.views.search import SearchView

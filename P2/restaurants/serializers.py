@@ -1,9 +1,8 @@
-from dataclasses import field
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage, Menu
-from accounts.models import User
+from accounts.models import User, Follows, UserNotifications, Feed
 
 
 class RestaurantSerializer(serializers.ModelSerializer):
@@ -43,6 +42,21 @@ class CreateBlogpostSerializer(serializers.ModelSerializer):
             )
         except KeyError as e:
             raise ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+
+        followers = Follows.objects.filter(restaurant=restaurant)
+        for follower in followers:
+            user = follower.user
+            description = "{name} uploaded a new blogpost".format(name=restaurant.name)
+            notifier = restaurant
+            link = "{host}/restaurants/{id}/blogposts/".format(host=self.context['request'].get_host(),
+                                                               id=restaurant.id)
+            UserNotifications.objects.create(
+                user=user,
+                description=description,
+                notifier=notifier,
+                link=link
+            )
+            Feed.objects.create(user=user, post=blogpost)
         return blogpost
 
 
