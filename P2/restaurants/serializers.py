@@ -32,9 +32,8 @@ class CreateBlogpostSerializer(serializers.ModelSerializer):
         fields = ['title', 'image', 'body', 'author']
 
     def create(self, validated_data):
-        restaurant = Restaurant.objects.get(owner=self.context['request'].user)
+        restaurant = self.context['request'].user.owned_restaurant
         try:
-            print(validated_data)
             blogpost = Blogpost.objects.create(
                 title=validated_data['title'],
                 image=validated_data['image'],
@@ -130,7 +129,7 @@ class CreateRestaurantSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
         # Set the user's status to "owner"
         self.context['request'].user.is_owner = True
-        self.context['request'].user.owned_restaurant = new_restaurant.id
+        self.context['request'].user.owned_restaurant = new_restaurant
         self.context['request'].user.save()
         return new_restaurant
 
