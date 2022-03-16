@@ -108,17 +108,21 @@ class AddImageSerializer(serializers.ModelSerializer):
         model = AbstractImage
         fields = ['id', 'image', 'restaurant', 'description']
 
-<<<<<<< HEAD
 class CreateMenuSerializer(serializers.ModelSerializer):
     class Meta:
         model = Menu
         fields = ['owner']
     
     def create(self, validated_data):
+        if not Restaurant.objects.filter(owner=self.context['request'].user).exists():
+            raise serializers.ValidationError({"error": "Owner doesn't exist."})
         
-        return super().create(validated_data)
-=======
->>>>>>> 2c7566530cdca6e4a54047e4749934c2b7e3b939
+        try:
+            new_menu = Menu.objects.create(owner=self.context['request'].user)
+        except KeyError as e:
+            raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        self.context['request'].user.save()
+        return new_menu
 
 class CreateRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
