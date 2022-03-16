@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models import CASCADE
 
-# Create your models here.
+
 class Restaurant(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
     followers = models.PositiveIntegerField(blank=True, default=0)
@@ -20,6 +20,7 @@ class Restaurant(models.Model):
     def __str__(self):
         return self.name
 
+
 class Blogpost(models.Model):
     title = models.CharField(null=False, blank=False, max_length=50)
     image = models.ImageField(null=True, blank=True)
@@ -32,16 +33,19 @@ class Blogpost(models.Model):
     def __str__(self):
         return self.title+" ("+self.restaurant.name+")"
 
+
 class Comment(models.Model):
     author = models.ForeignKey("accounts.User", null=False, blank=False, on_delete=CASCADE)
-    restuarant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
+    restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
     text = models.CharField(null=False, max_length=50)
+
 
 class Menu(models.Model):
     owner = models.OneToOneField(Restaurant, null=False, on_delete=CASCADE, unique=True)
 
     def __str__(self):
         return self.owner.name
+
 
 class MenuItem(models.Model):
     name = models.CharField(null=False, blank=False, max_length=30)
@@ -52,6 +56,7 @@ class MenuItem(models.Model):
 
     def __str__(self):
         return self.name+" ("+self.category+")"
+
 
 class AbstractImage(models.Model):
     image = models.ImageField(null=False)
