@@ -61,6 +61,7 @@ class MenuItem(models.Model):
 class AbstractImage(models.Model):
     image = models.ImageField(null=False)
     restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
-    description = models.CharField(null=False, blank=False)
+    description = models.CharField(null=False, blank=False, max_length=50)
+
     class Meta:
-        abstract = True
+        ordering = ['restaurant']

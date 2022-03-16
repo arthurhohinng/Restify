@@ -11,7 +11,7 @@ class GalleryView(generics.ListAPIView):
 
     def get_queryset(self):
         requested_restaurant = Restaurant.objects.filter(id=self.kwargs['pk']).first()
-        requested_image = AbstractImage.objects.filter(restaurant=requested_restaurant).first()
+        requested_image = AbstractImage.objects.filter(restaurant=requested_restaurant)
         return requested_image
 
 class AddImageView(CreateAPIView):
