@@ -1,5 +1,6 @@
 from dataclasses import field
 from rest_framework import serializers
+from P2.restaurants.models import Menu
 from rest_framework.exceptions import ValidationError
 
 from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, AbstractImage
@@ -63,6 +64,18 @@ class RestaurantCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
         fields = ['id', 'author', 'restaurant', 'text']
+    
+    def create(self, validated_data):
+        try:
+            new_comment = Comment.objects.create(
+                author=self.context['request'].user,
+                restuarant=validated_data['restaurant'],
+                text=validated_data['text']
+            )
+        except KeyError as e:
+            raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        self.context['request'].user.save()
+        return new_comment
 
 
 class RestaurantGallerySerializer(serializers.ModelSerializer):
@@ -91,6 +104,21 @@ class AddImageSerializer(serializers.ModelSerializer):
         model = AbstractImage
         fields = ['id', 'image', 'restaurant', 'description']
 
+class CreateMenuSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Menu
+        fields = ['owner']
+    
+    def create(self, validated_data):
+        if not Restaurant.objects.filter(owner=self.context['request'].user).exists():
+            raise serializers.ValidationError({"error": "Owner doesn't exist."})
+        
+        try:
+            new_menu = Menu.objects.create(owner=self.context['request'].user)
+        except KeyError as e:
+            raise serializers.ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        self.context['request'].user.save()
+        return new_menu
 
 class CreateRestaurantSerializer(serializers.ModelSerializer):
     class Meta:
