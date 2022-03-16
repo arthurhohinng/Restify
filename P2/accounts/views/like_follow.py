@@ -14,6 +14,8 @@ class LikeRestaurantView(CreateAPIView, DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
+        if request.data != {}:
+            return Response({"detail": "Payload should be empty"}, status=status.HTTP_400_BAD_REQUEST)
         request.data['restaurant'] = kwargs['restaurant_id']
         request.data['user'] = self.request.user.id
         try:
@@ -56,6 +58,8 @@ class FollowRestaurantView(CreateAPIView, DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
+        if request.data != {}:
+            return Response({"detail": "Payload should be empty"}, status=status.HTTP_400_BAD_REQUEST)
         request.data['restaurant'] = kwargs['restaurant_id']
         request.data['user'] = self.request.user.id
         try:
@@ -98,6 +102,8 @@ class LikesBlogView(CreateAPIView, DestroyAPIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request, *args, **kwargs):
+        if request.data != {}:
+            return Response({"detail": "Payload should be empty"}, status=status.HTTP_400_BAD_REQUEST)
         request.data['blogpost'] = kwargs['blogpost_id']
         request.data['user'] = self.request.user.id
         try:
