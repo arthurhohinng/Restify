@@ -11,7 +11,7 @@ class NotificationView(APIView):
     def get(self, request, pk):
         requested_notif = None
         # Check if the user owns this notification
-        if self.request.user.is_owner:
+        if not self.request.user.is_owner:
             requested_notif = UserNotifications.objects.filter(id=pk).first()
         else:
             requested_notif = RestaurantNotifications.objects.filter(id=pk).first()
@@ -22,7 +22,7 @@ class NotificationView(APIView):
         
         url_redirect = requested_notif.link
         # Remove the notification from the database
-        if self.request.user.is_owner:
+        if not self.request.user.is_owner:
             UserNotifications.objects.get(id=pk).delete()
         else:
             RestaurantNotifications.objects.get(id=pk).delete()

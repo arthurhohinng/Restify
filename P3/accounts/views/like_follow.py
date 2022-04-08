@@ -73,6 +73,8 @@ class FollowRestaurantView(CreateAPIView, DestroyAPIView):
             except ObjectDoesNotExist:
                 restaurant.followers += 1
                 restaurant.save()
+                print(str(restaurant))
+                print(str(self.request.user), str(restaurant.owner))
                 description = "{user} started following your restaurant.".format(user=self.request.user.username)
                 RestaurantNotifications.objects.create(user=restaurant.owner, description=description,
                                                        notifier=self.request.user)
