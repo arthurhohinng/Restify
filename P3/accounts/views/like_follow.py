@@ -4,7 +4,7 @@ from rest_framework.generics import CreateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from accounts.models import LikesRestaurant, RestaurantNotifications, Follows, LikesBlog
+from accounts.models import LikesRestaurant, RestaurantNotifications, Follows, LikesBlog, Feed
 from accounts.serializers import LikeRestaurantSerializer, FollowRestaurantSerializer, LikeBlogSerializer
 from restaurants.models import Restaurant, Blogpost
 
@@ -93,6 +93,9 @@ class FollowRestaurantView(CreateAPIView, DestroyAPIView):
             else:
                 restaurant.followers -= 1
                 restaurant.save()
+                # Delete this restaurant's blogposts from the user's feed
+                rest_posts = Blogpost.objects.all().filter(restaurant=restaurant)
+                user_feed = Feed.objects.all().filter(user=self.request.user, post__in=rest_posts).delete()
                 follow.delete()
                 return Response(status=status.HTTP_204_NO_CONTENT)
 
