@@ -123,8 +123,11 @@ a:hover {
   color: black;
   border-radius: 10px;
 }
-
+/*
 .all-comments {
+  display: flex;
+} */
+.comment-row {
   display: flex;
 }
 
