@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState} from "react";
+import {searchContext} from "./Contexts/searchContext";
 import Footer from './components/Footer';
+import Results from "./components/Search";
 
+/**
+ * Until we turn this into the front page of the site, can just add your components here
+ * to test them out easily.
+ */
 function App() {
+  const [restaurants, setRestaurants] = useState([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Footer></Footer>
+      <searchContext.Provider value={{restaurants, setRestaurants}}></searchContext.Provider>
+      <Results />
+      <Footer />
     </div>
   );
 }
