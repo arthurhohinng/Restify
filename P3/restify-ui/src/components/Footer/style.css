@@ -1,0 +1,7 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
+
+footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
