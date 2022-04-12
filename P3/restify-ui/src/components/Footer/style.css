@@ -1,7 +1,12 @@
 @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css");
 
 footer {
+    color: white;
     position: absolute;
     bottom: 0px;
     width: 100%;
+}
+
+img {
+    margin-bottom:3px;
 }
