@@ -1,6 +1,7 @@
 from django.urls import path
 from restaurants.views.blogposts import ListBlogposts, AddBlogpostView
 from restaurants.views.search import SearchView
+from restaurants.views.search import SearchViewEmpty
 from restaurants.views.menu import ListMenuItems, AddMenuView
 from restaurants.views.get_contact_info import ContactInfoView
 from restaurants.views.comment import CommentView
@@ -18,6 +19,7 @@ urlpatterns = [
     path('<str:pk>/blogposts/', ListBlogposts.as_view(), name='blogposts'),
     path('<str:pk>/menu/', ListMenuItems.as_view(), name='menu'),
     path('search/<str:query>/', SearchView.as_view(), name='searchres'),
+    path('search/', SearchViewEmpty.as_view(), name='searchres_empty'),  # For the search page with no query
     path('<str:pk>/followers/', FollowerList.as_view(), name='followerlist'),
     path('<str:pk>/edit/', EditRestaurantView.as_view(), name='editrestaurant'),
     path('<str:pk>/likes/', RestaurantLikesList.as_view(), name='likelist'),
