@@ -16,6 +16,9 @@ class SearchView(generics.ListAPIView):
         results = Restaurant.objects.none()
         query_words = search_query.split(" ")
 
+        if search_query == "":
+            return Response({})
+
         # Since we have pagination implemented on this page, yet we are also unioning querysets, SQLite gets mad about it.
         # The code below is based off the "values_list" solution provided in the answer to this SO post, to bypass the error:
         # https://stackoverflow.com/questions/65577792/error-order-by-not-allowed-in-subqueries-of-compound-statements-in-django-whi
@@ -34,3 +37,13 @@ class SearchView(generics.ListAPIView):
 
         all_ids = matching_name + matching_addr + matching_menu
         return Restaurant.objects.filter(id__in=all_ids).order_by('-followers')
+
+class SearchViewEmpty(generics.ListAPIView):
+    """
+    View for the search form with NO query provided.
+    Returns no results when given an empty query.
+    """
+    serializer_class = RestaurantSearchSerializer
+
+    def get_queryset(self):
+        return Restaurant.objects.none()
