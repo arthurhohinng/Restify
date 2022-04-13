@@ -66,12 +66,6 @@ class CreateBlogpostSerializer(serializers.ModelSerializer):
         return blogpost
 
 
-class MenuItemSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MenuItem
-        fields = '__all__'
-
-
 # A serializer to display only the restaurant contact information (the restaurant about page)
 class RestaurantContactInfoSerializer(serializers.ModelSerializer):
     class Meta:
@@ -101,21 +95,6 @@ class RestaurantGallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = AbstractImage
         fields = ['id', 'image', 'restaurant', 'description']
-
-
-class EditMenuSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MenuItem
-        fields = ['name', 'menu', 'description', 'price', 'category']
-
-    def update(self, instance, validated_data):
-        req_restaurant_id = self.context.get('request').parser_context.get('kwargs').get('pk')
-        requested_restaurant = Restaurant.objects.filter(id=req_restaurant_id).first()
-        if requested_restaurant.owner != self.context['request'].user:
-            error = serializers.ValidationError("You are not the owner of this restaurant")
-            error.status_code = 401
-            raise error
-        return super().update(instance, validated_data)
 
 
 class AddImageSerializer(serializers.ModelSerializer):
@@ -187,4 +166,25 @@ class EditRestaurantSerializer(serializers.ModelSerializer):
         fields = ['name', 'description', 'address', 'postal_code', 'logo', 'phone_num']
 
     def update(self, instance, validated_data):
+        return super().update(instance, validated_data)
+
+
+class MenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuItem
+        fields = ['name', 'menu', 'description', 'price', 'category']
+
+
+class EditMenuItemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MenuItem
+        fields = ['name', 'menu', 'description', 'price', 'category']
+
+    def update(self, instance, validated_data):
+        req_restaurant_id = self.context.get('request').parser_context.get('kwargs').get('pk')
+        requested_restaurant = Restaurant.objects.filter(id=req_restaurant_id).first()
+        if requested_restaurant.owner != self.context['request'].user:
+            error = serializers.ValidationError("You are not the owner of this restaurant")
+            error.status_code = 401
+            raise error
         return super().update(instance, validated_data)

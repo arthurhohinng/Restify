@@ -1,11 +1,11 @@
 from rest_framework.generics import UpdateAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from restaurants.serializers import EditMenuSerializer
+from restaurants.serializers import EditMenuItemSerializer
 from restaurants.models import Restaurant, MenuItem, Menu
 
 class EditMenuView(RetrieveAPIView, UpdateAPIView):
-    serializer_class = EditMenuSerializer
+    serializer_class = EditMenuItemSerializer
     permission_classes = [IsAuthenticated]
     queryset = MenuItem.objects.all()
 
