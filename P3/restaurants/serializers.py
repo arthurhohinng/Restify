@@ -5,6 +5,12 @@ from restaurants.models import Restaurant, Blogpost, MenuItem, Comment, Abstract
 from accounts.models import User, Follows, UserNotifications, Feed
 
 
+class GetRestaurantSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurant
+        fields = ['name', 'followers', 'likes', 'description', 'owner', 'logo']
+
+
 class RestaurantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurant
