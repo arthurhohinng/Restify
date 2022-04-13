@@ -7,7 +7,7 @@ from restaurants.models import Restaurant, Blogpost
 
 
 class User(AbstractUser):
-    avatar = models.ImageField(null=True)
+    avatar = models.ImageField(null=True, upload_to='avatars/')
     owned_restaurant = models.ForeignKey(to=Restaurant, on_delete=CASCADE, null=True)
     is_owner = models.BooleanField(null=False, default=False)
     phone_num = models.CharField(max_length=11, null=True)

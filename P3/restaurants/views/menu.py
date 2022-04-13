@@ -7,6 +7,7 @@ from restaurants.serializers import MenuItemSerializer, CreateMenuSerializer
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 
+
 class ListMenuItems(generics.ListAPIView):
     """
     View all menu items belonging to a specific restaurant, sorted by
@@ -34,3 +35,20 @@ class AddMenuView(CreateAPIView):
             else:
                 return Response({"detail": "Restaurant already has a menu"})
         return Response({"detail": "User is not a restaurant owner"})
+
+
+class AddMenuItemView(CreateAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = MenuItemSerializer
+
+    def post(self, request, *args, **kwargs):
+        if self.request.user.is_owner:
+            restaurant = Restaurant.objects.get(owner=request.user)
+            try:
+                menu = Menu.objects.get(owner=restaurant)
+                request.data._mutable = True
+                request.data['menu'] = menu.id
+                request.data._mutable = False
+                return super().create(request, *args, **kwargs)
+            except ObjectDoesNotExist:
+                return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
