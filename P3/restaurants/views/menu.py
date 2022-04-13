@@ -94,14 +94,14 @@ class EditMenuItemView(UpdateAPIView):
     def put(self, request, *args, **kwargs):
         if self.request.user.is_owner:
             if self.has_menu(request):
-                return super().update(request, *args, **kwargs)
+                return self.update(request, *args, **kwargs)
             return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
         return Response({"detail": "User is not a restaurant owner"}, status=status.HTTP_404_NOT_FOUND)
 
     def patch(self, request, *args, **kwargs):
         if self.request.user.is_owner:
             if self.has_menu(request):
-                return super().partial_update(request, *args, **kwargs)
+                return self.partial_update(request, *args, **kwargs)
             return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
         return Response({"detail": "User is not a restaurant owner"}, status=status.HTTP_404_NOT_FOUND)
 
