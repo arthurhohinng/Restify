@@ -1,4 +1,5 @@
 from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 
@@ -72,8 +73,8 @@ class EditMenuItemView(UpdateAPIView):
     def get_object(self, request):
         try:
             menu_item = MenuItem.objects.get(id=request.data['id'])
-        except ObjectDoesNotExist:
-            raise ObjectDoesNotExist
+        except (ObjectDoesNotExist, KeyError):
+            raise Http404
         else:
             return menu_item
 
