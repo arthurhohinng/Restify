@@ -46,11 +46,9 @@ class AddMenuItemView(CreateAPIView):
             restaurant = Restaurant.objects.get(owner=request.user)
             try:
                 menu = Menu.objects.get(owner=restaurant)
-                data = request.data.copy()
-                data['menu'] = menu.id
-                serializer = self.get_serializer(data=data)
-                serializer.is_valid(raise_exception=True)
-                serializer.save()
-                return Response(serializer.data, status=status.HTTP_201_CREATED)
+                request.data._mutable = True
+                request.data['menu'] = menu.id
+                request.data._mutable = False
+                return super().create(request, *args, **kwargs)
             except ObjectDoesNotExist:
                 return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
