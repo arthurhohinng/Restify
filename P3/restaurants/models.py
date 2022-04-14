@@ -23,7 +23,7 @@ class Restaurant(models.Model):
 
 class Blogpost(models.Model):
     title = models.CharField(null=False, blank=False, max_length=50)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True, upload_to='blogpost-images/')
     body = models.TextField(null=False)
     author = models.CharField(null=False, blank=False, max_length=15)
     restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
@@ -59,7 +59,7 @@ class MenuItem(models.Model):
 
 
 class AbstractImage(models.Model):
-    image = models.ImageField(null=False)
+    image = models.ImageField(null=False, upload_to='gallery/')
     restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
     description = models.CharField(null=False, blank=False, max_length=50)
 

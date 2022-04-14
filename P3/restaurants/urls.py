@@ -2,7 +2,7 @@ from django.urls import path
 from restaurants.views.blogposts import ListBlogposts, AddBlogpostView
 from restaurants.views.search import SearchView
 from restaurants.views.search import SearchViewEmpty
-from restaurants.views.menu import ListMenuItems, AddMenuView, AddMenuItemView
+from restaurants.views.menu import ListMenuItems, AddMenuView, AddMenuItemView, EditMenuItemView
 from restaurants.views.get_contact_info import ContactInfoView
 from restaurants.views.comment import CommentView
 from restaurants.views.followers import FollowerList
@@ -12,7 +12,6 @@ from restaurants.views.blogpost_likes import BlogpostLikes
 from restaurants.views.my_restaurant import RestaurantPageView
 from restaurants.views.edit_restaurant import EditRestaurantView
 from restaurants.views.add_comment import AddCommentView
-from restaurants.views.edit_menu import EditMenuView
 
 app_name = 'restaurants'
 urlpatterns = [
@@ -30,8 +29,8 @@ urlpatterns = [
     path('<int:pk>/', RestaurantPageView.as_view(), name='restaurantpage'),
     path('<int:restaurant_id>/add-comment/', AddCommentView.as_view(), name='addcomment'),
     path('<int:restaurant_id>/add-image/', AddImageView.as_view(), name='addimage'),
-    path('<int:pk>/edit-menu/', EditMenuView.as_view(), name='editmenu'),
+    path('edit-menu/', EditMenuItemView.as_view(), name='editmenu'),
     path('blogpost/add/', AddBlogpostView.as_view(), name='addblog'),
     path('add-menu/', AddMenuView.as_view(), name='addmenu'),
-    path('add-menu/add-item/', AddMenuItemView.as_view(), name='add-menuitem')
+    path('menu/add-item/', AddMenuItemView.as_view(), name='add-menuitem')
 ]
