@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from restaurants.models import Restaurant, Menu, MenuItem
 from restaurants.serializers import MenuItemSerializer, CreateMenuSerializer, EditMenuItemSerializer
-from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView
+from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 from rest_framework.response import Response
 
 
@@ -55,7 +55,7 @@ class AddMenuItemView(CreateAPIView):
                 return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
 
 
-class EditMenuItemView(UpdateAPIView):
+class EditMenuItemView(UpdateAPIView, DestroyAPIView):
     serializer_class = EditMenuItemSerializer
     permission_classes = [IsAuthenticated]
 
@@ -105,4 +105,9 @@ class EditMenuItemView(UpdateAPIView):
                 return self.partial_update(request, *args, **kwargs)
             return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
         return Response({"detail": "User is not a restaurant owner"}, status=status.HTTP_404_NOT_FOUND)
+
+    def destroy(self, request, *args, **kwargs):
+        instance = self.get_object(request)
+        self.perform_destroy(instance)
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
