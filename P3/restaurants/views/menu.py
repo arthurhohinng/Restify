@@ -84,6 +84,17 @@ class EditMenuItemView(UpdateAPIView, DestroyAPIView):
         except ObjectDoesNotExist:
             return False
 
+    def add_notification(self, request, menu_item, action):
+        restaurant = Restaurant.objects.get(owner=request.user)
+        followers = Follows.objects.filter(restaurant=restaurant)
+        for follower in followers:
+            description = "{restaurant} {action} their menu item: {item}.".format(restaurant=restaurant.name,
+                                                                                  action=action, item=menu_item.name)
+            link = request.get_host() + reverse('restaurants:menu', args=[restaurant.id])
+            UserNotifications.objects.create(user=follower.user, description=description, link=link,
+                                             notifier=restaurant, datetime=timezone.now())
+        return
+
     def get_object(self, request):
         try:
             menu_item = MenuItem.objects.get(id=request.data['id'])
@@ -103,6 +114,7 @@ class EditMenuItemView(UpdateAPIView, DestroyAPIView):
             # If 'prefetch_related' has been applied to a queryset, we need to
             # forcibly invalidate the prefetch cache on the instance.
             instance._prefetched_objects_cache = {}
+        self.add_notification(request, instance, "updated")
 
         return Response(serializer.data)
 
@@ -122,6 +134,7 @@ class EditMenuItemView(UpdateAPIView, DestroyAPIView):
 
     def destroy(self, request, *args, **kwargs):
         instance = self.get_object(request)
+        self.add_notification(request, instance, "deleted")
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
