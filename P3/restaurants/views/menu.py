@@ -1,8 +1,13 @@
+import datetime
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import Http404
+from django.urls import reverse
+from django.utils import timezone
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 
+from accounts.models import Follows, UserNotifications
 from restaurants.models import Restaurant, Menu, MenuItem
 from restaurants.serializers import MenuItemSerializer, CreateMenuSerializer, EditMenuItemSerializer
 from rest_framework.generics import CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
@@ -50,9 +55,18 @@ class AddMenuItemView(CreateAPIView):
                 request.data._mutable = True
                 request.data['menu'] = menu.id
                 request.data._mutable = False
-                return super().create(request, *args, **kwargs)
+                response = super().create(request, *args, **kwargs)
+                followers = Follows.objects.filter(restaurant=restaurant)
+                for follower in followers:
+                    description = "{restaurant} added {item} to their menu.".format(restaurant=restaurant.name,
+                                                                                    item=request.data['name'])
+                    link = request.get_host() + reverse('restaurants:menu', args=[restaurant.id])
+                    UserNotifications.objects.create(user=follower.user, description=description, link=link,
+                                                     notifier=restaurant, datetime=timezone.now())
+                return response
             except ObjectDoesNotExist:
                 return Response({"detail": "Restaurant does not have a menu"}, status=status.HTTP_404_NOT_FOUND)
+        return Response({"detail": "User is not a restaurant owner"}, status=status.HTTP_404_NOT_FOUND)
 
 
 class EditMenuItemView(UpdateAPIView, DestroyAPIView):
