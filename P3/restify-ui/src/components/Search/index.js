@@ -3,7 +3,6 @@ import {useContext, useEffect, useState} from 'react'
 import {searchContext} from '../../Contexts/searchContext';
 import SearchBar from '../SearchBar';
 import Button from '../Button';
-import '../../App.css'
 import './style.css'
 
 const Cards = () => {
@@ -13,7 +12,7 @@ const Cards = () => {
             {restaurants.map(restaurant => (
                 <div className="card g-col-6" key={restaurant.id}>
                     <div id={restaurant.id}>
-                        <a href="/my-restaurant.html"><img className="img-fluid" src={restaurant.logo} alt="logo"></img></a>
+                        <a href="/my-restaurant.html"><img className="img-fluid" src="" alt="logo"></img></a>
                         <div className="rest-name">{restaurant.name}</div>
                         <div className="rest-addr">{restaurant.address} ({restaurant.postal_code})</div>
                         <div className="rest-followers">{restaurant.followers} Follower(s)</div>
@@ -53,7 +52,7 @@ const Results = () => {
                update={(value) => setQuery({search: value, page: 1})}
                placeholder="Name, address, or menu item"/>
         <Cards />
-        {query.page > 1 ? <Button value="prev" update={() => setQuery({...query, page: query.page - 1})} /> : <></>}
+        {(query.page > 1) ? <Button value="prev" update={() => setQuery({...query, page: query.page - 1})} /> : <></>}
         {nextExists != null ? <Button value="next" update={() => setQuery({...query, page: query.page + 1})} /> : <></>}
         </div>
     </>)

@@ -5,13 +5,8 @@ import '../../App.css'
 // TODO: Put proper Navbar HTML here
 const Layout = () => {
     return <>
-        <nav>
-            <Link to="/">Home </Link>
-            <Link to="/search">Search</Link>
-        </nav>
-        <Footer />
- 
         <Outlet />
+        <Footer />
     </>
 }
 
