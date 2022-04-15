@@ -17,7 +17,6 @@ function App() {
         <Router />
       </searchContext.Provider>
       <Footer />
-      <CommentForm />
     </div>
   );
 }
