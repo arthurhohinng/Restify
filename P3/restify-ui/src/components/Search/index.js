@@ -13,7 +13,7 @@ const Cards = () => {
             {restaurants.map(restaurant => (
                 <div className="card g-col-6" key={restaurant.id}>
                     <div id={restaurant.id}>
-                        <a href="/my-restaurant.html"><img className="img-fluid" src="/restify-backend/media/logos/${restaurant.logo}"></img></a>
+                        <a href="/my-restaurant.html"><img className="img-fluid" src={restaurant.logo} alt="logo"></img></a>
                         <div className="rest-name">{restaurant.name}</div>
                         <div className="rest-addr">{restaurant.address} ({restaurant.postal_code})</div>
                         <div className="rest-followers">{restaurant.followers} Follower(s)</div>
