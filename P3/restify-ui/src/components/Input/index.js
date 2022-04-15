@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Input = ({ title, name }) => {
+const Input = ({ title, type, name, placeholder }) => {
     return (
-        <div class="form-group">
-                <label>{title}</label>
-                <input class="form-control" type={name} name={name} placeholder={"Enter " + {name}}/>
-        </div>
+        <>
+            <label>{title}</label>
+            <input className="form-control" type={type} name={name} placeholder={placeholder}/>
+        </>
     )
 }
 
