@@ -10,7 +10,7 @@ class Restaurant(models.Model):
     owner = models.ForeignKey("accounts.User", null=False, on_delete=CASCADE)
     address = models.CharField(max_length=50, null=False)
     postal_code = models.CharField(max_length=6, null=False)
-    logo = models.ImageField(null=False, upload_to='logos/')
+    logo = models.ImageField(null=False, upload_to='logos/', default='logos/python.png')
     phone_num = models.CharField(max_length=11, null=False)
 
     # Ordering restaurant JSON objects by popularity (followers)

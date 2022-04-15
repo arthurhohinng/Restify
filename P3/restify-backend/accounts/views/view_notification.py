@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
 from accounts.serializers import GetUserSerializer
+from django.http import JsonResponse
 from accounts.models import UserNotifications, RestaurantNotifications
 from rest_framework.response import Response
 
@@ -27,3 +28,17 @@ class NotificationView(APIView):
         else:
             RestaurantNotifications.objects.get(id=pk).delete()
         return Response({'url': url_redirect}, status=200)
+
+
+class NotificationList(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        requested_notif = None
+        # Check if the user owns this notification
+        if not self.request.user.is_owner:
+            requested_notif = UserNotifications.objects.filter(user=request.user).order_by('-datetime')
+        else:
+            requested_notif = RestaurantNotifications.objects.filter(user=request.user).order_by('-datetime')
+
+        return Response(requested_notif.values(), status=200)

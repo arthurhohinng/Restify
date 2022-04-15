@@ -1,4 +1,5 @@
 from rest_framework import generics
+from rest_framework.views import APIView
 from restaurants.models import Restaurant, AbstractImage
 from restaurants.serializers import RestaurantGallerySerializer, AddImageSerializer
 from rest_framework.generics import CreateAPIView
@@ -26,3 +27,14 @@ class AddImageView(CreateAPIView):
                             status=status.HTTP_400_BAD_REQUEST)
         AbstractImage.objects.create(restaurant=restaurant)
         return super().create(request, *args, **kwargs)
+
+class LogoView(APIView):
+
+    def get(self, request, pk):
+        restaurant = None
+        try:
+            restaurant = Restaurant.objects.get(id=pk)
+        except ObjectDoesNotExist:
+            return Response({"detail": "Restaurant with id={id} does not exist".format(id=pk)},
+                            status=status.HTTP_400_BAD_REQUEST)
+        return Response({"logo": restaurant.logo.url}, status=200)
