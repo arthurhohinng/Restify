@@ -1,45 +1,29 @@
 // Adapted from Lecture 11 code samples (src/components/Players/index.js)
 import {useContext, useEffect, useState} from 'react'
 import {searchContext} from '../../Contexts/searchContext';
-import Input from '../Input';
+import SearchBar from '../SearchBar';
 import Button from '../Button';
+import '../../App.css'
+import './style.css'
 
 const Cards = () => {
     const { restaurants } = useContext(searchContext)
-    console.log({ restaurants })
     if (restaurants){
-        return <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Postal Code</th>
-                <th>Followers</th>
-            </tr>
-        </thead>
-        <tbody>
-        {restaurants.map(restaurant => (
-            <tr key={restaurant.id}>
-                <td>{restaurant.name}</td>
-                <td>{restaurant.address}</td>
-                <td>{restaurant.postal_code}</td>
-                <td>{restaurant.followers}</td>
-            </tr>
-        ))}
-        </tbody>
-        </table>
+        return <div className="row row-cols-3">
+            {restaurants.map(restaurant => (
+                <div className="card g-col-6" key={restaurant.id}>
+                    <div id={restaurant.id}>
+                        <a href="/my-restaurant.html"><img className="img-fluid" src="/restify-backend/media/logos/${restaurant.logo}"></img></a>
+                        <div className="rest-name">{restaurant.name}</div>
+                        <div className="rest-addr">{restaurant.address} ({restaurant.postal_code})</div>
+                        <div className="rest-followers">{restaurant.followers} Follower(s)</div>
+                    </div>
+                </div>
+            ))}
+        </div>
     }
     else {
-        return <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Postal Code</th>
-                <th>Followers</th>
-            </tr>
-        </thead>
-        </table>
+        return ''
     }
 }
 
@@ -57,19 +41,21 @@ const Results = () => {
         fetch(fetch_url)
             .then(response => response.json())
             .then(json => {
-                console.log(json)
                 setRestaurants(json.results)
                 setNextExists(json.next)
             })
     }, [setRestaurants, query])
 
     return (<>
-        <Input title="Search by name, address, or food"
+        <div className="container">
+        <SearchBar title="Search for Restaurants"
                value={query.search}
-               update={(value) => setQuery({search: value, page: 1})}/>
+               update={(value) => setQuery({search: value, page: 1})}
+               placeholder="Name, address, or menu item"/>
         <Cards />
         {query.page > 1 ? <Button value="prev" update={() => setQuery({...query, page: query.page - 1})} /> : <></>}
         {nextExists != null ? <Button value="next" update={() => setQuery({...query, page: query.page + 1})} /> : <></>}
+        </div>
     </>)
 }
 

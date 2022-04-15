@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Results from '../Search';
-import Footer from '../Footer';
+import '../../App.css'
 import Layout from '../Layout';
 
 const Router = () => {
@@ -9,7 +9,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<Footer />} />
+                    <Route index element={<Results />} />
                     <Route path="search" element={<Results />} />
                 </Route>
             </Routes>
