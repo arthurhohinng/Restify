@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 
 // so when a new comment is created, we use the below Comment arrow function to create its element
@@ -38,17 +39,12 @@ class CommentForm extends React.Component {
         var restaurant_id = url.split("/")[4];
         var fetch_url = 'http://localhost:8000/restaurants/' + restaurant_id + 'add-comment/';
         var response_fields;
-        /*
-        const form_data = new FormData(event.target);
-        var comment_text = form_data.get('comment-box'); // comment that the user entered
-        */
         fetch(fetch_url, {
             method: 'POST',
             body: JSON.stringify({
               'text': this.state.value // the comment that the user entered
             }),
             headers: {
-                'X-Api-Key': API_KEY,
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json())
@@ -71,6 +67,7 @@ class CommentForm extends React.Component {
       }
 }
 export default CommentForm;
+*/
 
 // <Comment text=response['text'] name=response['user'] avatar?>
 // post request to add comment gives {"user": author_id, "restaurant": restaurant_id, "text": comment_text}
