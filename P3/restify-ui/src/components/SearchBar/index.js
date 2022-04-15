@@ -17,7 +17,6 @@ class SearchBar extends React.Component {
                         aria-label="Search"
                         value={value}
                         onChange={event => update(event.target.value)}
-                        style={{width: 200, height: 40, fontSize: '2em'}}
                     />
                 </form>
             </div>
