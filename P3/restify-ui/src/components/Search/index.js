@@ -6,8 +6,9 @@ import Button from '../Button';
 
 const Cards = () => {
     const { restaurants } = useContext(searchContext)
-    // TODO: copy bootstrap card html to here
-    return <table>
+    console.log({ restaurants })
+    if (restaurants){
+        return <table>
         <thead>
             <tr>
                 <th>Name</th>
@@ -26,7 +27,20 @@ const Cards = () => {
             </tr>
         ))}
         </tbody>
-    </table>
+        </table>
+    }
+    else {
+        return <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Postal Code</th>
+                <th>Followers</th>
+            </tr>
+        </thead>
+        </table>
+    }
 }
 
 const Results = () => {
@@ -43,7 +57,8 @@ const Results = () => {
         fetch(fetch_url)
             .then(response => response.json())
             .then(json => {
-                setRestaurants(json.data)
+                console.log(json)
+                setRestaurants(json.results)
                 setNextExists(json.next)
             })
     }, [setRestaurants, query])
