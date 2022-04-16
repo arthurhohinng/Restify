@@ -12,12 +12,16 @@ body{
     margin-top: 5%;
     margin-bottom: 5%;
     width: 35%;
-    text-align: left;
+    text-align: center;
     min-width: 400px;
 }
 
 #rest-addr {
     display: inline-block;
     margin-bottom: 2%;
-    text-align: left;
+    text-align: center;
+}
+
+.addr-part {
+    color: white;
 }
