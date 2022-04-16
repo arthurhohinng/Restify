@@ -3,6 +3,7 @@ import {useContext, useEffect, useState} from 'react'
 import {searchContext} from '../../Contexts/searchContext';
 import SearchBar from '../SearchBar';
 import Button from '../Button';
+import API from '../API';
 import './style.css'
 
 const Cards = () => {
@@ -12,7 +13,7 @@ const Cards = () => {
             {restaurants.map(restaurant => (
                 <div className="card g-col-6" key={restaurant.id}>
                     <div id={restaurant.id}>
-                        <a href="/my-restaurant.html"><img className="img-fluid" src="" alt="logo"></img></a>
+                        <a href="/my-restaurant.html"><img className="img-fluid search-logo" src={restaurant.logo} alt={restaurant.name+" logo"}></img></a>
                         <div className="rest-name">{restaurant.name}</div>
                         <div className="rest-addr">{restaurant.address} ({restaurant.postal_code})</div>
                         <div className="rest-followers">{restaurant.followers} Follower(s)</div>
@@ -32,16 +33,17 @@ const Results = () => {
     const [nextExists, setNextExists] = useState(1)
 
     useEffect(() => {
-        var fetch_url = `http://localhost:8000/restaurants/search/${query.search}/?page=${query.page}`
+        var fetch_url = `${API}/restaurants/search/${query.search}/?page=${query.page}`
         if (query.search === ""){
             // If the query is empty, we don't want double slashes in the URL, so we change the fetch URL here.
-            fetch_url = `http://localhost:8000/restaurants/search/?page=${query.page}`
+            fetch_url = `${API}/restaurants/search/?page=${query.page}`
         }
         fetch(fetch_url)
             .then(response => response.json())
             .then(json => {
                 setRestaurants(json.results)
                 setNextExists(json.next)
+                console.log(json.results)
             })
     }, [setRestaurants, query])
 
