@@ -2,6 +2,7 @@ import Input from '../Input';
 import React, { useState } from "react";
 import "./style.css";
 import API from '../API';
+import BASEURL from '../BASEURL';
 
 const Register = () => {
     const [inputFields, setInputField] = useState({
@@ -21,11 +22,13 @@ const Register = () => {
     }
 
     const submitHandler = () =>{
+        // let registerForm = document.getElementById('registerForm')
+        // let formData = new FormData(registerForm)
         fetch(`${API}/accounts/register/`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
         },
         body: JSON.stringify({
             username: inputFields.userName,
@@ -40,11 +43,11 @@ const Register = () => {
         })
         .then(results => {
             if (results.status === 201){
-                window.location.href="http://localhost:3000/login/"
+                window.location.href=`${BASEURL}/login/`
             }
             else{
                 setErrorMessage(`Request failed with status ${results.status}`)
-                console.log(results)
+                console.log(results.json())
             }
         })
         .catch(err => {
@@ -53,49 +56,50 @@ const Register = () => {
     }
 
     return (
-        <div className="container">
-            <h2>Sign up</h2>
-            <div className="form-group">
-                <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <div className="row">
-                <div className="col">
-                    <Input title="First Name" type="text" name="firstName" placeholder="Enter first name" inputsHandler={inputsHandler} read={false}/>
+        <form method='POST' id='registerForm'>
+            <div className="container">
+                <h2>Sign up</h2>
+                <div className="form-group">
+                    <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
                 </div>
-                <div className="col">
-                    <Input title="Last Name" type="text" name="lastName" 
-                    placeholder="Enter last name" inputsHandler={inputsHandler} read={false}/>
+                <br/>
+                <div className="row">
+                    <div className="col">
+                        <Input title="First Name" type="text" name="firstName" placeholder="Enter first name" inputsHandler={inputsHandler} read={false}/>
+                    </div>
+                    <div className="col">
+                        <Input title="Last Name" type="text" name="lastName" 
+                        placeholder="Enter last name" inputsHandler={inputsHandler} read={false}/>
+                    </div>
                 </div>
+                <br/>
+                <div className="form-group">
+                    <Input title="Avatar" type="file" name="avatar" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <h2>Contact Info</h2>
+                <div className="form-group">
+                    <Input title="Phone number" type="tel" name="phone" placeholder="123-456-7890" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <div className="form-group">
+                    <Input title="Email" type="email" name="email" placeholder="Enter email" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <h2>Password</h2>
+                <div className="form-group">
+                    <Input title="Password" type="password" name="password1" placeholder="Enter password" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <div className="form-group">
+                    <Input title="Confirm password" type="password" name="password2" placeholder="Confirm password" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <>{errorMessage}</>
+                <br/>
+                <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Sign up" onClick={submitHandler}/>
             </div>
-            <br/>
-            <div className="form-group">
-                <Input title="Avatar" type="file" name="avatar" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <h2>Contact Info</h2>
-            <div className="form-group">
-                <Input title="Phone number" type="tel" name="phone" placeholder="123-456-7890" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <div className="form-group">
-                <Input title="Email" type="email" name="email" placeholder="Enter email" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <h2>Password</h2>
-            <div className="form-group">
-                <Input title="Password" type="password" name="password1" placeholder="Enter password" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <div className="form-group">
-                <Input title="Confirm password" type="password" name="password2" placeholder="Confirm password" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <>{errorMessage}</>
-            <br/>
-            <button className="btn btn-outline-success my-2 my-sm-0 btn-block" onClick={submitHandler}>Sign up</button>
-        </div>
-        
+        </form>
     )
 }
 

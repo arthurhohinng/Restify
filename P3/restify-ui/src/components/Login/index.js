@@ -30,8 +30,6 @@ const Login = () => {
         .then(results => {
             if (results.status === 200)
                 return results.json()
-            else
-                setErrorMessage(`Request failed`)
         })
         .then(data => {
             //Set auth token to local storage
@@ -39,26 +37,28 @@ const Login = () => {
             window.location.href = BASEURL
         })
         .catch(err => {
-            setErrorMessage(`Request failed`)
+            setErrorMessage(`Invalid login`)
             console.log("error: " + err)
         })
     }
 
     return (
-        <div className="container">
-            <h2>Login</h2>
-            <div className="form-group">
-                <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
+        <form>
+            <div className="container">
+                <h2>Login</h2>
+                <div className="form-group">
+                    <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <div className="form-group">
+                    <Input title="Password" type="password" name="password" placeholder="Enter password" inputsHandler={inputsHandler} read={false}/>
+                </div>
+                <br/>
+                <>{errorMessage}</>
+                <br/>
+                <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Login" onClick={submitHandler}/>
             </div>
-            <br/>
-            <div className="form-group">
-                <Input title="Password" type="password" name="password" placeholder="Enter password" inputsHandler={inputsHandler} read={false}/>
-            </div>
-            <br/>
-            <>{errorMessage}</>
-            <br/>
-            <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Login" onClick={submitHandler}/>
-        </div>
+        </form>
         
     )
 }
