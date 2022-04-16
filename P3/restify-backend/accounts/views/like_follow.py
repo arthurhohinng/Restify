@@ -3,7 +3,7 @@ from rest_framework import status
 from rest_framework.generics import CreateAPIView, DestroyAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
+from rest_framework.views import APIView
 from accounts.models import LikesRestaurant, RestaurantNotifications, Follows, LikesBlog, Feed
 from accounts.serializers import LikeRestaurantSerializer, FollowRestaurantSerializer, LikeBlogSerializer
 from restaurants.models import Restaurant, Blogpost
@@ -144,3 +144,13 @@ class LikesBlogView(CreateAPIView, DestroyAPIView):
                 blogpost.save()
                 like.delete()
                 return Response(status=status.HTTP_204_NO_CONTENT)
+
+class CheckLiked(APIView):
+    
+    def get(self, request, pk):
+        try:
+            is_liked = LikesBlog.objects.get(user=request.user, blogpost=pk)
+        except ObjectDoesNotExist:
+            return Response({"false"}, status=200)
+
+        return Response({"true"}, status=200)
