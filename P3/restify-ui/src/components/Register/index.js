@@ -56,39 +56,39 @@ const Register = () => {
         <div className="container">
             <h2>Sign up</h2>
             <div className="form-group">
-                <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler}/>
+                <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <div className="row">
                 <div className="col">
-                    <Input title="First Name" type="text" name="firstName" placeholder="Enter first name" inputsHandler={inputsHandler}/>
+                    <Input title="First Name" type="text" name="firstName" placeholder="Enter first name" inputsHandler={inputsHandler} read={false}/>
                 </div>
                 <div className="col">
                     <Input title="Last Name" type="text" name="lastName" 
-                    placeholder="Enter last name" inputsHandler={inputsHandler}/>
+                    placeholder="Enter last name" inputsHandler={inputsHandler} read={false}/>
                 </div>
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Avatar" type="file" name="avatar" inputsHandler={inputsHandler}/>
+                <Input title="Avatar" type="file" name="avatar" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <h2>Contact Info</h2>
             <div className="form-group">
-                <Input title="Phone number" type="tel" name="phone" placeholder="123-456-7890" inputsHandler={inputsHandler}/>
+                <Input title="Phone number" type="tel" name="phone" placeholder="123-456-7890" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Email" type="email" name="email" placeholder="Enter email" inputsHandler={inputsHandler}/>
+                <Input title="Email" type="email" name="email" placeholder="Enter email" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <h2>Password</h2>
             <div className="form-group">
-                <Input title="Password" type="password" name="password1" placeholder="Enter password" inputsHandler={inputsHandler}/>
+                <Input title="Password" type="password" name="password1" placeholder="Enter password" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Confirm password" type="password" name="password2" placeholder="Confirm password" inputsHandler={inputsHandler}/>
+                <Input title="Confirm password" type="password" name="password2" placeholder="Confirm password" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <>{errorMessage}</>

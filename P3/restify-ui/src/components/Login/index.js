@@ -2,6 +2,7 @@ import Input from '../Input';
 import React, { useState } from "react";
 import "./style.css";
 import API from '../API';
+import BASEURL from '../BASEURL';
 
 const Login = () => {
     const [inputFields, setInputField] = useState({
@@ -27,11 +28,15 @@ const Login = () => {
             })
         })
         .then(results => {
-            return results.json()
+            if (results.status === 200)
+                return results.json()
+            else
+                setErrorMessage(`Request failed`)
         })
         .then(data => {
-            console.log(data.access)
-            localStorage.setItem('currentUser', data.access)
+            //Set auth token to local storage
+            localStorage.setItem('token', JSON.stringify(data.access))
+            window.location.href = BASEURL
         })
         .catch(err => {
             setErrorMessage(`Request failed`)
@@ -43,11 +48,11 @@ const Login = () => {
         <div className="container">
             <h2>Login</h2>
             <div className="form-group">
-                <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler}/>
+                <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Password" type="password" name="password" placeholder="Enter password" inputsHandler={inputsHandler}/>
+                <Input title="Password" type="password" name="password" placeholder="Enter password" inputsHandler={inputsHandler} read={false}/>
             </div>
             <br/>
             <>{errorMessage}</>
