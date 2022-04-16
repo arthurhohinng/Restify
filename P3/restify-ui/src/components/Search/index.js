@@ -38,7 +38,7 @@ const Results = () => {
             // If the query is empty, we don't want double slashes in the URL, so we change the fetch URL here.
             fetch_url = `${API}/restaurants/search/?page=${query.page}`
         }
-        fetch(fetch_url, {mode : 'no-cors'})
+        fetch(fetch_url)
             .then(response => response.json())
             .then(json => {
                 setRestaurants(json.results)
