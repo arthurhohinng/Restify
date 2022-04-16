@@ -22,6 +22,10 @@ const Register = () => {
         setInputField( {...inputFields, [e.target.name]: e.target.value} )
     }
 
+    const imageHandler = e =>{
+        setInputField( {...inputFields, [e.target.name]: e.target.files[0]} )
+    }
+
     const submitHandler = () =>{
         let formData = new FormData()
         formData.append('username', inputFields.userName)
@@ -69,7 +73,7 @@ const Register = () => {
                 </div>
                 <br/>
                 <div className="form-group">
-                    <Input title="Avatar" type="file" name="avatar" inputsHandler={inputsHandler} read={false}/>
+                    <Input title="Avatar" type="file" name="avatar" inputsHandler={imageHandler} read={false}/>
                 </div>
                 <br/>
                 <h2>Contact Info</h2>
