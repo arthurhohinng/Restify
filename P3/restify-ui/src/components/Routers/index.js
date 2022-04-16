@@ -3,6 +3,9 @@ import Results from '../Search';
 import '../../App.css'
 import Layout from '../Layout';
 import Register from '../Register';
+import Login from '../Login';
+import Profile from '../Profile';
+import Feed from '../Feed';
 
 const Router = () => {
     // TODO: index element should be index of the page
@@ -13,6 +16,9 @@ const Router = () => {
                     <Route index element={<Results />} />
                     <Route path="search" element={<Results />} />
                     <Route path="register" element={<Register />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="profile" element={<Profile />} />
+                    <Route path="feed" element={<Feed />} />
                 </Route>
             </Routes>
         </BrowserRouter>

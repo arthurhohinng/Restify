@@ -11,9 +11,13 @@ body{
 .container{
     margin-top: 5%;
     margin-bottom: 5%;
-    width: 35%;
+    width: 25%;
     text-align: left;
     min-width: 400px;
+}
+
+.btn{
+    background-color: #343A40;
 }
 
 img:not(.logo, .nav-logo) {
