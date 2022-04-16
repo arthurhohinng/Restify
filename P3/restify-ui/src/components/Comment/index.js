@@ -1,12 +1,14 @@
-/*
+
 import React from 'react';
+import "./style.css";
+import API from "../API";
 
 // so when a new comment is created, we use the below Comment arrow function to create its element
 const Comment = (props) => {
     return(
 		<div class="comment">
 			<p>{props.name}</p>
-		
+
 		{props.text}
 		</div>)
 }
@@ -18,17 +20,17 @@ class CommentForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          value: 'Enter comment here...' // basically the placeholder of the comment
+          value: ''
         }
-    
+
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
       }
-    
+
       handleChange(event) { // when the value in the textarea changes, we must always update the state for it
         this.setState({value: event.target.value});
       }
-    
+
       handleSubmit(event) {
         event.preventDefault();
         // this.state.value is the text for the comment that the user entered
@@ -50,24 +52,26 @@ class CommentForm extends React.Component {
         }).then(response => response.json())
         .then(data => {response_fields = data;}) // retrieve response body
 
-        var new_comment = <Comment text={response_fields['text']} name={response_fields['user']} />;
-
+        var new_comment = <Comment text={response_fields.text} name={response_fields.user} />;
         // TODO: render new_comment in comments section
 
       }
-    
+
       render() {
-        return (
+        return (<>
+            <div className="all-comments">
+            </div>
+                <h4>Got a comment?</h4>
             <form onSubmit={this.handleSubmit}>
-                <textarea id="comment-box" name="comment-box" rows="4" cols="50" value={this.state.value} 
-                onChange={this.handleChange}>Enter comment here...</textarea><br></br>
+                <textarea id="comment-box" name="comment-box" rows="4" cols="50" value={this.state.value}
+                onChange={this.handleChange} placeholder="Enter comment here..."></textarea><br></br>
                 <input id="add-comment-button" type="submit" value="Add comment"></input>
             </form>
+            </>
         );
       }
 }
-export default CommentForm;
-*/
+export default CommentForm
 
 // <Comment text=response['text'] name=response['user'] avatar?>
 // post request to add comment gives {"user": author_id, "restaurant": restaurant_id, "text": comment_text}
@@ -76,41 +80,7 @@ export default CommentForm;
 // add-comment-button ^^
 
 /*
-class Comment extends React.Component {
-    render(){
-        const {author, update, restaurant, text} = this.props
-    }
-    useEffect(() => {
-        const response = fetch("<int:restaurant_id>/add-comment/", {
-            method: 'POST',
-            body: JSON.stringify({
-                // this.state.whatever_state_name
-                // Comment model attributes
-            }),
-            headers: {
-                'X-Api-Key': API_KEY,
-                    'Content-Type': 'application/json'
-            }
-        });
-    }, [])
-}
-export default Comment;
-
-import React from 'react';
-
-class Input extends React.Component {
-    render(){
-        const {title, update, value} = this.props
-        return <>
-            <span>{title}</span>
-            <input type="text"
-                   value={value}
-                   onChange={event => update(event.target.value)}
-                   style={{width: 200, height: 40, fontSize: '2em'}}
-            />
-        </>
-    }
-}
-
-export default Input;
-*/
+<ContactInfo address="123 Foood street" postalcode="111 ABC" phonenum="416-111-222"/>
+        <EditRestaurant />
+        <Comment />
+ */
