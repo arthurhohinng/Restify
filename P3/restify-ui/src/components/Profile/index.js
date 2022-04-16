@@ -53,7 +53,7 @@ const Profile = () => {
             <h1>My Profile</h1>
             <div>
                 <h2>Avatar</h2>
-                <img src={userInfo.avatar}/>
+                <img src={userInfo.avatar} alt="Avatar"/>
             </div>
             <br/>
             <div className="row">
