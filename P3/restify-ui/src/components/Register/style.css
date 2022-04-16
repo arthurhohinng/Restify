@@ -19,6 +19,7 @@ body{
 img:not(.logo, .nav-logo) {
     margin: auto;
     border-radius: 10%;
-    
+    max-width: 200px;
+    max-height: 200px;
 }
 

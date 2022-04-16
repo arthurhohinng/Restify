@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import "./style.css";
 import API from '../API';
 import BASEURL from '../BASEURL';
-const axios = require('axios');
 
 const Register = () => {
     const [inputFields, setInputField] = useState({
