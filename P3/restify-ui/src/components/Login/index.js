@@ -18,6 +18,7 @@ const Login = () => {
     const submitHandler = () =>{
         fetch(`${API}/accounts/login/`, {
         method: 'POST',
+        mode : 'no-cors',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

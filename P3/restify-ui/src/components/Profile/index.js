@@ -5,7 +5,6 @@ import API from '../API';
 import BASEURL from '../BASEURL';
 
 const Profile = () => {
-    const [authorized, setAuthorized] = useState(0)
     const [userInfo, setUserInfo] = useState({
         firstName: '',
         lastName: '',
@@ -42,7 +41,6 @@ const Profile = () => {
                 ownedRestaurant: data.owned_restaurant,
                 phoneNum: data.phone_num
             })
-            setAuthorized({authorized: true})
         })
         .catch(err => {
             console.log("error: " + err)

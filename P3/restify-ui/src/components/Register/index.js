@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./style.css";
 import API from '../API';
 import BASEURL from '../BASEURL';
+const axios = require('axios');
 
 const Register = () => {
     const [inputFields, setInputField] = useState({
@@ -22,25 +23,18 @@ const Register = () => {
     }
 
     const submitHandler = () =>{
-        // let registerForm = document.getElementById('registerForm')
-        // let formData = new FormData(registerForm)
+        let formData = new FormData()
+        formData.append('username', inputFields.userName)
+        formData.append('password1', inputFields.password1)
+        formData.append('password2', inputFields.password2)
+        formData.append('first_name', inputFields.firstName)
+        formData.append('last_name', inputFields.lastName)
+        formData.append('email', inputFields.email)
+        formData.append('avatar', inputFields.avatar)
+        formData.append('phone_num', inputFields.phone)
         fetch(`${API}/accounts/register/`, {
         method: 'POST',
-        mode : 'no-cors',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'multipart/form-data',
-        },
-        body: JSON.stringify({
-            username: inputFields.userName,
-            password1: inputFields.password1,
-            password2: inputFields.password2,
-            first_name: inputFields.firstName,
-            last_name: inputFields.lastName,
-            email: inputFields.email,
-            avatar: inputFields.avatar,
-            phone_num: inputFields.phone
-            })
+        body: formData
         })
         .then(results => {
             if (results.status === 201){
