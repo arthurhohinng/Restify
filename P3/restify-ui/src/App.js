@@ -16,7 +16,7 @@ function App() {
   return (
     <div className="App">
       <searchContext.Provider value={{restaurants, setRestaurants}}>
-          <ContactInfo address=cd postalcode="111 ABC" phonenum="416-111-222"/>
+          <ContactInfo address="123 Foood street" postalcode="111 ABC" phonenum="416-111-222"/>
           <EditRestaurant />
           <Comment />
         <Router />
