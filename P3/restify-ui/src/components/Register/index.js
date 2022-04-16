@@ -26,6 +26,7 @@ const Register = () => {
         // let formData = new FormData(registerForm)
         fetch(`${API}/accounts/register/`, {
         method: 'POST',
+        mode : 'no-cors',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'multipart/form-data',

@@ -53,6 +53,7 @@ const Feed = () => {
         const token = JSON.parse(localStorage.getItem("token"))
         fetch(`${API}/accounts/feed/`, {
             method: 'GET',
+            mode : 'no-cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
@@ -91,6 +92,7 @@ const Feed = () => {
                                 {post.body}
                                 <br></br>
                                 <Button className="btn btn-outline-light" value="View Full Post" update={() => ({})} />
+                                <div id={post.id+"-like-btn"}></div>
                                 <Button className="btn btn-outline-light" value="Like ❤" update={() => ({})} />
                         </div>
                     </div>
@@ -102,7 +104,11 @@ const Feed = () => {
         </>)
     }
     else {
-        return (<>No new posts yet.</>)
+        return (<>
+            <div><h1 id="title">Restaurant Feed</h1></div>
+            <h4><div style={{ textAlign: 'center'}}>No new posts yet.</div></h4>
+            </>
+        )
     }
 }
 

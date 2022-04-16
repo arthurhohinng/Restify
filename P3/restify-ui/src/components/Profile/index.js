@@ -19,6 +19,7 @@ const Profile = () => {
         const token = JSON.parse(localStorage.getItem("token"))
         fetch(`${API}/accounts/profile/`, {
         method: 'GET',
+        mode : 'no-cors',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
