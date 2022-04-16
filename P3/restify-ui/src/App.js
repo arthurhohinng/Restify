@@ -15,7 +15,6 @@ function App() {
       <searchContext.Provider value={{restaurants, setRestaurants}}>
         <Router />
       </searchContext.Provider>
-      <Footer />
     </div>
   );
 }
