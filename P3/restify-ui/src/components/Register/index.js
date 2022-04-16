@@ -23,6 +23,7 @@ const Register = () => {
     const submitHandler = () =>{
         fetch(`${API}/accounts/register/`, {
         method: 'POST',
+        mode : 'no-cors',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
