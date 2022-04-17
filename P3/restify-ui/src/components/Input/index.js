@@ -1,7 +1,7 @@
 import React from 'react';
 import "./style.css"
 
-const Input = ({ title, type, name, placeholder, value, inputsHandler, read }) => {
+const Input = ({ title, type, name, placeholder, value, inputsHandler, read = false }) => {
     return (
         <>
             <label>{title}</label>
