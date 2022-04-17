@@ -1,8 +1,19 @@
 import API from '../API';
 import Button from "../Button";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import LikeButton from "../LikeButton";
 
+
+function getDate(dateString){
+    var date = new Date(dateString)
+    var currDate = new Date()
+    if (date.getDate() === currDate.getDate() && date.getMonth() === currDate.getMonth() && date.getFullYear() === currDate.getFullYear()){
+        // If post was today, only output the time
+        return date.getHours()+":"+date.getMinutes()
+    }
+    // Otherwise, output the date (no time)
+    return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
+}
 
 const BlogPost = () => {
     const [posts, setPosts] = useState({posts:[], page:1})
@@ -39,7 +50,7 @@ const BlogPost = () => {
                 {posts.map(post =>
                     <div className="card" id={post.id}>
                         <h2 className="blog-title">{post.title}</h2>
-                        <h3 className="blog-info">Posted: {post.date} by {post.author}</h3>
+                        <h3 className="blog-info">Posted: {getDate(post.date)} by {post.author}</h3>
                         <img className="img-fluid" src={post.image} alt=""></img>
                             <div className="blog-content">
                                 {post.body}
