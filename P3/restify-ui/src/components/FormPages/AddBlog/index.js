@@ -28,7 +28,7 @@ const AddBlog = () => {
         formData.append('title', inputFields.title)
         formData.append('body', inputFields.body)
         formData.append('author', inputFields.author)
-        if ((typeof inputFields.image) === "object"){
+        if (inputFields.image instanceof File){
             formData.append('image', inputFields.image)
         }
         fetch(`${API}/restaurants/blogpost/add/`, {

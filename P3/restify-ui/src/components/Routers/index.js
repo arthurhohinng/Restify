@@ -17,14 +17,15 @@ const Router = () => {
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Results />} />
-                    <Route path="search" element={<Results />} />
-                    <Route path="register" element={<Register />} />
-                    <Route path="login" element={<Login />} />
-                    <Route path="profile" element={<Profile />} />
-                    <Route path="restaurant/add-restaurant" element={<AddRestaurant />} />
-                    <Route path="restaurant/add-blogpost" element={<AddBlog />} />
+                    <Route path="search/" element={<Results />} />
+                    <Route path="register/" element={<Register />} />
+                    <Route path="login/" element={<Login />} />
+                    <Route path="profile/" element={<Profile />} />
+                    <Route path="restaurant/add-restaurant/" element={<AddRestaurant />} />
+                    <Route path="restaurant/edit/" element={<AddRestaurant />} />
+                    <Route path="restaurant/add-blogpost/" element={<AddBlog />} />
                     <Route path="restaurant/edit-menu/" element={<AddEditMenu />} />
-                    <Route path="feed" element={<Feed />} />
+                    <Route path="feed/" element={<Feed />} />
                 </Route>
             </Routes>
         </BrowserRouter>
