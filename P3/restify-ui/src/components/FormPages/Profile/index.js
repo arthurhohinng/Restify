@@ -33,7 +33,7 @@ const Profile = () => {
                 window.location.href = BASEURL
         })
         .then(data => {
-            setUserInfo({
+            setUserInfo({...userInfo, 
                 firstName: data.first_name,
                 lastName: data.last_name,
                 email: data.email,
@@ -61,8 +61,11 @@ const Profile = () => {
     const editProfile = () => {
         const token = JSON.parse(localStorage.getItem("token"))
         let formData = new FormData()
-        formData.append('password1', userInfo.password1)
-        formData.append('password2', userInfo.password2)
+
+        if ((typeof userInfo.password1 !== "undefined") || (typeof userInfo.password2 !== "undefined")){
+            formData.append('password1', userInfo.password1)
+            formData.append('password2', userInfo.password2)
+        }
         formData.append('first_name', userInfo.firstName)
         formData.append('last_name', userInfo.lastName)
         formData.append('email', userInfo.email)

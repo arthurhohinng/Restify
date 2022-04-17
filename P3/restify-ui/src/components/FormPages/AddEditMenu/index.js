@@ -18,10 +18,6 @@ const AddEditMenu = () => {
         setInputField( {...inputFields, [e.target.name]: e.target.value} )
     }
 
-    const imageHandler = e =>{
-        setInputField( {...inputFields, [e.target.name]: e.target.files[0]} )
-    }
-
     const submitHandler = () =>{
         const token = JSON.parse(localStorage.getItem("token"))
         let formData = new FormData()
