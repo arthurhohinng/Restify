@@ -104,7 +104,7 @@ const Profile = () => {
             <button className='btn btn-outline-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
             <div>
                 <h2>Avatar</h2>
-                <img src={userInfo.avatar == null ? '' : userInfo.avatar} alt="Avatar"/>
+                <img src={userInfo.avatar} alt="Avatar"/>
                 {readOnly ?
                     <></> :
                     <div className="form-group">
