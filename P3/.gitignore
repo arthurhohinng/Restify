@@ -1,6 +1,5 @@
-# Note that restify-ui (the react project) also has a dedicated gitignore.
-
 /venv/*
 db.sqlite3
 **/__pycache__/*
 .idea/
+generateData.py
