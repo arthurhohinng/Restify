@@ -1,0 +1,16 @@
+.resto-container {
+    color: rgba(255,255,255,.55);
+}
+
+.rest-link {
+    color: rgb(191, 166, 199) !important;
+}
+
+.rest-link:hover {
+    color: white;
+  }
+
+#rest-page-title {
+    margin: 3%;
+    color: white;
+}
