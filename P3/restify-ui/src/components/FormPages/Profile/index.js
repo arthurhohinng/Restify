@@ -1,10 +1,11 @@
-import Input from '../Input';
+import Input from '../../Input';
 import React, { useEffect, useState } from "react";
-// import "./style.css";
-import API from '../API';
-import BASEURL from '../BASEURL';
+import "../style.css";
+import API from '../../API';
+import BASEURL from '../../BASEURL';
 
 const Profile = () => {
+    const [readOnly, setReadOnly] = useState(false)
     const [userInfo, setUserInfo] = useState({
         firstName: '',
         lastName: '',
@@ -46,9 +47,11 @@ const Profile = () => {
         })
     }, [])
 
+
     return (
         <div className="container">
             <h1>My Profile</h1>
+            <button className='btn btn-outline-success my-2 my-sm-0 btn-block'>Edit</button>
             <div>
                 <h2>Avatar</h2>
                 <img src={userInfo.avatar} alt="Avatar"/>
@@ -70,6 +73,7 @@ const Profile = () => {
             <div className="form-group">
                 <Input title="Email" type="email" name="email" value={userInfo.email}/>
             </div>
+
         </div>
     )
 }
