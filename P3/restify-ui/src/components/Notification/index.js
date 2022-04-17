@@ -31,6 +31,8 @@ const Notification = () => {
                 <div key={notification.id}>
                     <NavDropdown.Item href={notification.link}>
                         {notification.description}
+                        <br/>
+                        <small>{notification.datetime}</small>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                 </div>
