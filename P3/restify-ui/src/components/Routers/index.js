@@ -9,6 +9,7 @@ import AddRestaurant from '../FormPages/AddRestaurant';
 import AddBlog from '../FormPages/AddBlog';
 import AddEditMenu from '../FormPages/AddEditMenu';
 import Feed from '../Feed';
+import RestaurantPage from '../RestaurantPage'
 
 const Router = () => {
     // TODO: index element should be index of the page
@@ -21,9 +22,10 @@ const Router = () => {
                     <Route path="register" element={<Register />} />
                     <Route path="login" element={<Login />} />
                     <Route path="profile" element={<Profile />} />
+                    <Route path="restaurant/:id/view" element={<RestaurantPage />} />
                     <Route path="restaurant/add-restaurant" element={<AddRestaurant />} />
                     <Route path="restaurant/add-blogpost" element={<AddBlog />} />
-                    <Route path="restaurant/edit-menu/" element={<AddEditMenu />} />
+                    <Route path="restaurant/edit-menu" element={<AddEditMenu />} />
                     <Route path="feed" element={<Feed />} />
                 </Route>
             </Routes>
