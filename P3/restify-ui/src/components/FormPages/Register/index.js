@@ -1,8 +1,8 @@
-import Input from '../Input';
+import Input from '../../Input';
 import React, { useState } from "react";
-import "./style.css";
-import API from '../API';
-import BASEURL from '../BASEURL';
+import "../style.css";
+import API from '../../API';
+import BASEURL from '../../BASEURL';
 
 const Register = () => {
     const [inputFields, setInputField] = useState({

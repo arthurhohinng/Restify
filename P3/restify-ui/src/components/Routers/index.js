@@ -2,9 +2,9 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Results from '../Search';
 import '../../App.css'
 import Layout from '../Layout';
-import Register from '../Register';
-import Login from '../Login';
-import Profile from '../Profile';
+import Register from '../FormPages/Register';
+import Login from '../FormPages/Login';
+import Profile from '../FormPages/Profile';
 import Feed from '../Feed';
 
 const Router = () => {
