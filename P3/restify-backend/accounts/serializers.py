@@ -13,6 +13,7 @@ class GetUserSerializer(serializers.ModelSerializer):
 class EditUserSerializer(serializers.ModelSerializer):
     password1 = serializers.CharField(write_only=True, required=False)
     password2 = serializers.CharField(write_only=True, required=False)
+    avatar = serializers.ImageField(allow_empty_file=True, allow_null=True)
 
     class Meta:
         model = User
