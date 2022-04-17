@@ -13,7 +13,6 @@ const Profile = () => {
         password2: '',
         email: '',
         avatar: null,
-        ownedRestaurant: null,
         phone: ''
     })
 
@@ -34,13 +33,11 @@ const Profile = () => {
                 window.location.href = BASEURL
         })
         .then(data => {
-            console.log(data)
             setUserInfo({
                 firstName: data.first_name,
                 lastName: data.last_name,
                 email: data.email,
                 avatar: data.avatar,
-                ownedRestaurant: data.owned_restaurant,
                 phone: data.phone_num
             })
         })
@@ -70,10 +67,9 @@ const Profile = () => {
         formData.append('last_name', userInfo.lastName)
         formData.append('email', userInfo.email)
         formData.append('phone_num', userInfo.phone)
-        if ((typeof userInfo.avatar) === "object"){
+        if (userInfo.avatar instanceof File){
             formData.append('avatar', userInfo.avatar)
         }
-        console.log(formData.get('avatar'))
         fetch(`${API}/accounts/profile/edit/`, {
         method: 'PATCH',
         headers: {
@@ -108,7 +104,7 @@ const Profile = () => {
             <button className='btn btn-outline-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
             <div>
                 <h2>Avatar</h2>
-                <img src={userInfo.avatar} alt="Avatar"/>
+                <img src={userInfo.avatar == null ? '' : userInfo.avatar} alt="Avatar"/>
                 {readOnly ?
                     <></> :
                     <div className="form-group">

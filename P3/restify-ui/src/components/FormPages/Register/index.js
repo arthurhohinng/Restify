@@ -34,7 +34,7 @@ const Register = () => {
         formData.append('last_name', inputFields.lastName)
         formData.append('email', inputFields.email)
         formData.append('phone_num', inputFields.phone)
-        if ((typeof inputFields.avatar) === "object"){
+        if (inputFields.avatar instanceof File){
             formData.append('avatar', inputFields.avatar)
         }
         fetch(`${API}/accounts/register/`, {
