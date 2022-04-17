@@ -18,7 +18,7 @@ const BootstrapNavbar = () => {
     return (
         <Navbar bg="dark" variant="dark" >
             <Container>
-                <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand href="/">Restify</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
