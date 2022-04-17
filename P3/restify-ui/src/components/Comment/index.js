@@ -39,7 +39,7 @@ class CommentForm extends React.Component {
         // get restaurant id from url
         var url = window.location.href;
         var restaurant_id = url.split("/")[4];
-        var fetch_url = 'http://localhost:8000/restaurants/' + restaurant_id + 'add-comment/';
+        var fetch_url = API + "/restaurants/" + restaurant_id + '/add-comment/';
         var response_fields;
         fetch(fetch_url, {
             method: 'POST',
