@@ -3,13 +3,14 @@ import {useEffect, useState} from "react";
 import API from "../API";
 
 const ContactInfo = () => {
-    const [info, setInfo] = useState({info: [], page: 1})
+    const [info, setInfo] = useState([])
+    // to access info, need to do {info} (if we set it to "")
     const [authorized, setAuthorized] = useState(0)
     useEffect(() => {
         var url = window.location.href;
         var restaurant_id = url.split("/")[4];
         // use get_contact_info.py, so <int:pk>/contact/ for url
-        fetch(API + "/restaurants/" + restaurant_id + "/contact/", {
+        fetch(`${API}/restaurant/${restaurant_id}/contact/`, {
             method: 'GET',
         }).then(response => response.json())
             .then(json => {
@@ -29,13 +30,15 @@ const ContactInfo = () => {
                     <br/>
                     <h4>Our Location</h4>
                     <br/>
-                    <div id="rest-addr">
-                        <span className="addr-part">Address:</span>{info[0].address}<br/>
-                        <span className="addr-part">Postal Code:</span> {info[0].postal_code}<br/>
-                        <span className="addr-part">Phone Number:</span> {info[0].phone_number}<br/>
-                    </div><br/>
-                    Feel free to leave a comment on the main page and we will get back to you!
-                </div>
+                    {info.map(i =>
+                        <div id="rest-addr">
+                            <span className="addr-part">Address: </span>{i.address}<br/>
+                            <span className="addr-part">Postal Code: </span>{i.postal_code}<br/>
+                            <span className="addr-part">Phone Number: </span>{i.phone_number}<br/>
+                        </div>
+                    )}
+                </div><br/>
+                Feel free to leave a comment on the main page and we will get back to you!
             </div>
         </>)
     }
