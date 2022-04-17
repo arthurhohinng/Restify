@@ -45,6 +45,13 @@ const AddRestaurant = () => {
         .then(results => {
             if (results.status === 201){
                 // TODO: change to link of restaurant page
+                // Adds a menu object to the restaurant
+                fetch(`${API}/restaurants/add-menu/`, {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                })
                 window.location.href=`${BASEURL}`
             }
             else{
