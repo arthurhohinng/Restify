@@ -70,7 +70,7 @@ const Profile = () => {
         formData.append('last_name', userInfo.lastName)
         formData.append('email', userInfo.email)
         formData.append('phone_num', userInfo.phone)
-        if (typeof userInfo.avatar == File){
+        if ((typeof userInfo.avatar) === "object"){
             formData.append('avatar', userInfo.avatar)
         }
         console.log(formData.get('avatar'))

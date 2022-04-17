@@ -33,8 +33,10 @@ const Register = () => {
         formData.append('first_name', inputFields.firstName)
         formData.append('last_name', inputFields.lastName)
         formData.append('email', inputFields.email)
-        formData.append('avatar', inputFields.avatar)
         formData.append('phone_num', inputFields.phone)
+        if ((typeof inputFields.avatar) === "object"){
+            formData.append('avatar', inputFields.avatar)
+        }
         fetch(`${API}/accounts/register/`, {
         method: 'POST',
         body: formData
@@ -44,9 +46,11 @@ const Register = () => {
                 window.location.href=`${BASEURL}/login/`
             }
             else{
-                setErrorMessage(`Request failed with status ${results.status}`)
-                console.log(results.json())
+                return results.json()
             }
+        })
+        .then(data => {
+            setErrorMessage(JSON.stringify(data))
         })
         .catch(err => {
             console.log("error: " + err)

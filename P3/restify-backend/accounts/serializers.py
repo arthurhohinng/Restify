@@ -51,7 +51,6 @@ class CreateUserSerializer(serializers.ModelSerializer):
                                                      "It must contain at least 8 characters"]})
             if validated_data['password1'] != validated_data['password2']:
                 raise ValidationError({'password1': ["The two password fields didn't match"]})
-
         try:
             user = User.objects.create_user(
                 username=validated_data['username'],
@@ -59,11 +58,14 @@ class CreateUserSerializer(serializers.ModelSerializer):
                 first_name=validated_data['first_name'],
                 last_name=validated_data['last_name'],
                 email=validated_data['email'],
-                avatar=validated_data['avatar'],
                 phone_num=validated_data['phone_num']
             )
         except KeyError as e:
             raise ValidationError({"detail": "{error} key must be stated in form data".format(error=e)})
+        finally:
+            if 'avatar' in validated_data:
+                user.avatar = validated_data['avatar']
+                user.save()
         return user
 
 
