@@ -54,7 +54,7 @@ const AddEditMenu = () => {
     }
     
     return (
-        <div className="container">
+        <div className="form-container">
             <h2>Add Menu Item</h2>
             <div className="form-group">
                 <Input title="Item Name" type="text" name="name" placeholder="Enter title" inputsHandler={inputsHandler}/>

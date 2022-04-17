@@ -103,7 +103,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="container">
+        <div className="form-container">
             <h1>My Profile</h1>
             <button className='btn btn-outline-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
             <div>

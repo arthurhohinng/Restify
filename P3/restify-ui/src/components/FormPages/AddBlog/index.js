@@ -56,7 +56,7 @@ const AddBlog = () => {
     }
     
     return (
-        <div className="container">
+        <div className="form-container">
             <h2>Add Blogpost</h2>
             <div className="form-group">
                 <Input title="Blog Title" type="text" name="title" placeholder="Enter title" inputsHandler={inputsHandler}/>

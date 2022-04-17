@@ -67,7 +67,7 @@ const AddRestaurant = () => {
     }
     
     return (
-        <div className="container">
+        <div className="form-container">
             <h2>Add Restaurant</h2>
             <div className="form-group">
                 <Input title="Restaurant Name" type="text" name="name" placeholder="Enter restaurant name" inputsHandler={inputsHandler}/>
