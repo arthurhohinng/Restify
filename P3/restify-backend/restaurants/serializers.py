@@ -169,7 +169,7 @@ class EditRestaurantSerializer(serializers.ModelSerializer):
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = MenuItem
-        fields = ['name', 'menu', 'description', 'price', 'category']
+        fields = ['id', 'name', 'menu', 'description', 'price', 'category']
 
 
 class EditMenuItemSerializer(serializers.ModelSerializer):
