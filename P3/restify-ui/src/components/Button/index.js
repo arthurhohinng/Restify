@@ -6,6 +6,7 @@ import '../../App.css'
 const Button = ({ value, update }) => {
     return <button
         onClick={() => update(value)} //update is a function we pass in
+        style={{color:"white"}}
     >
         {value}
     </button>

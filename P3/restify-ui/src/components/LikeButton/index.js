@@ -18,14 +18,13 @@ const LikeButton = (postId) => {
             })
             .then(response => response.json())
             .then(json => {
-                console.log(json)
                 setLiked(json[0])
                 setAuthorized({authorized: true})
             })
             .catch(err => {
                 console.log("error: " + err)
         })
-    }, [])
+    }, [postId.postId])
 
     const likePost = () => {
         // Send POST request to unlike the post
@@ -71,10 +70,10 @@ const LikeButton = (postId) => {
     }
 
     if (liked === "true"){
-        return <><button onClick={unlikePost}>Unlike</button></>
+        return <><button style={{color:"white"}} onClick={unlikePost}>Unlike</button></>
     }
     else {
-        return <><button onClick={likePost}>Like ❤</button></>
+        return <><button style={{color:"white"}} onClick={likePost}>Like ❤</button></>
     }
 }
 

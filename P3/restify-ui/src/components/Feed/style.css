@@ -22,6 +22,10 @@ body{
     margin: auto;
 }
 
+.feed-container > * {
+    color: white;
+}
+
 .media {
     padding: 3% !important;
     margin-bottom: 3% !important;
@@ -40,6 +44,7 @@ body{
 
 .posttitle {
     color: rgb(228, 228, 171);
+    font-size: 28px;
 }
 
 button {

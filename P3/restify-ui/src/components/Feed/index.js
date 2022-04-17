@@ -80,7 +80,7 @@ const Feed = () => {
                         {console.log("rendering post...")}
                         <div className="me-3 rounded-circle">
                             <a href={API+"/restaurants/"+post.restaurant+"/"}>
-                                <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo"></img>
+                                <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo" loading="lazy"></img>
                                 {getLogo(post.restaurant)}
                             </a>
                         </div>

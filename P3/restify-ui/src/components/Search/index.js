@@ -43,7 +43,6 @@ const Results = () => {
             .then(json => {
                 setRestaurants(json.results)
                 setNextExists(json.next)
-                console.log(json.results)
             })
     }, [setRestaurants, query])
 
