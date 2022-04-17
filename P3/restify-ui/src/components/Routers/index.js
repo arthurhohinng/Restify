@@ -10,6 +10,7 @@ import EditRestaurant from '../FormPages/EditRestaurant';
 import AddBlog from '../FormPages/AddBlog';
 import AddEditMenu from '../FormPages/AddEditMenu';
 import Feed from '../Feed';
+import RestaurantPage from '../RestaurantPage'
 
 const Router = () => {
     // TODO: index element should be index of the page
