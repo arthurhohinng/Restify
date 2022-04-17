@@ -74,11 +74,11 @@ const Profile = () => {
             formData.append('avatar', userInfo.avatar)
         }
         fetch(`${API}/accounts/profile/edit/`, {
-        method: 'PATCH',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-        },
-        body: formData
+            method: 'PATCH',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            body: formData
         })
         .then(results => {
             if (results.status === 200){

@@ -5,7 +5,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Logout from "../FormPages/Logout";
-import Form from "react-bootstrap/Form";
+import Notification from "../Notification";
+
 
 const BootstrapNavbar = () => {
     const [loggedIn, setLoggedIn] = useState(true)
@@ -33,11 +34,7 @@ const BootstrapNavbar = () => {
                                 <NavDropdown.Item href="/profile">Edit Profile</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Notifications" id="basic-nav-dropdown" menuVariant="dark">
-                                <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                                <Notification />
                             </NavDropdown>
                         </>
                         :
