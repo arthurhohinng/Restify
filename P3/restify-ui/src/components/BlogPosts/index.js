@@ -24,7 +24,7 @@ const BlogPost = () => {
         // Get restaurant id
         var url = window.location.href;
         var restaurant_id = url.split("/")[4];
-        fetch(API + "/restaurants/" + restaurant_id + "blogposts/", {
+        fetch(API + "/restaurants/" + restaurant_id + "/blogposts/", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

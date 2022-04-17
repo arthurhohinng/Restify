@@ -165,9 +165,6 @@ class EditRestaurantSerializer(serializers.ModelSerializer):
         model = Restaurant
         fields = ['name', 'description', 'address', 'postal_code', 'logo', 'phone_num']
 
-    def update(self, instance, validated_data):
-        return super().update(instance, validated_data)
-
 
 class MenuItemSerializer(serializers.ModelSerializer):
     class Meta:
