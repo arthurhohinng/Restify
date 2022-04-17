@@ -6,6 +6,7 @@ import Register from '../FormPages/Register';
 import Login from '../FormPages/Login';
 import Profile from '../FormPages/Profile';
 import AddRestaurant from '../FormPages/AddRestaurant';
+import AddBlog from '../FormPages/AddBlog';
 import Feed from '../Feed';
 
 const Router = () => {
@@ -19,7 +20,8 @@ const Router = () => {
                     <Route path="register" element={<Register />} />
                     <Route path="login" element={<Login />} />
                     <Route path="profile" element={<Profile />} />
-                    <Route path="add-restaurant" element={<AddRestaurant />} />
+                    <Route path="restaurant/add-restaurant" element={<AddRestaurant />} />
+                    <Route path="restaurant/add-blogpost" element={<AddBlog />} />
                     <Route path="feed" element={<Feed />} />
                 </Route>
             </Routes>
