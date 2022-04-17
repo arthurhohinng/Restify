@@ -70,7 +70,7 @@ const Profile = () => {
         formData.append('last_name', userInfo.lastName)
         formData.append('email', userInfo.email)
         formData.append('phone_num', userInfo.phone)
-        if (typeof userInfo.avatar == File){
+        if ((typeof userInfo.avatar) === "object"){
             formData.append('avatar', userInfo.avatar)
         }
         console.log(formData.get('avatar'))
@@ -103,7 +103,7 @@ const Profile = () => {
     }
 
     return (
-        <div className="container">
+        <div className="form-container">
             <h1>My Profile</h1>
             <button className='btn btn-outline-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
             <div>

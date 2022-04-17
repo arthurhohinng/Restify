@@ -1,12 +1,14 @@
-import {Outlet} from "react-router-dom";
+import {  Outlet } from "react-router-dom";
 import Footer from '../Footer';
+import Navbar from "../BootstrapNavbar";
 import './style.css'
 
 // TODO: navbar component must be linked in here
 const Layout = () => {
     return <>
-        <div class="all-content">
-            <div class="outlet-content">
+        <Navbar />
+        <div className="all-content">
+            <div className="outlet-content">
                 <Outlet />
             </div>
             <Footer />

@@ -44,7 +44,7 @@ const Login = () => {
 
     return (
         <form>
-            <div className="container">
+            <div className="form-container">
                 <h2>Login</h2>
                 <div className="form-group">
                     <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
@@ -57,6 +57,9 @@ const Login = () => {
                 <>{errorMessage}</>
                 <br/>
                 <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Login" onClick={submitHandler}/>
+                <br/>
+                <a className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" href='../register'>Register</a>
+                <br/>
             </div>
         </form>
         
