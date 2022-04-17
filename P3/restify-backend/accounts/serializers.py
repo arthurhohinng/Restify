@@ -21,7 +21,7 @@ class EditUserSerializer(serializers.ModelSerializer):
                   'password1', 'password2']
 
     def update(self, instance, validated_data):
-        if 'password1' in validated_data:
+        if 'password1' and 'password2' in validated_data:
             if len(validated_data['password1']) < 8:
                 raise ValidationError({'password1': ["This password is too short. "
                                                      "It must contain at least 8 characters"]})
