@@ -8,6 +8,7 @@ const ContactInfo = () => {
     useEffect(() => {
         var url = window.location.href;
         var restaurant_id = url.split("/")[4];
+        const token = JSON.parse(localStorage.getItem("token"))
         // use get_contact_info.py, so <int:pk>/contact/ for url
         fetch(API + "/restaurants" + restaurant_id + "/contact/", {
             method: 'GET',
