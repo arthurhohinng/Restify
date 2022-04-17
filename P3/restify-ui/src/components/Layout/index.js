@@ -1,12 +1,16 @@
 import {Outlet} from "react-router-dom";
 import Footer from '../Footer';
-import '../../App.css'
+import './style.css'
 
-// TODO: Put proper Navbar HTML here
+// TODO: navbar component must be linked in here
 const Layout = () => {
     return <>
-        <Outlet />
-        <Footer />
+        <div class="all-content">
+            <div class="outlet-content">
+                <Outlet />
+            </div>
+            <Footer />
+        </div>
     </>
 }
 
