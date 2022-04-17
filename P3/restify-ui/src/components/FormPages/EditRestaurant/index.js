@@ -43,8 +43,8 @@ const EditRestaurant = () => {
                 name: data.name,
                 description: data.description,
                 address: data.address,
-                postalCode: data.postalCode,
-                phone: data.phone,
+                postalCode: data.postal_code,
+                phone: data.phone_num,
                 logo: data.logo,
             })
         })
