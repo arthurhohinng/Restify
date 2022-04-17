@@ -3,7 +3,7 @@ import './style.css'
 function ContactInfo(props) {
     return <>
     <div id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <div class="container" id="comments-tab">
+        <div class="container contact-container" id="comments-tab">
             <br></br>
             <h4>Our Location</h4>
             <br></br>

@@ -1,4 +1,5 @@
 import Button from '../Button';
+import LikeButton from '../LikeButton'
 import {useState, useEffect} from 'react';
 import API from '../API';
 import './style.css';
@@ -30,7 +31,7 @@ function getLogo(restaurantId) {
     }
 
     req.onreadystatechange = function() {
-        if (this.readyState == XMLHttpRequest.DONE && this.status == 200){
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200){
             let res = JSON.parse(this.responseText)
             for (var image of images){
                 if (image.src === ''){
@@ -73,12 +74,13 @@ const Feed = () => {
     if (posts.length > 0){
         return (<>
             <div><h1 id="title">Restaurant Feed</h1></div>
-            <div className="container">
+            <div className="container feed-container">
                 {posts.map(post => 
                     <div className="media d-flex" key={post.id}>
+                        {console.log("rendering post...")}
                         <div className="me-3 rounded-circle">
                             <a href={API+"/restaurants/"+post.restaurant+"/"}>
-                                <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64"></img>
+                                <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo"></img>
                                 {getLogo(post.restaurant)}
                             </a>
                         </div>
@@ -86,13 +88,13 @@ const Feed = () => {
                             <h4><span className="name">{post.author}</span> Uploaded a Blogpost
                             <span className="float-end">{getDate(post.date)}</span>
                             </h4>
-                                <img className="img-fluid" src={post.image}></img>
+                                <img className="img-fluid" src={post.image} alt=""></img>
                                 <h5 className="posttitle">{post.title}</h5>
-                                {post.body}
+                                <div>{post.body}</div>
                                 <br></br>
                                 <Button className="btn btn-outline-light" value="View Full Post" update={() => ({})} />
                                 <div id={post.id+"-like-btn"}></div>
-                                <Button className="btn btn-outline-light" value="Like ❤" update={() => ({})} />
+                                <LikeButton className="btn btn-outline-light" postId={post.id} />
                         </div>
                     </div>
                 )}
