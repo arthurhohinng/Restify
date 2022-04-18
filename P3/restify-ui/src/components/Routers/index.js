@@ -14,7 +14,6 @@ import PageNotFound from '../PageNotFound'
 import Index from '../Index'
 
 const Router = () => {
-    // TODO: index element should be index of the page
     return (
         <BrowserRouter>
             <Routes>
