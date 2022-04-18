@@ -69,7 +69,7 @@ class AddMenuItemView(CreateAPIView):
         return Response({"detail": "User is not a restaurant owner"}, status=status.HTTP_404_NOT_FOUND)
 
 
-class EditMenuItemView(UpdateAPIView, DestroyAPIView):
+class EditMenuItemView(RetrieveAPIView, UpdateAPIView, DestroyAPIView):
     serializer_class = EditMenuItemSerializer
     permission_classes = [IsAuthenticated]
 
@@ -102,6 +102,16 @@ class EditMenuItemView(UpdateAPIView, DestroyAPIView):
             raise Http404
         else:
             return menu_item
+
+    def get(self, request, *args, **kwargs):
+        menu_item_id = request.GET.get('id')
+        try:
+            menu_item = MenuItem.objects.get(id=menu_item_id)
+        except (ObjectDoesNotExist, KeyError):
+            raise Http404
+        else:
+            serializer = self.get_serializer(menu_item)
+            return Response(serializer.data)
 
     def update(self, request, *args, **kwargs):
         partial = kwargs.pop('partial', False)

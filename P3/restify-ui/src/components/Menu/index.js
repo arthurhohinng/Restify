@@ -3,13 +3,15 @@ import API from '../API';
 import BASEURL from '../BASEURL';
 import './style.css';
 import Button from '../Button';
+import AddEditMenu from '../FormPages/AddEditMenu';
 
 // make function to get all menu data and return it in a nested json object,
 // where the key is the category, something along those lines
-const Menu = ( {owned=false} ) => {
+const Menu = ( {owned=false, setShowAddItem} ) => {
     const [items, setItems] = useState({list:[], page:1})
     const [nextExists, setNextExists] = useState(0)
     const [categories, setCategories] = useState([])
+    const [edit, setEdit] = useState({state: false, id: 0})
 
     useEffect(() => {
         const url = window.location.href
@@ -60,8 +62,12 @@ const Menu = ( {owned=false} ) => {
         })
     }
 
+
     if (items.list.length > 0){
         return ( <>
+                    {edit.state ? <AddEditMenu title="Edit item" id={edit.id} setItems={setItems} items={items} setEdit={setEdit}/>
+                    :
+                    <></>}
                 <h1>Menu</h1>
                 {categories.map(category => 
                     <div key={category}> 
@@ -75,7 +81,11 @@ const Menu = ( {owned=false} ) => {
                                         {item.name}
                                         <span className="price">
                                             {item.price}
-                                            {owned ? <button className='btn' onClick={() => deleteItem(item.id)}>x</button> :
+                                            {owned ? 
+                                            <>
+                                                <button className="btn" onClick={() => setEdit({state: !edit.state, id: item.id})}>Edit</button>
+                                                <button className='btn' onClick={() => deleteItem(item.id)}>x</button> 
+                                            </>:
                                             <></>}
                                         </span>
                                         <br/>
