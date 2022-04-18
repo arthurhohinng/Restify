@@ -14,8 +14,8 @@ const ContactInfo = () => {
             method: 'GET',
         }).then(response => response.json())
             .then(json => {
-                setInfo(json.results)
-                setAuthorized({authorized: true})
+                setInfo({...info, info: json.results})
+                // setAuthorized({authorized: true})
             })
             .catch(err => {
                 console.log("error: " + err)
@@ -30,7 +30,7 @@ const ContactInfo = () => {
                     <br/>
                     <h4>Our Location</h4>
                     <br/>
-                    {info.map(i =>
+                    {(info.info).map(i =>
                         <div id="rest-addr">
                             <span className="addr-part">Address: </span>{i.address}<br/>
                             <span className="addr-part">Postal Code: </span>{i.postal_code}<br/>
