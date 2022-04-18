@@ -8,7 +8,7 @@ body{
     height: 100%;
 }
 
-.contact-container{
+.contactinfo-container{
     margin-top: 5%;
     margin-bottom: 5%;
     width: 35%;
@@ -16,12 +16,12 @@ body{
     min-width: 400px;
 }
 
-#rest-addr {
+#rest-address {
     display: inline-block;
     margin-bottom: 2%;
     text-align: center;
 }
 
-.addr-part {
+.address-part {
     color: white;
 }

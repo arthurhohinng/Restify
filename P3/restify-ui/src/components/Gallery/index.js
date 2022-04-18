@@ -1,32 +1,40 @@
 import API from '../API';
 import {useState, useEffect} from "react";
+import Button from '../Button';
 
 const Gallery = (props) => {
-    const [images, setImages] = useState([])
+    const [images, setImages] = useState({images:[], page:1})
     const [nextExists, setNextExists] = useState(0)
+    var url = window.location.href;
+    var id = (window.location.href).split("/")[4];
 
     useEffect(() => {
-
-        var url = window.location.href;
-        var restaurant_id = url.split("/")[4];
-        fetch(`${API}/restaurant/${restaurant_id}/gallery/`, {
+        fetch(`${API}/restaurants/${id}/gallery/?page=${images.page}`, {
             method: "GET",
         }).then(response => response.json())
             .then(json => {
-                console.log(json)
-                setImages(json.results)
+                setImages({...images, images: json.results})
                 setNextExists(json.next)
             })
             .catch(err => {
                 console.log("error: " + err)
             })
-    }, [])
+    }, [images.page])
 
-    if (images.length > 0) {
+    if ((images.images).length > 0) {
         return <>
-            <div><h3 h3 className="title">Photos</h3></div>
+            <h3 className="title">Photos</h3>
             <div className="row row-cols-3">
+                {(images.images).map(image => 
+                    <div className="galleryimg" key={image.id}>
+                        <img src={image.image}></img>
+                    </div>
+                )}
             </div>
+
+
+            {(images.page > 1) ? <Button value="prev" update={() => setImages({...images, page: images.page - 1})} /> : <></>}
+            {nextExists != null ? <Button value="next" update={() => setImages({...images, page: images.page + 1})} /> : <></>}
         </>
     }
     else {

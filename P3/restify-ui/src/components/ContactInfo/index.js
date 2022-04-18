@@ -25,14 +25,14 @@ const ContactInfo = () => {
     if (Object.keys(info).length !== 0) {
         return (<>
             <div id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div className="container contact-container" id="contactpart">
+                <div className="container contactinfo-container" id="contactpart">
                     <br/>
                     <h4>Our Location</h4>
                     <br/>
-                    <div id="rest-addr">
-                        <span className="addr-part">Address: </span>{info.address}<br/>
-                        <span className="addr-part">Postal Code: </span>{info.postal_code}<br/>
-                        <span className="addr-part">Phone Number: </span>{info.phone_number}<br/>
+                    <div id="rest-address">
+                        <span className="address-part">Address: </span>{info.address}<br/>
+                        <span className="address-part">Postal Code: </span>{info.postal_code}<br/>
+                        <span className="address-part">Phone Number: </span>{info.phone_number}<br/>
                     </div>
                 </div>
                 Feel free to leave a comment on the main page and we will get back to you!
@@ -42,7 +42,7 @@ const ContactInfo = () => {
     else {
         return <>
             <div id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                <div className="container contact-container">
+                <div className="container contactinfo-container">
                     No Contact Info Found.
                 </div>
             </div>

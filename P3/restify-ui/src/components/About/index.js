@@ -26,6 +26,13 @@ const GetOwnedId = () => {
                 console.log("error: " + err)
         })
     }, [token])
+
+    if (checkId === 0){
+        return undefined
+    }
+    if (Object.keys(checkId).length === 0){
+        return ""
+    }
     return checkId[0]
 }
 
@@ -61,7 +68,6 @@ const About = () => {
                 if(!response.ok) throw new Error(response.status);
                 else return response.json();})
             .then(response => {
-                console.log(response)
                 setRestaurant(response)
             })
             .catch(err => {
@@ -71,7 +77,6 @@ const About = () => {
 
     // Case 1: user viewing the About owns the restaurant
     if (restaurant !== undefined && ownedId !== undefined && ownedId === id) {
-        console.log(restaurant)
         return (<>
             <div id="rest-img">
                 <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
@@ -90,7 +95,7 @@ const About = () => {
         </>)
     }
     // Case 2: they are logged in, but do not own it
-    else if (restaurant !== undefined && ownedId !== undefined) {
+    else if (restaurant !== undefined && ownedId !== undefined && ownedId === "") {
         return (<>
             <div id="rest-img">
                 <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
