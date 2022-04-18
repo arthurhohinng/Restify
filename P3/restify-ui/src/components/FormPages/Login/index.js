@@ -44,7 +44,7 @@ const Login = () => {
 
     return (
         <form>
-            <div className="form-container">
+            <div className="form-container signup-login">
                 <h2>Login</h2>
                 <div className="form-group">
                     <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>
