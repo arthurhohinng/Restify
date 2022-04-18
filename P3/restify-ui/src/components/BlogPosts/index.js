@@ -17,14 +17,13 @@ function getDate(dateString){
 
 const BlogPost = () => {
     const [posts, setPosts] = useState({posts:[], page:1})
-    // TODO: get restaurant as author of blogpost
     const [nextExists, setNextExists] = useState(0)
     const [authorized, setAuthorized] = useState(0)
     useEffect(() => {
         // Get restaurant id
         var url = window.location.href;
         var restaurant_id = url.split("/")[4];
-        fetch(API + "/restaurants/" + restaurant_id + "/blogposts/", {
+        fetch(`${API}/restaurants/${restaurant_id}/blogposts/`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
