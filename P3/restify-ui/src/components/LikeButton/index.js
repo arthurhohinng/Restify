@@ -37,10 +37,10 @@ const LikeButton = (postId) => {
                 'Authorization': `Bearer ${token}`,
             },
             })
-            .then(x => {
+            .then(response => {
                 setLiked("true")
                 setAuthorized({authorized: true})
-                x = true    // to bypass no-unused-vars error
+                response = true    // to bypass no-unused-vars error
             })
             .catch(err => {
                 console.log("error: " + err)
