@@ -2,6 +2,7 @@ import Button from '../Button';
 import LikeButton from '../LikeButton'
 import {useState, useEffect} from 'react';
 import API from '../API';
+import BASEURL from '../BASEURL';
 import './style.css';
 import Login from '../FormPages/Login'
 
@@ -53,7 +54,7 @@ const Feed = () => {
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("token"))
-        fetch(`${API}/accounts/feed/`, {
+        fetch(`${API}/accounts/feed/?page=${posts.page}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -65,36 +66,35 @@ const Feed = () => {
                 if (!response.ok){throw new Error(response.status)} 
                 else {return response.json()}})
             .then(json => {
-                setPosts(json.results)
+                setPosts({...posts, posts: json.results})
                 setNextExists(json.next)
                 setAuthorized(true)
             })
             .catch(err => {
                 setAuthorized(false)
             })
-    }, [])
+    }, [posts.page])
 
-    if (authorized && posts.length > 0){
+    if (authorized && (posts.posts).length > 0){
         return (<>
             <div><h1 id="title">Restaurant Feed</h1></div>
             <div className="container feed-container">
-                {posts.map(post => 
+                {(posts.posts).map(post => 
                     <div className="media d-flex" key={post.id}>
                         <div className="me-3 rounded-circle">
-                            <a href={API+"/restaurants/"+post.restaurant+"/"}>
+                            <a href={BASEURL+"/restaurant/"+post.restaurant}>
                                 <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo" loading="lazy"></img>
                                 {getLogo(post.restaurant)}
                             </a>
                         </div>
                         <div>
-                            <h4><span className="name">{post.author}</span> Uploaded a Blogpost
+                            <h5><span className="name">{post.author}</span> Uploaded a Blogpost
                             <span className="float-end">{getDate(post.date)}</span>
-                            </h4>
+                            </h5>
                                 <img className="img-fluid" src={post.image} alt=""></img>
                                 <h5 className="posttitle">{post.title}</h5>
                                 <div>{post.body}</div>
                                 <br></br>
-                                <Button className="btn btn-outline-light" value="View Full Post" update={() => ({})} />
                                 <div id={post.id+"-like-btn"}></div>
                                 <LikeButton className="btn btn-outline-light" postId={post.id} />
                         </div>
@@ -109,7 +109,7 @@ const Feed = () => {
     else if (authorized){
         return <>
         <div><h1 id="title">Restaurant Feed</h1></div>
-        No posts yet.
+        <div class="feed-msg">No posts yet. <a href={BASEURL}>Search for restaurants</a> and follow them!</div>
         </>
     }
     else {
