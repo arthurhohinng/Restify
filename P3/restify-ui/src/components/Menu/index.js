@@ -7,7 +7,7 @@ import Button from '../Button';
 // make function to get all menu data and return it in a nested json object,
 // where the key is the category, something along those lines
 const Menu = () => {
-    const [items, setItems] = useState({items:[], page:1})
+    const [items, setItems] = useState({list:[], page:1})
     const [nextExists, setNextExists] = useState(0)
     const [categories, setCategories] = useState([])
 
@@ -15,8 +15,6 @@ const Menu = () => {
         const url = window.location.href
         const restaurantId = url.split("/")[4]
         const token = JSON.parse(localStorage.getItem("token"))
-        console.log(items.page)
-        console.log("fired")
         fetch(`${API}/restaurants/${restaurantId}/menu/?page=${items.page}`, {
             method: 'GET',
             headers: {
@@ -31,18 +29,19 @@ const Menu = () => {
                 //     window.location.href = `${BASEURL}/restaurant/${restaurantId}/`
             })
             .then(data => {
-                setItems(data.results)
+                setItems({...items, list: data.results})
                 setNextExists(data.next)
                 const categoryList = data.results.map(item => item.category)
                 setCategories([... new Set(categoryList)])
+                console.log(data)
             })
             .catch(err => {
                 console.log("error:" + err)
             })
-        }, [setItems, items])
+        }, [items.page])
 
 
-    if (items.length > 0){
+    if (items.list.length > 0){
         return ( <>
                 <h1>Menu</h1>
                 {categories.map(category => 
@@ -51,7 +50,7 @@ const Menu = () => {
                         <h2 className="menu-category">{category}</h2> 
                         <table className="menu-items">
                             <tbody>
-                            {items.filter(item => item.category == category ).map(item => 
+                            {items.list.filter(item => item.category == category ).map(item => 
                                 <tr key={item.id}>
                                     <td>
                                         {item.name}
