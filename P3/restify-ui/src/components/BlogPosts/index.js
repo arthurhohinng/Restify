@@ -22,33 +22,32 @@ const BlogPost = () => {
     const [posts, setPosts] = useState({posts:[], page:1})
     const [nextExists, setNextExists] = useState(0)
     const [authorized, setAuthorized] = useState(0)
+    // Get restaurant id
+    var url = window.location.href;
+    var restaurant_id = url.split("/")[4];
+
     useEffect(() => {
-        // Get restaurant id
-        var url = window.location.href;
-        var restaurant_id = url.split("/")[4];
-        fetch(`${API}/restaurants/${restaurant_id}/blogposts/`, {
+        fetch(`${API}/restaurants/${restaurant_id}/blogposts/?page=${posts.page}`, {
             method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
         })
             .then(response => response.json())
             .then(json => {
-                setPosts(json.results)
+                console.log(json)
+                setPosts({...posts, posts: json.results})
                 setNextExists(json.next)
                 setAuthorized({authorized: true})
             })
             .catch(err => {
                 console.log("error: " + err)
             })
-    }, [])
-    if (posts.length > 0){
+    }, [posts.page])
+
+    if ((posts.posts).length > 0){
         return (<>
             <div className="tab-pane fade show active feed-container" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
                 <br/>
                     <h2 id="title">Blogposts</h2>
-                {posts.map(post =>
+                {(posts.posts).map(post =>
                     <div className="card blogpostcontent" id={post.id} key={post.id}>
                         <h2 className="posttitle">{post.title}</h2>
                         <h5 className="postinfo">Posted: {getDate(post.date)} by {post.author}</h5>
@@ -61,7 +60,7 @@ const BlogPost = () => {
                 )}
 
                 {(posts.page > 1) ? <Button value="prev" update={() => setPosts({...posts, page: posts.page - 1})} /> : <></>}
-                {nextExists != null ? <Button value="next" update={() => setPosts({...posts, page: posts.page + 1})} /> : <></>}
+                {nextExists !== null ? <Button value="next" update={() => setPosts({...posts, page: posts.page + 1})} /> : <></>}
             </div>
         </>)
     }

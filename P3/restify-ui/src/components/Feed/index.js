@@ -91,8 +91,8 @@ const Feed = () => {
                             <h5><span className="name">{post.author}</span> Uploaded a Blogpost
                             <span className="float-end">{getDate(post.date)}</span>
                             </h5>
-                                <img className="img-fluid" src={post.image} alt=""></img>
                                 <h5 className="posttitle">{post.title}</h5>
+                                <img className="img-fluid" src={post.image} alt=""></img>
                                 <div>{post.body}</div>
                                 <br></br>
                                 <div id={post.id+"-like-btn"}></div>
@@ -109,7 +109,7 @@ const Feed = () => {
     else if (authorized){
         return <>
         <div><h1 id="title">Restaurant Feed</h1></div>
-        <div class="feed-msg">No posts yet. <a href={BASEURL}>Search for restaurants</a> and follow them!</div>
+        <div class="feed-msg">No new posts yet.</div>
         </>
     }
     else {
