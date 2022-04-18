@@ -76,10 +76,10 @@ const RestaurantPage = () => {
                     {showAddItem ? 
                         <>
                             <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem}/>
-                            <Menu />
+                            <Menu owned={true}/>
                         </>
                         : 
-                        <Menu />}
+                        <Menu owned={true}/>}
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts">
                     <button className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAddBlog(!showAddBlog)}>
