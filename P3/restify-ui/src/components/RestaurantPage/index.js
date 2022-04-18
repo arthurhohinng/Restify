@@ -1,13 +1,13 @@
-import Tabs from 'react-bootstrap/Tabs'
-import Tab from 'react-bootstrap/Tab'
+import Tabs from 'react-bootstrap/Tabs';
+import Tab from 'react-bootstrap/Tab';
 import {useState, useEffect} from 'react';
 import API from '../API';
-import './style.css'
-import PageNotFound from '../PageNotFound'
+import './style.css';
+import PageNotFound from '../PageNotFound';
 //import ContactInfo from '../ContactInfo'
 //import BlogPosts from '../BlogPosts'
-//import Menu from '../Menu'
-//import EditRestaurant from '../EditRestaurant'
+import Menu from '../Menu';
+import EditRestaurant from '../FormPages/EditRestaurant';
 //import About from '../About'
 
 /* If the user is logged in and stuff, do they own a restaurant? If so, which? */
@@ -54,22 +54,6 @@ const RestaurantPage = () => {
 
     /* if ownedId === Id, render the restaurant as the owner. otherwise, render as normal */
     if ((restaurant !== undefined) && (ownedId !== undefined) && (ownedId === id)){
-        // return <>
-        // <h2 id="rest-page-title">{restaurant.name}</h2>
-        // <div className="container resto-container">
-        //     <Tabs
-        //         defaultActiveKey="about"
-        //         transition={true}
-        //         className="mb-3 tabholder"
-        //     >
-        //         <Tab tabClassName="infotab" eventKey="about" title="About"><About /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="menu" title="Menu"><Menu /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"><BlogPosts /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="contact" title="Contact"><ContactInfo /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant"><EditRestaurant /></Tab>
-        //     </Tabs>
-        // </div>
-        // </>
         return <>
         <h2 id="rest-page-title">{restaurant.name}</h2>
         <div className="container resto-container">
@@ -79,10 +63,14 @@ const RestaurantPage = () => {
                 className="mb-3 tabholder"
             >
                 <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
-                <Tab tabClassName="infotab" eventKey="menu" title="Menu"></Tab>
+                <Tab tabClassName="infotab" eventKey="menu" title="Menu">
+                    <Menu />
+                </Tab>
                 <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"></Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact"></Tab>
-                <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant"></Tab>
+                <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant">
+                    <EditRestaurant />
+                </Tab>
             </Tabs>
         </div>
         </>

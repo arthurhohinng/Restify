@@ -6,12 +6,10 @@ import Register from '../FormPages/Register';
 import Login from '../FormPages/Login';
 import Profile from '../FormPages/Profile';
 import AddRestaurant from '../FormPages/AddRestaurant';
-import EditRestaurant from '../FormPages/EditRestaurant';
 import AddBlog from '../FormPages/AddBlog';
 import AddEditMenu from '../FormPages/AddEditMenu';
 import Feed from '../Feed';
 import RestaurantPage from '../RestaurantPage'
-import Menu from '../Menu';
 import PageNotFound from '../PageNotFound'
 
 const Router = () => {
@@ -25,12 +23,10 @@ const Router = () => {
                     <Route path="register/" element={<Register />} />
                     <Route path="login/" element={<Login />} />
                     <Route path="profile/" element={<Profile />} />
-                    <Route path="restaurants/:id/" element={<RestaurantPage />} />
+                    <Route path="restaurant/:id/" element={<RestaurantPage />} />
                     <Route path="restaurant/add-restaurant/" element={<AddRestaurant />} />
-                    <Route path="restaurant/edit/" element={<EditRestaurant />} />
                     <Route path="restaurant/add-blogpost/" element={<AddBlog />} />
                     <Route path="restaurant/edit-menu/" element={<AddEditMenu />} />
-                    <Route path="restaurant/:id/menu/" element={<Menu />} />
                     <Route path="feed/" element={<Feed />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Route>
