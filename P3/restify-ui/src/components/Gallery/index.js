@@ -1,6 +1,7 @@
 import API from '../API';
 import {useState, useEffect} from "react";
 import Button from '../Button';
+import "./style.css";
 
 const Gallery = (props) => {
     const [images, setImages] = useState({images:[], page:1})
@@ -25,7 +26,7 @@ const Gallery = (props) => {
         return <>
             <h3 className="title">Photos</h3>
             <div className="row row-cols-3">
-                {(images.images).map(image => 
+                {(images.images).map(image =>
                     <div className="galleryimg" key={image.id}>
                         <img src={image.image}></img>
                     </div>
