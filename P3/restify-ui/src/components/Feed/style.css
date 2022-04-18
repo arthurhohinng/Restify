@@ -14,6 +14,7 @@ body{
 
 .name {
     color: rgba(255, 255, 255, 0.8);
+    font-size: 20px;
 }
 
 .feed-container {
@@ -23,6 +24,11 @@ body{
 
 .feed-container > * {
     color: white;
+}
+
+.feed-msg {
+    color:white;
+    font-size: 20px;
 }
 
 .media {
@@ -43,11 +49,11 @@ body{
 
 .posttitle {
     color: rgb(228, 228, 171);
-    font-size: 15px;
+    font-size: 20px;
 }
 
 button {
-    background-color: rgba(255, 255, 255, 0.226) !important; /* Overriding default bg button color which was transparent */
+    background-color: rgba(255, 255, 255, 0.226); /* Overriding default bg button color which was transparent */
     margin-top: 2%;
 }
 
