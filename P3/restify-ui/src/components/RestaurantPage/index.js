@@ -70,7 +70,7 @@ const RestaurantPage = () => {
             >
                 <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
-                    <button className="btn btn-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAddItem(!showAddItem)}>
+                    <button className="btn btn-success my-2 my-sm-0 btn-block form-control menuaddbutton" onClick={() => setShowAddItem(!showAddItem)}>
                         Add an item
                     </button>
                     {showAddItem ?
