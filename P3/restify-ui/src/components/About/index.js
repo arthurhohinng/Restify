@@ -1,5 +1,6 @@
 import Gallery from "../Gallery";
-import CommentForm from "../Comment";
+import CommentForm from "../CommentForm";
+import Comment from '../Comment';
 import {useState, useEffect} from 'react';
 import API from '../API';
 import BASEURL from '../BASEURL';
@@ -92,6 +93,7 @@ const About = () => {
                 You Own This Page 👑
             </div>
             <Gallery />
+            <Comment />
             <CommentForm />
         </>)
     }
@@ -112,6 +114,7 @@ const About = () => {
                 <FollowRestaurantButton className="btn btn-outline-light" restId={restaurant.id} />
             </div>
             <Gallery />
+            <Comment />
             <CommentForm />
         </>)
     }
@@ -130,6 +133,7 @@ const About = () => {
                 Likes: {restaurant.likes} <br/>
             </div>
             <Gallery />
+            <Comment />
             <div><a href={BASEURL+"/login"}>Log in</a> to Post a Comment!</div>
         </>
     }
