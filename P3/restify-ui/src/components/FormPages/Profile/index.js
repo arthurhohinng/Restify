@@ -109,7 +109,7 @@ const Profile = ( { isEdit=false } ) => {
             <button className='btn btn-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
             <div>
                 <h2>Avatar</h2>
-                <img class="profile-form-avatar" src={userInfo.avatar} alt="Avatar"/>
+                <img className="profile-form-avatar" src={userInfo.avatar} alt="Avatar"/>
                 {readOnly ?
                     <></> :
                     <div className="form-group">
