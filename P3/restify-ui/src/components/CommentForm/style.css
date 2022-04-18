@@ -5,3 +5,8 @@
 #add-comment-button {
     border-radius: 10px;
 }
+
+.commentformsubmit {
+    margin: auto;
+    align-items: center;
+}

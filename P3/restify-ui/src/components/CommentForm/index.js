@@ -57,15 +57,15 @@ class CommentForm extends React.Component {
 
       render() {
         return (<>
-            <div className="all-comments">
-            </div>
-                <h4>Got a comment?</h4>
-            <form onSubmit={this.handleSubmit}>
-                <textarea id="comment-box" name="comment-box" rows="4" cols="50" value={this.state.value}
-                onChange={this.handleChange} placeholder="Enter comment here..."></textarea><br></br>
-                <input id="add-comment-button" type="submit" value="Add comment"></input>
+          <h4>Got a comment?</h4>
+          <div className="commentformsubmit">
+            <form className="commentsubform"onSubmit={this.handleSubmit}>
+              <textarea id="comment-box" name="comment-box" rows="4" cols="50" value={this.state.value}
+                  onChange={this.handleChange} placeholder="Enter comment here..."></textarea><br></br>
+              <input id="add-comment-button" type="submit" value="Add comment"></input>
             </form>
-            </>
+          </div>
+          </>
         );
       }
 }
