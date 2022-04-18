@@ -76,7 +76,7 @@ class RestaurantContactInfoSerializer(serializers.ModelSerializer):
 class RestaurantCommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comment
-        fields = ['text']
+        fields = '__all__'
 
     def create(self, validated_data):
         try:
