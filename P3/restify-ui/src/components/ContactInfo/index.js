@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import API from "../API";
 
 const ContactInfo = () => {
-    const [info, setInfo] = useState({info: []})
+    const [info, setInfo] = useState("")
     // to access info, need to do {info} (if we set it to "")
     const [authorized, setAuthorized] = useState(0)
     useEffect(() => {
@@ -14,7 +14,7 @@ const ContactInfo = () => {
             method: 'GET',
         }).then(response => response.json())
             .then(json => {
-                setInfo({...info, info: json.results})
+                setInfo(json.results)
                 // setAuthorized({authorized: true})
             })
             .catch(err => {
@@ -23,14 +23,14 @@ const ContactInfo = () => {
     }, [])
 
     // return contact info in div
-    if ((info.info).length > 0) { // gives error
+    if (info != "") { // gives error
         return (<>
             <div id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div className="container contact-container" id="comments-tab">
                     <br/>
                     <h4>Our Location</h4>
                     <br/>
-                    {(info.info).map(i =>
+                    {info.map(i =>
                         <div id="rest-addr">
                             <span className="addr-part">Address: </span>{i.address}<br/>
                             <span className="addr-part">Postal Code: </span>{i.postal_code}<br/>
