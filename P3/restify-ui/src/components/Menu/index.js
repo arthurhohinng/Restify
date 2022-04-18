@@ -1,24 +1,85 @@
-import Button from '../Button';
-import LikeButton from '../LikeButton'
 import {useState, useEffect} from 'react';
 import API from '../API';
-import './style.css';
+import BASEURL from '../BASEURL';
+import './style.css'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 // make function to get all menu data and return it in a nested json object,
 // where the key is the category, something along those lines
 const Menu = () => {
+    const [items, setItems] = useState([])
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        var url = window.location.href;
-        var restaurant_id = url.split("/")[4];
-    })
+        const url = window.location.href
+        const restaurantId = url.split("/")[4]
+        const fetchUrl = `${API}/restaurants/${restaurantId}/menu/`
+        const token = JSON.parse(localStorage.getItem("token"))
+        getAllMenu(fetchUrl)
+        }, [])
+
+    const getAllMenu = (url) => {
+        fetch(`${url}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(results => {
+            if (results.status === 200)
+                return results.json()
+            // else 
+            //     window.location.href = `${BASEURL}/restaurant/${restaurantId}/`
+        })
+        .then(data => {
+            setItems(data.results)
+            return data.next
+        })
+        .then(next => {
+            console.log(next)
+            if (next == null){
+                getCategories()
+            }
+            else{
+                getAllMenu(next)
+            }
+        })
+        .catch(err => {
+            console.log("error:" + err)
+        })
+        
+
+    }
+
+    const getCategories = () => {
+        console.log(items)
+        const categoryList = items.map(item => item.category)
+        setCategories([... new Set(categoryList)])
+    }
     return ( <>
-        <div className="tab-pane fade" id="menu" role="tabpanel"
-             aria-labelledby="menu-tab">
-            <h4 className="menu-category" style="margin-top:3%;"> Starters </h4>
-            <table className="menu-items">
-            </table>
-        </div>
+            <h1>Menu</h1>
+            {categories.map(category => 
+                <div key={category}> 
+
+                    <h2 className="menu-category">{category}</h2> 
+                    <table className="menu-items">
+                        <tbody>
+                        {items.filter(item => item.category == category ).map(item => 
+                            <tr key={item.id}>
+                                <td>
+                                    {item.name}
+                                    <span className="price">{item.price}</span>
+                                    <br/>
+                                    <i>{item.description}</i>
+                                </td>
+                            </tr>
+                        )} 
+                        </tbody>
+                    </table>
+                </div> 
+            )} 
         </>
     )
 }
