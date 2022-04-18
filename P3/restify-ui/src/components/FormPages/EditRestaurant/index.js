@@ -116,7 +116,7 @@ const EditRestaurant = () => {
             <div className="form-group">
                 <label>Logo</label>    
                 <br/>     
-                <img src={inputFields.logo}/>       
+                <img alt="logo" src={inputFields.logo}/>       
                 <Input title="" type="file" name="logo" inputsHandler={imageHandler}/>
             </div>
             <br/>
