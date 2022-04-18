@@ -4,14 +4,51 @@ import {useState, useEffect} from "react";
 import LikeButton from "../LikeButton";
 
 const Gallery = (props) => {
-    const [images, setImages] = useState({images:[], page:1})
+    const [images, setImages] = useState([])
     const [nextExists, setNextExists] = useState(0)
     const [authorized, setAuthorized] = useState(0)
 
     useEffect(() => {
-
-    })
-
+        const token = JSON.parse(localStorage.getItem("token"))
+        var url = window.location.href;
+        var restaurant_id = url.split("/")[4];
+        fetch(`${API}/restaurant/${restaurant_id}/gallery/`, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+        }).then(response => response.json())
+            .then(json => {
+                setImages(json.results)
+                setNextExists(json.next)
+                setAuthorized({authorized: true})
+            })
+            .catch(err => {
+                console.log("error: " + err)
+            })
+    }, [])
+// when using map to display the images, use index in map, and if index is
+    // a multiple of 3, (so index % 3 == 0), then add a new row
+    // use what was done in search to do 3 per row
+    if (images.length > 0) {
+        return
+            <div><h3>Photos</h3></div>
+        <div className="row row-cols-3">
+            {images.map(i => (
+                <div className="card g-col-6" key={i.restaurant}>
+                    <img className="img-fluid search-logo" src={i.image} alt=""></img>
+                </div>
+            ))}
+        </div>
+    }
+    else {
+        return (<>
+            <div><h3>Photos</h3></div>
+            <h4><div style={{ textAlign: 'center'}}>No new photos yet.</div></h4>
+            </>)
+    }
 }
 /*
 <h3>Photos</h3>
