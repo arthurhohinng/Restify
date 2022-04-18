@@ -43,18 +43,18 @@ const BlogPost = () => {
 
     if ((posts.posts).length > 0){
         return (<>
-            <div className="tab-pane fade show active feed-container" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
+            <div className="feed-container">
                 <br/>
                     <h2 id="title">Blogposts</h2>
                 {(posts.posts).map(post =>
                     <div className="card blogpostcontent" id={post.id} key={post.id}>
                         <h2 className="posttitle">{post.title}</h2>
                         <h5 className="postinfo">Posted: {getDate(post.date)} by {post.author}</h5>
-                        <img className="img-fluid" src={post.image} alt=""></img>
+                        <img className="img-fluid blogpostimg" src={post.image} alt=""></img>
                             <div className="blog-content">
                                 {post.body}
                             </div>
-                            <LikeButton className="btn btn-outline-light" postId={post.id} />
+                            <LikeButton className="btn btn-outline-light restbloglikebtn" postId={post.id} />
                     </div>
                 )}
 

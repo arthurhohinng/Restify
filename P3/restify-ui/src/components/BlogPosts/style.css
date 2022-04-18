@@ -5,3 +5,7 @@
 .blogpostcontent {
     padding: 5% !important;
 }
+
+.blogpostimg {
+    max-width: 200px;
+}

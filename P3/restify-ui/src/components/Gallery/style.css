@@ -12,12 +12,6 @@ body {
     width: 50%;
 }
 */
-.card {
-    background-color: rgba(87, 80, 131, 0.767) !important;
-    border-radius: 10% !important;
-    padding: 2% !important;
-    margin-bottom: 30px !important;
-}
 
 .col {
     margin: 10px;
