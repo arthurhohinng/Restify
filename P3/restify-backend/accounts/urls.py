@@ -2,7 +2,7 @@ from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView
 from accounts.views.edit_profile import EditProfileView
 from accounts.views.get_profile import ProfileView
-from accounts.views.like_follow import LikeRestaurantView, FollowRestaurantView, LikesBlogView, CheckLiked
+from accounts.views.like_follow import LikeRestaurantView, FollowRestaurantView, LikesBlogView, CheckLiked, CheckLikedRestaurant, CheckFollowedRestaurant
 from accounts.views.register import RegisterView
 from accounts.views.feed import FeedView
 from accounts.views.add_restaurant import AddRestaurantView, GetRestaurant
@@ -24,4 +24,6 @@ urlpatterns = [
     path('like/blogpost/<int:blogpost_id>/', LikesBlogView.as_view(), name='like_blogpost'),
     path('notifications/<int:pk>/view/', NotificationView.as_view(), name='view_notification'),
     path('blogpost/<int:pk>/isliked/', CheckLiked.as_view(), name='see_liked'),
+    path('restaurant/<int:pk>/isliked/', CheckLikedRestaurant.as_view(), name='see_liked_rest'),
+    path('restaurant/<int:pk>/followed/', CheckFollowedRestaurant.as_view(), name='see_followed'),
 ]

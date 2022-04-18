@@ -23,7 +23,6 @@ const ContactInfo = () => {
 
     // return contact info in div
     if (Object.keys(info).length !== 0) {
-        console.log(info)
         return (<>
             <div id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div className="container contact-container" id="contactpart">
