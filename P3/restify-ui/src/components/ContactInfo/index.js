@@ -10,7 +10,7 @@ const ContactInfo = () => {
         var url = window.location.href;
         var restaurant_id = url.split("/")[4];
         // use get_contact_info.py, so <int:pk>/contact/ for url
-        fetch(`${API}/restaurant/${restaurant_id}/contact/`, {
+        fetch(`${API}/restaurants/${restaurant_id}/contact/`, {
             method: 'GET',
         }).then(response => response.json())
             .then(json => {
