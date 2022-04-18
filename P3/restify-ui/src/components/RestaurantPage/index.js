@@ -40,7 +40,8 @@ const GetOwnedId = () => {
 const RestaurantPage = () => {
     var id = parseInt((window.location.href).split("/")[4])
     var ownedId = GetOwnedId()
-    const [showAdd, setShowAdd] = useState(false)
+    const [showAddItem, setShowAddItem] = useState(false)
+    const [showAddBlog, setShowAddBlog] = useState(false)
 
     const [restaurant, setRestaurant] = useState({})
     useEffect(() => {
@@ -69,16 +70,30 @@ const RestaurantPage = () => {
             >
                 <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
-                    <Menu />
+                    <button className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAddItem(!showAddItem)}>
+                        Add an item
+                    </button>
+                    {showAddItem ? 
+                        <>
+                            <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem}/>
+                            <Menu />
+                        </>
+                        : 
+                        <Menu />}
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts">
-                    <button className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAdd(!showAdd)}>
+                    <button className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAddBlog(!showAddBlog)}>
                         Add a blog
                     </button>
                     <br/>
                     <br/>
-                    {showAdd ? <AddBlog /> : <></>}
-                    <BlogPosts />
+                    {showAddBlog ? 
+                        <>
+                            <AddBlog showAddBlog={showAddBlog} setShowAddBlog={setShowAddBlog}/> 
+                            <BlogPosts />
+                        </>
+                        : 
+                        <BlogPosts />}
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact">
                 </Tab>

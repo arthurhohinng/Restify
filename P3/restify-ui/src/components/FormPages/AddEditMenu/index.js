@@ -4,7 +4,7 @@ import "../style.css";
 import API from '../../API';
 import BASEURL from '../../BASEURL';
 
-const AddEditMenu = () => {
+const AddEditMenu = ( {showAddItem, setShowAddItem} ) => {
     const [inputFields, setInputField] = useState({
         name: '',
         description: '',
@@ -34,8 +34,7 @@ const AddEditMenu = () => {
         })
         .then(results => {
             if (results.status === 201){
-                // TODO: change to link of restaurant page
-                window.location.href=`${BASEURL}`
+                setShowAddItem(!showAddItem)
             }
             else{
                 return results.json()
