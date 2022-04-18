@@ -73,7 +73,7 @@ const Feed = () => {
                 setAuthorized(false)
             })
     }, [])
-    // TODO: like button should change if the post is liked or not
+
     if (authorized && posts.length > 0){
         return (<>
             <div><h1 id="title">Restaurant Feed</h1></div>

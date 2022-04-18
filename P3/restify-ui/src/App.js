@@ -13,6 +13,7 @@ import EditRestaurant from "./components/EditRestaurant";
  */
 function App() {
   const [restaurants, setRestaurants] = useState([])
+  
   return (
     <div className="App">
       <searchContext.Provider value={{restaurants, setRestaurants}}>
