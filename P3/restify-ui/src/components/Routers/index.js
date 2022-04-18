@@ -26,7 +26,6 @@ const Router = () => {
                     <Route path="profile/edit/" element={<Profile isEdit={true}/>} />
                     <Route path="restaurant/:id/" element={<RestaurantPage />} />
                     <Route path="restaurant/add-restaurant/" element={<AddRestaurant />} />
-                    <Route path="restaurant/add-blogpost/" element={<AddBlog />} />
                     <Route path="restaurant/edit-menu/" element={<AddEditMenu />} />
                     <Route path="feed/" element={<Feed />} />
                     <Route path="*" element={<PageNotFound />} />
