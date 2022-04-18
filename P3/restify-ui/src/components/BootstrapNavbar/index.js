@@ -57,7 +57,7 @@ const BootstrapNavbar = () => {
                                     My Restaurant
                                 </Nav.Link>
                                 :
-                                <Nav.Link href={`restaurant/${ownedId}`}>
+                                <Nav.Link href={`/restaurant/${ownedId}`}>
                                     My Restaurant
                                 </Nav.Link>
                             }
