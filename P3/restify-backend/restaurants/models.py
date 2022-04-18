@@ -27,7 +27,7 @@ class Blogpost(models.Model):
     body = models.TextField(null=False)
     author = models.CharField(null=False, blank=False, max_length=15)
     restaurant = models.ForeignKey(Restaurant, null=False, on_delete=CASCADE)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now_add=True)
     likes = models.PositiveIntegerField(null=False, default=0)
 
     def __str__(self):
