@@ -10,6 +10,8 @@ import Menu from '../Menu';
 import EditRestaurant from '../FormPages/EditRestaurant';
 import ContactInfo from "../ContactInfo";
 import BlogPosts from "../BlogPosts";
+import AddBlog from '../FormPages/AddBlog';
+import AddEditMenu from '../FormPages/AddEditMenu';
 //import About from '../About'
 
 /* If the user is logged in and stuff, do they own a restaurant? If so, which? */
@@ -38,6 +40,7 @@ const GetOwnedId = () => {
 const RestaurantPage = () => {
     var id = parseInt((window.location.href).split("/")[4])
     var ownedId = GetOwnedId()
+    const [showAdd, setShowAdd] = useState(false)
 
     const [restaurant, setRestaurant] = useState({})
     useEffect(() => {
@@ -69,6 +72,12 @@ const RestaurantPage = () => {
                     <Menu />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts">
+                    <button className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAdd(!showAdd)}>
+                        Add a blog
+                    </button>
+                    <br/>
+                    <br/>
+                    {showAdd ? <AddBlog /> : <></>}
                     <BlogPosts />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact">

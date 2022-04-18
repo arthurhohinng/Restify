@@ -33,7 +33,6 @@ const Menu = () => {
                 setNextExists(data.next)
                 const categoryList = data.results.map(item => item.category)
                 setCategories([... new Set(categoryList)])
-                console.log(data)
             })
             .catch(err => {
                 console.log("error:" + err)
