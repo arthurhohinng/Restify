@@ -1,6 +1,7 @@
 import API from '../API';
 import {useState, useEffect} from "react";
 import Button from '../Button';
+import './style.css'
 
 const Comment = () => {
     const [comments, setComments] = useState({comments:[], page:1})
@@ -23,19 +24,17 @@ const Comment = () => {
 
     if ((comments.comments).length > 0) {
         return <>
-            {/* <h3 className="title">Photos</h3>
-            <div className="row row-cols-3">
-                {(images.images).map(image =>
-                    <div className="galleryimg" key={image.id}>
-                        <img src={image.image} height="64" width="64"></img>
+            <h3 className="title">Comments</h3>
+            <div className="row row-cols-3 all-comments">
+                {(comments.comments).map((c, index) =>
+                    <div className="restcommenttext comment" key={index}>
+                        {c.text}
                     </div>
                 )}
-            </div> */}
-            Comments
-
-
+            </div>
             {(comments.page > 1) ? <Button value="prev" update={() => setComments({...comments, page: comments.page - 1})} /> : <></>}
             {nextExists != null ? <Button value="next" update={() => setComments({...comments, page: comments.page + 1})} /> : <></>}
+            <br></br>
         </>
     }
     else {
