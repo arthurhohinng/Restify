@@ -28,7 +28,7 @@ const Gallery = (props) => {
             <div className="row row-cols-3">
                 {(images.images).map(image =>
                     <div className="galleryimg" key={image.id}>
-                        <img src={image.image}></img>
+                        <img src={image.image} height="64" width="64"></img>
                     </div>
                 )}
             </div>
