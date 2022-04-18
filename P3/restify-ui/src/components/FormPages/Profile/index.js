@@ -33,7 +33,7 @@ const Profile = () => {
                 window.location.href = BASEURL
         })
         .then(data => {
-            setUserInfo({...userInfo, 
+            setUserInfo({
                 firstName: data.first_name,
                 lastName: data.last_name,
                 email: data.email,
