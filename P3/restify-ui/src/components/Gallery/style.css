@@ -7,9 +7,11 @@ body {
     width: 100%;
 }
 
+/*
 .galleryimg {
     width: 50%;
 }
+*/
 .card {
     background-color: rgba(87, 80, 131, 0.767) !important;
     border-radius: 10% !important;
