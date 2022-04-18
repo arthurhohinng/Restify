@@ -32,7 +32,7 @@ const Notification = () => {
             }
         })
         .then(data => {
-            setNotifications(data)
+            setNotifications(data.slice(0, 5))
         })
         .catch(err => {
             console.log("error:" + err)
