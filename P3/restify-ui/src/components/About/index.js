@@ -95,7 +95,7 @@ const About = () => {
         </>)
     }
     // Case 2: they are logged in, but do not own it
-    else if (restaurant !== undefined && ownedId !== undefined && ownedId === "") {
+    else if (restaurant !== undefined && ownedId !== undefined) {
         return (<>
             <div id="rest-img">
                 <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
