@@ -31,7 +31,7 @@ const BootstrapNavbar = () => {
                             <Nav.Link href="/">My Restaurant</Nav.Link>
                             <NavDropdown title="Profile" id="basic-nav-dropdown" menuVariant="dark">
                                 <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="/profile">Edit Profile</NavDropdown.Item>
+                                <NavDropdown.Item href="/profile/edit">Edit Profile</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Notifications" id="basic-nav-dropdown" menuVariant="dark">
                                 <Notification />

@@ -23,6 +23,7 @@ const Router = () => {
                     <Route path="register/" element={<Register />} />
                     <Route path="login/" element={<Login />} />
                     <Route path="profile/" element={<Profile />} />
+                    <Route path="profile/edit/" element={<Profile isEdit={true}/>} />
                     <Route path="restaurant/:id/" element={<RestaurantPage />} />
                     <Route path="restaurant/add-restaurant/" element={<AddRestaurant />} />
                     <Route path="restaurant/add-blogpost/" element={<AddBlog />} />
