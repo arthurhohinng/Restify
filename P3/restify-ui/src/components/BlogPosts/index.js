@@ -15,7 +15,7 @@ import './style.css'
         return date.getHours()+":"+String(date.getMinutes()).padStart(2, '0')
     }
     // Otherwise, output the date (no time)
-    return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
+    return date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear()
 }
 
 const BlogPost = () => {
