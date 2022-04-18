@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import API from "../API";
 
 const ContactInfo = () => {
-    const [info, setInfo] = useState([])
+    const [info, setInfo] = useState({info: []})
     // to access info, need to do {info} (if we set it to "")
     const [authorized, setAuthorized] = useState(0)
     useEffect(() => {
@@ -23,7 +23,7 @@ const ContactInfo = () => {
     }, [])
 
     // return contact info in div
-    if (info.length > 0) {
+    if ((info.info).length > 0) { // gives error
         return (<>
             <div id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div className="container contact-container" id="comments-tab">
