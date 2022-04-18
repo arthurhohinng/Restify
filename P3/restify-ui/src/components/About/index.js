@@ -3,6 +3,7 @@ import CommentForm from "../Comment";
 import {useState, useEffect} from 'react';
 import API from '../API';
 import BASEURL from '../BASEURL';
+import "./style.css"
 import LikeRestaurantButton from '../LikeButton/LikeRestaurantButton'
 import FollowRestaurantButton from '../LikeButton/FollowRestaurantButton'
 
