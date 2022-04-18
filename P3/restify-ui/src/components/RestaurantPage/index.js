@@ -8,6 +8,8 @@ import PageNotFound from '../PageNotFound';
 //import BlogPosts from '../BlogPosts'
 import Menu from '../Menu';
 import EditRestaurant from '../FormPages/EditRestaurant';
+import ContactInfo from "../ContactInfo";
+import BlogPosts from "../BlogPosts";
 //import About from '../About'
 
 /* If the user is logged in and stuff, do they own a restaurant? If so, which? */
@@ -33,14 +35,14 @@ const GetOwnedId = () => {
     return checkId[0]
 }
 
-const RestaurantPage = () => { 
+const RestaurantPage = () => {
     var id = parseInt((window.location.href).split("/")[4])
     var ownedId = GetOwnedId()
 
     const [restaurant, setRestaurant] = useState({})
     useEffect(() => {
         fetch(`${API}/restaurants/${id}/`)
-            .then(response => { 
+            .then(response => {
                 if(!response.ok) throw new Error(response.status);
                 else return response.json();})
             .then(response => {
@@ -49,7 +51,7 @@ const RestaurantPage = () => {
             .catch(err => {
                 setRestaurant(undefined)
             })
-        
+
     }, [id])
 
     /* if ownedId === Id, render the restaurant as the owner. otherwise, render as normal */
@@ -66,8 +68,12 @@ const RestaurantPage = () => {
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
                     <Menu />
                 </Tab>
-                <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"></Tab>
-                <Tab tabClassName="infotab" eventKey="contact" title="Contact"></Tab>
+                <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts">
+                    <BlogPosts />
+                </Tab>
+                <Tab tabClassName="infotab" eventKey="contact" title="Contact">
+                    <ContactInfo />
+                </Tab>
                 <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant">
                     <EditRestaurant />
                 </Tab>
@@ -88,8 +94,12 @@ const RestaurantPage = () => {
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
                     <Menu />
                 </Tab>
-                <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"></Tab>
-                <Tab tabClassName="infotab" eventKey="contact" title="Contact"></Tab>
+                <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts">
+                    <BlogPosts />
+                </Tab>
+                <Tab tabClassName="infotab" eventKey="contact" title="Contact">
+                    <ContactInfo />
+                </Tab>
             </Tabs>
         </div>
         </>
