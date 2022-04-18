@@ -4,15 +4,12 @@ import {useState, useEffect} from 'react';
 import API from '../API';
 import './style.css';
 import PageNotFound from '../PageNotFound';
-//import ContactInfo from '../ContactInfo'
-//import BlogPosts from '../BlogPosts'
 import Menu from '../Menu';
 import EditRestaurant from '../FormPages/EditRestaurant';
 import ContactInfo from "../ContactInfo";
 import BlogPosts from "../BlogPosts";
 import AddBlog from '../FormPages/AddBlog';
 import AddEditMenu from '../FormPages/AddEditMenu';
-//import About from '../About'
 
 /* If the user is logged in and stuff, do they own a restaurant? If so, which? */
 const GetOwnedId = () => {
@@ -96,6 +93,7 @@ const RestaurantPage = () => {
                         <BlogPosts />}
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact">
+                    <ContactInfo />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant">
                     <EditRestaurant />
@@ -121,6 +119,7 @@ const RestaurantPage = () => {
                     <BlogPosts />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact">
+                    <ContactInfo />
                 </Tab>
             </Tabs>
         </div>
