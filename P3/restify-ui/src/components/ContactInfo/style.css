@@ -6,9 +6,10 @@ body{
     color: rgba(255,255,255,.55);
     text-align: center;
     height: 100%;
+    width: 100%;
 }
 
-.contactinfo-container{
+.container .contactinfo-container{
     margin-top: 5%;
     margin-bottom: 5%;
     width: 35%;
@@ -17,11 +18,11 @@ body{
 }
 
 #rest-address {
-    display: inline-block;
-    margin-bottom: 2%;
-    text-align: center;
+    display: block;
+    text-align: left;
+    margin-left: 5%;
 }
 
-.address-part {
+.addr-part .contact-part{
     color: white;
 }
