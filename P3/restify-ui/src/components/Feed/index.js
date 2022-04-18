@@ -3,6 +3,7 @@ import LikeButton from '../LikeButton'
 import {useState, useEffect} from 'react';
 import API from '../API';
 import './style.css';
+import Login from '../FormPages/Login'
 
 /**
  * Function to parse the datetime object returned by our API into a better format.
@@ -60,24 +61,25 @@ const Feed = () => {
                 'Authorization': `Bearer ${token}`,
             },
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok){throw new Error(response.status)} 
+                else {return response.json()}})
             .then(json => {
                 setPosts(json.results)
                 setNextExists(json.next)
-                setAuthorized({authorized: true})
+                setAuthorized(true)
             })
             .catch(err => {
-                console.log("error: " + err)
+                setAuthorized(false)
             })
     }, [])
     // TODO: like button should change if the post is liked or not
-    if (posts.length > 0){
+    if (authorized && posts.length > 0){
         return (<>
             <div><h1 id="title">Restaurant Feed</h1></div>
             <div className="container feed-container">
                 {posts.map(post => 
                     <div className="media d-flex" key={post.id}>
-                        {console.log("rendering post...")}
                         <div className="me-3 rounded-circle">
                             <a href={API+"/restaurants/"+post.restaurant+"/"}>
                                 <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo" loading="lazy"></img>
@@ -105,11 +107,7 @@ const Feed = () => {
         </>)
     }
     else {
-        return (<>
-            <div><h1 id="title">Restaurant Feed</h1></div>
-            <h4><div style={{ textAlign: 'center'}}>No new posts yet.</div></h4>
-            </>
-        )
+        return <Login />
     }
 }
 
