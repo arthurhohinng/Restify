@@ -2,14 +2,17 @@ import API from '../API';
 import Button from "../Button";
 import {useState, useEffect} from "react";
 import LikeButton from "../LikeButton";
+import './style.css'
 
-
-function getDate(dateString){
+/**
+ * Function to parse the datetime object returned by our API into a better format.
+ */
+ function getDate(dateString){
     var date = new Date(dateString)
     var currDate = new Date()
     if (date.getDate() === currDate.getDate() && date.getMonth() === currDate.getMonth() && date.getFullYear() === currDate.getFullYear()){
         // If post was today, only output the time
-        return date.getHours()+":"+date.getMinutes()
+        return date.getHours()+":"+String(date.getMinutes()).padStart(2, '0')
     }
     // Otherwise, output the date (no time)
     return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
@@ -42,13 +45,13 @@ const BlogPost = () => {
     }, [])
     if (posts.length > 0){
         return (<>
-            <div className="tab-pane fade show active" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
+            <div className="tab-pane fade show active feed-container" id="blogposts" role="tabpanel" aria-labelledby="blog-tab">
                 <br/>
-                    <h2>Blog Posts</h2>
+                    <h2 id="title">Blogposts</h2>
                 {posts.map(post =>
-                    <div className="card" id={post.id}>
-                        <h2 className="blog-title">{post.title}</h2>
-                        <h3 className="blog-info">Posted: {getDate(post.date)} by {post.author}</h3>
+                    <div className="card blogpostcontent" id={post.id} key={post.id}>
+                        <h2 className="posttitle">{post.title}</h2>
+                        <h5 className="postinfo">Posted: {getDate(post.date)} by {post.author}</h5>
                         <img className="img-fluid" src={post.image} alt=""></img>
                             <div className="blog-content">
                                 {post.body}

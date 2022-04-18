@@ -125,7 +125,7 @@ const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setI
             <br/>
             {errorMessage}
             <br/>
-            <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value={title} onClick={submitHandler}/>
+            <input className="btn btn-success my-2 my-sm-0 btn-block form-control" type="button" value={title} onClick={submitHandler}/>
         </div>
     )
 }

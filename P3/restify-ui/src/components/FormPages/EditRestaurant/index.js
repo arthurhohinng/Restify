@@ -116,13 +116,13 @@ const EditRestaurant = () => {
             <div className="form-group">
                 <label>Logo</label>    
                 <br/>     
-                <img alt="logo" src={inputFields.logo}/>       
+                <img className="restaurantavatar" alt="logo" src={inputFields.logo}/>       
                 <Input title="" type="file" name="logo" inputsHandler={imageHandler}/>
             </div>
             <br/>
             {errorMessage}
             <br/>
-            <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Submit" onClick={submitHandler}/>
+            <input className="btn btn-success my-2 my-sm-0 btn-block form-control" type="button" value="Submit" onClick={submitHandler}/>
             <br/>
             <br/>
             <br/>

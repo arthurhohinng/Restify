@@ -12,11 +12,18 @@
     padding-top: 75px
 }
 
-img:not(.logo, .nav-logo) {
+.profile-form-avatar {
     margin: auto;
     border-radius: 10%;
     max-width: 200px;
     max-height: 200px;
+}
+
+.restaurantavatar {
+    border-radius: 10%;
+    max-width: 200px;
+    max-height: 200px;
+    padding-bottom: 2%;
 }
 
 .btn{

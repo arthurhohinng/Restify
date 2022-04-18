@@ -68,6 +68,7 @@ const Menu = ( {owned=false, setShowAddItem} ) => {
                     {edit.state ? <AddEditMenu title="Edit item" id={edit.id} setItems={setItems} items={items} setEdit={setEdit}/>
                     :
                     <></>}
+                    <br></br>
                 <h1>Menu</h1>
                 {categories.map(category => 
                     <div key={category}> 
@@ -76,20 +77,23 @@ const Menu = ( {owned=false, setShowAddItem} ) => {
                         <table className="menu-items">
                             <tbody>
                             {items.list.filter(item => item.category == category ).map(item => 
-                                <tr key={item.id}>
+                                <tr className="menu-item-object" key={item.id}>
                                     <td>
-                                        {item.name}
-                                        <span className="price">
+                                        <span className="menuname">{item.name}</span>
+                                        <span className="menuprice float-end">
                                             {item.price}
-                                            {owned ? 
-                                            <>
-                                                <button className="btn" onClick={() => setEdit({state: !edit.state, id: item.id})}>Edit</button>
-                                                <button className='btn' onClick={() => deleteItem(item.id)}>x</button> 
-                                            </>:
-                                            <></>}
                                         </span>
                                         <br/>
                                         <i>{item.description}</i>
+                                        <br />
+                                        {owned ? 
+                                            <>
+                                                <div className="menueditcontrols">
+                                                <button className="btn menubtn" onClick={() => setEdit({state: !edit.state, id: item.id})}><span className="menuedit">Edit</span></button>
+                                                <button className='btn menubtn' onClick={() => deleteItem(item.id)}><span className="menuedit">X</span></button> 
+                                                </div>
+                                            </>:
+                                        <></>}
                                     </td>
                                 </tr>
                             )} 

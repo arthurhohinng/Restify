@@ -106,10 +106,10 @@ const Profile = ( { isEdit=false } ) => {
     return (
         <div className="form-container">
             <h1>My Profile</h1>
-            <button className='btn btn-outline-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
+            <button className='btn btn-success my-2 my-sm-0 btn-block' onClick={toggleEdit}>Edit</button>
             <div>
                 <h2>Avatar</h2>
-                <img src={userInfo.avatar} alt="Avatar"/>
+                <img class="profile-form-avatar" src={userInfo.avatar} alt="Avatar"/>
                 {readOnly ?
                     <></> :
                     <div className="form-group">
@@ -147,7 +147,7 @@ const Profile = ( { isEdit=false } ) => {
                         <Input title="Confirm password" type="password" name="password2" placeholder="Confirm password" inputsHandler={inputsHandler} read={false}/>
                     </div>
                     <br/>
-                    <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Submit" onClick={editProfile}/>
+                    <input className="btn btn-success my-2 my-sm-0 btn-block form-control" type="button" value="Submit" onClick={editProfile}/>
                     <br/>
                     <br/>
                 </>}
