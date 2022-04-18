@@ -1,0 +1,13 @@
+.comment {
+    background-color: lightgrey;
+    width: 300px;
+    padding: 20px;
+    margin: auto;
+    color: black;
+    border-radius: 10px;
+  }
+
+  .all-comments {
+      width: 70%;
+      margin: auto;
+  }
