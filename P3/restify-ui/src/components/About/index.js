@@ -78,11 +78,11 @@ const About = () => {
     // Case 1: user viewing the About owns the restaurant
     if (restaurant !== undefined && ownedId !== undefined && ownedId === id) {
         return (<>
-            <div id="rest-img">
+            <div id="restify-img">
                 <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
                 {getLogo(restaurant.id)}
             </div>
-            <div className="card">
+            <div className="card aboutcard">
                 <p className="text">{restaurant.description}</p>
             </div>
             <div id="rest-pop">
@@ -101,7 +101,7 @@ const About = () => {
                 <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
                 {getLogo(restaurant.id)}
             </div>
-            <div className="card">
+            <div className="card aboutcard">
                 <p className="text">{restaurant.description}</p>
             </div>
             <div id="rest-pop">
@@ -121,7 +121,7 @@ const About = () => {
                 <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
                 {getLogo(restaurant.id)}
             </div>
-            <div className="card">
+            <div className="card aboutcard">
                 <p className="text">{restaurant.description}</p>
             </div>
             <div id="rest-pop">
@@ -134,33 +134,3 @@ const About = () => {
     }
 }
 export default About
-/*
-<div id="rest-img"><img className="img-fluid center" src="https://illustoon.com/photo/dl/4728.png"></img></div>
-                <div id="rest-pop">
-                Followers: {r.followers} <br/>
-                Likes: {r.likes} <br/>
-                You Own This Page 👑
-                </div>
-                <div className="card">
-                <h2>About the Owner</h2>
-                <img className="center" src={r.owner} width="260"></img>
-                <p className="text">{r.description}</p>
-                </div>
-                <br/>
- */
-/*
-    <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    <div id="rest-img"><img class="img-fluid center" src="https://illustoon.com/photo/dl/4728.png"></div>
-                    <div id="rest-pop">
-                        Followers: 3000 <br>
-                        Likes: 1000 <br>
-                        You Own This Page 👑
-                        <!--In i tag above, will use JS to handle liking so that likes count increases-->
-                        <!--The i tag contains the actual like button-->
-                    </div>
-                    <div class="card">
-                        <h2>About the Owner</h2>
-                        <img class="center" src="https://www.aprio.com/wp-content/uploads/Restaurant-owners-options-for-growth-capital.jpg" width="260">
-                        <p class="text">35 Year Old Restaurant Owner. Been a chef for 15 years!</p>
-                    </div><br>
-     */
