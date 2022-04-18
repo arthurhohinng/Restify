@@ -25,8 +25,8 @@ const Menu = () => {
             .then(results => {
                 if (results.status === 200)
                     return results.json()
-                // else 
-                //     window.location.href = `${BASEURL}/restaurant/${restaurantId}/`
+                else 
+                    window.location.href = `${BASEURL}/restaurant/${restaurantId}/`
             })
             .then(data => {
                 setItems({...items, list: data.results})
