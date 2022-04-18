@@ -13,7 +13,7 @@ function getDate(dateString){
         return date.getHours()+":"+String(date.getMinutes()).padStart(2, '0')
     }
     // Otherwise, output the date (no time)
-    return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
+    return date.getDate()+"/"+(date.getMonth() + 1)+"/"+date.getFullYear()
 }
 
 const Notification = () => {
@@ -32,7 +32,7 @@ const Notification = () => {
             }
         })
         .then(data => {
-            setNotifications(data)
+            setNotifications(data.slice(0, 5))
         })
         .catch(err => {
             console.log("error:" + err)
