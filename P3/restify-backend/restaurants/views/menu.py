@@ -97,7 +97,8 @@ class EditMenuItemView(RetrieveAPIView, UpdateAPIView, DestroyAPIView):
 
     def get_object(self, request):
         try:
-            menu_item = MenuItem.objects.get(id=request.data['id'])
+            menu_id = self.request.user.owned_restaurant.menu.id
+            menu_item = MenuItem.objects.get(id=request.data['id'], menu=menu_id)
         except (ObjectDoesNotExist, KeyError):
             raise Http404
         else:
@@ -106,7 +107,8 @@ class EditMenuItemView(RetrieveAPIView, UpdateAPIView, DestroyAPIView):
     def get(self, request, *args, **kwargs):
         menu_item_id = request.GET.get('id')
         try:
-            menu_item = MenuItem.objects.get(id=menu_item_id)
+            menu_id = self.request.user.owned_restaurant.menu.id
+            menu_item = MenuItem.objects.get(id=menu_item_id, menu=menu_id)
         except (ObjectDoesNotExist, KeyError):
             raise Http404
         else:

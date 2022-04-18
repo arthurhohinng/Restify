@@ -73,16 +73,19 @@ const EditRestaurant = () => {
         })
         .then(results => {
             if (results.status === 200){
-                // TODO: change to link of restaurant page
-                // Adds a menu object to the restaurant
-                window.location.href=`${BASEURL}`
-            }
-            else{
                 return results.json()
             }
         })
         .then(data => {
-            setErrorMessage(JSON.stringify(data))
+            setInputField({
+                name: data.name,
+                description: data.description,
+                address: data.address,
+                postalCode: data.postal_code,
+                phone: data.phone_num,
+                logo: data.logo,
+            })
+            setErrorMessage("Updated!")
         })
         .catch(err => {
             console.log("error: " + err)
@@ -97,7 +100,8 @@ const EditRestaurant = () => {
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Restaurant Description" type="text" name="description" placeholder="Enter restaurant description" inputsHandler={inputsHandler} value={inputFields.description}/>
+                <label>Restaurant Description</label>
+                <textarea className="form-control" type="textarea" name="description" onChange={inputsHandler} value={inputFields.description}/>
             </div>
             <br/>
             <div className="row">

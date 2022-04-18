@@ -6,8 +6,6 @@ import Register from '../FormPages/Register';
 import Login from '../FormPages/Login';
 import Profile from '../FormPages/Profile';
 import AddRestaurant from '../FormPages/AddRestaurant';
-import AddBlog from '../FormPages/AddBlog';
-import AddEditMenu from '../FormPages/AddEditMenu';
 import Feed from '../Feed';
 import RestaurantPage from '../RestaurantPage'
 import PageNotFound from '../PageNotFound'
@@ -26,7 +24,6 @@ const Router = () => {
                     <Route path="profile/edit/" element={<Profile isEdit={true}/>} />
                     <Route path="restaurant/:id/" element={<RestaurantPage />} />
                     <Route path="restaurant/add-restaurant/" element={<AddRestaurant />} />
-                    <Route path="restaurant/edit-menu/" element={<AddEditMenu />} />
                     <Route path="feed/" element={<Feed />} />
                     <Route path="*" element={<PageNotFound />} />
                 </Route>

@@ -2,6 +2,19 @@ import { useEffect, useState } from "react";
 import API from '../API';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+/**
+ * Function to parse the datetime object returned by our API into a better format.
+ */
+function getDate(dateString){
+    var date = new Date(dateString)
+    var currDate = new Date()
+    if (date.getDate() === currDate.getDate() && date.getMonth() === currDate.getMonth() && date.getFullYear() === currDate.getFullYear()){
+        // If post was today, only output the time
+        return date.getHours()+":"+String(date.getMinutes()).padStart(2, '0')
+    }
+    // Otherwise, output the date (no time)
+    return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
+}
 
 const Notification = () => {
     const [notifications, setNotifications] = useState({notifications:[]})
@@ -32,7 +45,7 @@ const Notification = () => {
                     <NavDropdown.Item href={notification.link}>
                         {notification.description}
                         <br/>
-                        <small>{notification.datetime}</small>
+                        <small>{getDate(notification.datetime)}</small>
                     </NavDropdown.Item>
                     <NavDropdown.Divider />
                 </div>
