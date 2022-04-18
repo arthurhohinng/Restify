@@ -30,9 +30,9 @@ const ContactInfo = () => {
                     <h4>Our Location</h4>
                     <br/>
                     <div id="rest-address">
-                        <span className="address-part">Address: </span>{info.address}<br/>
-                        <span className="address-part">Postal Code: </span>{info.postal_code}<br/>
-                        <span className="address-part">Phone Number: </span>{info.phone_number}<br/>
+                        <span className="addr-part contact-part">Address: </span>{info.address}<br/>
+                        <span className="addr-part contact-part">Postal Code: </span>{info.postal_code}<br/>
+                        <span className="addr-part contact-part">Phone Number: </span>{info.phone_number}<br/>
                     </div>
                 </div>
                 Feel free to leave a comment on the main page and we will get back to you!
