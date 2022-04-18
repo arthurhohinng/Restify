@@ -12,6 +12,7 @@ import AddEditMenu from '../FormPages/AddEditMenu';
 import Feed from '../Feed';
 import RestaurantPage from '../RestaurantPage'
 import Menu from '../Menu';
+import PageNotFound from '../PageNotFound'
 
 const Router = () => {
     // TODO: index element should be index of the page
@@ -31,6 +32,7 @@ const Router = () => {
                     <Route path="restaurant/edit-menu/" element={<AddEditMenu />} />
                     <Route path="restaurant/:id/menu/" element={<Menu />} />
                     <Route path="feed/" element={<Feed />} />
+                    <Route path="*" element={<PageNotFound />} />
                 </Route>
             </Routes>
         </BrowserRouter>
