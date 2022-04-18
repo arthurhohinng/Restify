@@ -76,21 +76,6 @@ const RestaurantPage = () => {
         </>
     }
     else if (restaurant !== undefined){
-        // return <>
-        // <h2 id="rest-page-title">{restaurant.name}</h2>
-        // <div className="container resto-container">
-        //     <Tabs
-        //         defaultActiveKey="about"
-        //         transition={true}
-        //         className="mb-3 tabholder"
-        //     >
-        //         <Tab tabClassName="infotab" eventKey="about" title="About"><About /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="menu" title="Menu"><Menu /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"><BlogPosts /></Tab>
-        //         <Tab tabClassName="infotab" eventKey="contact" title="Contact"><ContactInfo /></Tab>
-        //     </Tabs>
-        // </div>
-        // </>
         return <>
         <h2 id="rest-page-title">{restaurant.name}</h2>
         <div className="container resto-container">
@@ -100,7 +85,9 @@ const RestaurantPage = () => {
                 className="mb-3 tabholder"
             >
                 <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
-                <Tab tabClassName="infotab" eventKey="menu" title="Menu"></Tab>
+                <Tab tabClassName="infotab" eventKey="menu" title="Menu">
+                    <Menu />
+                </Tab>
                 <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"></Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact"></Tab>
             </Tabs>
