@@ -11,6 +11,7 @@ import AddEditMenu from '../FormPages/AddEditMenu';
 import Feed from '../Feed';
 import RestaurantPage from '../RestaurantPage'
 import PageNotFound from '../PageNotFound'
+import Index from '../Index'
 
 const Router = () => {
     // TODO: index element should be index of the page
@@ -18,7 +19,7 @@ const Router = () => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                    <Route index element={<Results />} />
+                    <Route index element={<Index />} />
                     <Route path="search/" element={<Results />} />
                     <Route path="register/" element={<Register />} />
                     <Route path="login/" element={<Login />} />
