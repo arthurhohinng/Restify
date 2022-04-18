@@ -37,7 +37,6 @@ const GetOwnedId = () => {
 const RestaurantPage = () => {
     var id = parseInt((window.location.href).split("/")[4])
     var ownedId = GetOwnedId()
-    const [showAddItem, setShowAddItem] = useState(false)
     const [showAddBlog, setShowAddBlog] = useState(false)
 
     const [restaurant, setRestaurant] = useState({})
@@ -67,16 +66,7 @@ const RestaurantPage = () => {
             >
                 <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
-                    <button className="btn btn-success my-2 my-sm-0 btn-block form-control menuaddbutton" onClick={() => setShowAddItem(!showAddItem)}>
-                        Add an item
-                    </button>
-                    {showAddItem ?
-                        <>
-                            <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem}/>
-                            <Menu owned={true} setShowAddItem={setShowAddItem}/>
-                        </>
-                        :
-                        <Menu owned={true} setShowAddItem={setShowAddItem}/>}
+                    <Menu owned={true} />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts">
                     <button className="btn btn-success my-2 my-sm-0 btn-block form-control" onClick={() => setShowAddBlog(!showAddBlog)}>

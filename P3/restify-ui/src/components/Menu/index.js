@@ -7,11 +7,12 @@ import AddEditMenu from '../FormPages/AddEditMenu';
 
 // make function to get all menu data and return it in a nested json object,
 // where the key is the category, something along those lines
-const Menu = ( {owned=false, setShowAddItem} ) => {
+const Menu = ( {owned=false} ) => {
     const [items, setItems] = useState({list:[], page:1})
     const [nextExists, setNextExists] = useState(0)
     const [categories, setCategories] = useState([])
     const [edit, setEdit] = useState({state: false, id: 0})
+    const [showAddItem, setShowAddItem] = useState(false)
 
     useEffect(() => {
         const url = window.location.href
@@ -64,7 +65,18 @@ const Menu = ( {owned=false, setShowAddItem} ) => {
 
 
     if (items.list.length > 0){
-        return ( <>
+        return ( <> {owned ? 
+                    <>
+                        <button className="btn btn-success my-2 my-sm-0 btn-block form-control menuaddbutton" 
+                        onClick={() => setShowAddItem(!showAddItem)}>
+                            Add an item
+                        </button>
+                    {showAddItem ? <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem} setItems={setItems} items={items}/>
+                        :
+                        <></>}
+                    </>
+                    :
+                    <></>}
                     {edit.state ? <AddEditMenu title="Edit item" id={edit.id} setItems={setItems} items={items} setEdit={setEdit}/>
                     :
                     <></>}

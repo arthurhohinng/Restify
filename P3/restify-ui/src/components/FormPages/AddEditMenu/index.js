@@ -20,7 +20,6 @@ const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setI
 
     useEffect(() => {
         if (id !== 0){
-            console.log(setShowAddItem)
             const token = JSON.parse(localStorage.getItem("token"))
             let formData = new FormData()
             formData.append('id', id)
@@ -65,13 +64,11 @@ const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setI
             .then(results => {
                 if (results.status === 201){
                     setShowAddItem(!showAddItem)
-                }
-                else{
                     return results.json()
                 }
             })
             .then(data => {
-                setErrorMessage(JSON.stringify(data))
+                setItems({... items, list: [... items.list, data]})
             })
             .catch(err => {
                 console.log("error: " + err)
