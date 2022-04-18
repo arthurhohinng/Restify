@@ -1,11 +1,10 @@
 #rest-pop {
-    display: inline-block;
-    text-align: left;
     margin-bottom: 3%;
     color:rgb(219, 208, 223);
 }
 
-.card .aboutcard {
+.aboutcard {
+    display: inline-block;
     margin: auto;
     margin-top: 2%;
     padding: 3%;
@@ -14,7 +13,9 @@
     background-color: rgba(250, 250, 250, 0.212);
 }
 
-#restify-img {
+.restologoabout {
     display: inline-block;
+    margin-top: 2%;
     max-width: 200px;
+    border-radius: 20px;
 }

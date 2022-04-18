@@ -79,8 +79,8 @@ const About = () => {
     // Case 1: user viewing the About owns the restaurant
     if (restaurant !== undefined && ownedId !== undefined && ownedId === id) {
         return (<>
-            <div id="restify-img">
-                <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
+            <div>
+                <img className={"img-fluid center "+restaurant.id+"-logo restologoabout"} alt="Logo" loading="lazy"></img>
                 {getLogo(restaurant.id)}
             </div>
             <div className="card aboutcard">
@@ -98,8 +98,8 @@ const About = () => {
     // Case 2: they are logged in, but do not own it
     else if (restaurant !== undefined && ownedId !== undefined) {
         return (<>
-            <div id="rest-img">
-                <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
+            <div>
+                <img className={"img-fluid center "+restaurant.id+"-logo restologoabout"} alt="Logo" loading="lazy"></img>
                 {getLogo(restaurant.id)}
             </div>
             <div className="card aboutcard">
@@ -118,8 +118,8 @@ const About = () => {
     // Case 3: Not logged in (Like/follow buttons will redirect to Login? Or just not view them at all)
     else {
         return <>
-            <div id="rest-img">
-                <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
+            <div>
+                <img className={"img-fluid center "+restaurant.id+"-logo restologoabout"} alt="Logo" loading="lazy"></img>
                 {getLogo(restaurant.id)}
             </div>
             <div className="card aboutcard">
