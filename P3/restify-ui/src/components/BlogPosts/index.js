@@ -32,7 +32,6 @@ const BlogPost = () => {
         })
             .then(response => response.json())
             .then(json => {
-                console.log(json)
                 setPosts({...posts, posts: json.results})
                 setNextExists(json.next)
                 setAuthorized({authorized: true})
