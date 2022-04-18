@@ -112,6 +112,17 @@ const About = () => {
     // Case 3: Not logged in (Like/follow buttons will redirect to Login? Or just not view them at all)
     else {
         return <>
+            <div id="rest-img">
+                <img className={"img-fluid center "+restaurant.id+"-logo"} alt="Logo" loading="lazy"></img>
+                {getLogo(restaurant.id)}
+            </div>
+            <div className="card">
+                <p className="text">{restaurant.description}</p>
+            </div>
+            <div id="rest-pop">
+                Followers: {restaurant.followers} <br/>
+                Likes: {restaurant.likes} <br/>
+            </div>
             <Gallery />
             <div><a href={BASEURL+"/login"}>Log in</a> to Post a Comment!</div>
         </>
