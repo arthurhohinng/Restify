@@ -56,9 +56,9 @@ const Login = () => {
                 <br/>
                 <>{errorMessage}</>
                 <br/>
-                <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Login" onClick={submitHandler}/>
+                <input className="btn btn-success my-2 my-sm-0 btn-block form-control" type="button" value="Login" onClick={submitHandler}/>
                 <br/>
-                <a className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" href='../register'>Register</a>
+                <a className="btn btn-success my-2 my-sm-0 btn-block form-control" href='../register'>Register</a>
                 <br/>
             </div>
         </form>

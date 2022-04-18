@@ -1,10 +1,10 @@
 import Input from '../../Input';
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../style.css";
 import API from '../../API';
 import BASEURL from '../../BASEURL';
 
-const AddEditMenu = ( {showAddItem, setShowAddItem} ) => {
+const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setItems, items, setEdit} ) => {
     const [inputFields, setInputField] = useState({
         name: '',
         description: '',
@@ -18,6 +18,35 @@ const AddEditMenu = ( {showAddItem, setShowAddItem} ) => {
         setInputField( {...inputFields, [e.target.name]: e.target.value} )
     }
 
+    useEffect(() => {
+        if (id !== 0){
+            console.log(setShowAddItem)
+            const token = JSON.parse(localStorage.getItem("token"))
+            let formData = new FormData()
+            formData.append('id', id)
+            fetch(`${API}/restaurants/edit-menu/?id=${id}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+            .then(results => {
+                return results.json()
+            })
+            .then(data => {
+                setInputField({
+                    name: data.name,
+                    description: data.description,
+                    price: data.price,
+                    category: data.category
+                })
+            })
+            .catch(err => {
+                console.log("error:" + err)
+            })
+        }
+    }, [])
+
     const submitHandler = () =>{
         const token = JSON.parse(localStorage.getItem("token"))
         let formData = new FormData()
@@ -25,52 +54,78 @@ const AddEditMenu = ( {showAddItem, setShowAddItem} ) => {
         formData.append('description', inputFields.description)
         formData.append('price', inputFields.price)
         formData.append('category', inputFields.category)
-        fetch(`${API}/restaurants/menu/add-item/`, {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-        },
-        body: formData
-        })
-        .then(results => {
-            if (results.status === 201){
-                setShowAddItem(!showAddItem)
-            }
-            else{
-                return results.json()
-            }
-        })
-        .then(data => {
-            setErrorMessage(JSON.stringify(data))
-        })
-        .catch(err => {
-            console.log("error: " + err)
-        })
+        if (id === 0 ){
+            fetch(`${API}/restaurants/menu/add-item/`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            body: formData
+            })
+            .then(results => {
+                if (results.status === 201){
+                    setShowAddItem(!showAddItem)
+                }
+                else{
+                    return results.json()
+                }
+            })
+            .then(data => {
+                setErrorMessage(JSON.stringify(data))
+            })
+            .catch(err => {
+                console.log("error: " + err)
+            })
+        }
+        else {
+            formData.append('id', id)
+            fetch(`${API}/restaurants/edit-menu/`, {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: formData
+                })
+                .then(results => {
+                    if (results.status === 200){
+                        return results.json()
+                    }
+                })
+                .then(data => {
+                    const newList = items.list.filter(item => item.id !== id)
+                    newList.push(data)
+                    setItems({...items, list: newList})
+                    setEdit(false)
+                })
+                .catch(err => {
+                    console.log("error: " + err)
+            })
+        }
     }
     
     return (
         <div className="form-container">
-            <h2>Add Menu Item</h2>
+            <h2>{title}</h2>
             <div className="form-group">
-                <Input title="Item Name" type="text" name="name" placeholder="Enter title" inputsHandler={inputsHandler}/>
+                <Input title="Item Name" type="text" name="name" placeholder="Enter title" inputsHandler={inputsHandler} value={inputFields.name}/>
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Item Description" type="text" name="description"  inputsHandler={inputsHandler}/>
+                <Input title="Item Description" type="text" name="description"  inputsHandler={inputsHandler} value={inputFields.description}/>
             </div>
             <br/>
             <div className="form-group">
                 <label>Price</label>
-                <input className="form-control" type="number" step="0.01" min="0" name="price" onChange={inputsHandler}/>
+                <input className="form-control" type="number" step="0.01" min="0" name="price" onChange={inputsHandler} value={inputFields.price}/>
             </div>
             <br/>
             <div className="form-group">
-                <Input title="Category" type="text" name="category" inputsHandler={inputsHandler}/>
+                <Input title="Category" type="text" name="category" inputsHandler={inputsHandler} value={inputFields.category}/>
             </div>
             <br/>
             {errorMessage}
             <br/>
-            <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Add item" onClick={submitHandler}/>
+            <input className="btn btn-success my-2 my-sm-0 btn-block form-control" type="button" value={title} onClick={submitHandler}/>
         </div>
     )
 }

@@ -14,7 +14,7 @@ function getDate(dateString){
     var currDate = new Date()
     if (date.getDate() === currDate.getDate() && date.getMonth() === currDate.getMonth() && date.getFullYear() === currDate.getFullYear()){
         // If post was today, only output the time
-        return date.getHours()+":"+date.getMinutes()
+        return date.getHours()+":"+String(date.getMinutes()).padStart(2, '0')
     }
     // Otherwise, output the date (no time)
     return date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()

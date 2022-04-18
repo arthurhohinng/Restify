@@ -7,7 +7,7 @@ const Logout = () => {
     }
 
     return (
-        <div className="btn btn-outline-success my-2 my-sm-0 btn-block" onClick={logoutHandler}>Logout</div>
+        <div className="btn btn-success my-2 my-sm-0 btn-block" onClick={logoutHandler}>Logout</div>
     )
 }
 

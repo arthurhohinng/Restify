@@ -1,25 +1,38 @@
 table {
-    margin: auto;
-    padding: 2%;
-    width: 40%;
-    color:rgb(250, 250, 250);
-    border-collapse:separate; 
-    border-spacing: 2em;
-  }
-  
-  .price {
-    float: right;
-  }
-  
-  td {
-    text-align: left;
-    padding: 3%;
-    background-color:rgb(184, 148, 196);
-    border:5px solid darkslateblue;
-    border-radius: 30px;
-  }
+  margin: auto;
+  padding: 2%;
+  width: 40%;
+  color:rgb(255, 255, 255);
+  border-collapse:separate; 
+  border-spacing: 5em;
+}
 
-  .menu-category {
-    color: white;
-    padding-top: 2%;
-  }
+.menuedit {
+  color:rgb(80, 56, 88);
+}
+
+.menueditcontrols {
+  text-align: center;
+}
+
+.menuname, .menuprice {
+  color:rgb(116, 67, 133);
+  font-size: 20px;
+}
+
+td {
+  text-align: left;
+  padding: 3%;
+  background-color:rgb(184, 148, 196);
+  border:5px solid darkslateblue;
+  border-radius: 30px;
+}
+
+.menu-category {
+  color: white;
+  padding-top: 2%;
+}
+
+.menu-items {
+  margin-bottom: 2%;
+}

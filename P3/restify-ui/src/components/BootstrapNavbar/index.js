@@ -44,7 +44,7 @@ const BootstrapNavbar = () => {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/">Restify</Navbar.Brand>
+                <Navbar.Brand href="/"><img src={require("../../assets/restify.png")} alt="Restify" width="150px"></img></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -80,7 +80,7 @@ const BootstrapNavbar = () => {
                         </Nav.Link>
                         :
                         <Nav.Link href="/login">
-                            <div className="btn btn-outline-success my-2 my-sm-0 btn-block">Login</div>
+                            <div className="btn btn-success my-2 my-sm-0 btn-block">Login</div>
                         </Nav.Link>
                         }
                     </Nav>
