@@ -1,5 +1,6 @@
 import API from '../API';
 import {useState, useEffect} from "react";
+import Button from '../Button';
 
 const Gallery = (props) => {
     const [images, setImages] = useState({images:[], page:1})
@@ -8,7 +9,7 @@ const Gallery = (props) => {
     var id = (window.location.href).split("/")[4];
 
     useEffect(() => {
-        fetch(`${API}/restaurants/${id}/gallery/`, {
+        fetch(`${API}/restaurants/${id}/gallery/?page=${images.page}`, {
             method: "GET",
         }).then(response => response.json())
             .then(json => {
@@ -30,6 +31,10 @@ const Gallery = (props) => {
                     </div>
                 )}
             </div>
+
+
+            {(images.page > 1) ? <Button value="prev" update={() => setImages({...images, page: images.page - 1})} /> : <></>}
+            {nextExists != null ? <Button value="next" update={() => setImages({...images, page: images.page + 1})} /> : <></>}
         </>
     }
     else {
