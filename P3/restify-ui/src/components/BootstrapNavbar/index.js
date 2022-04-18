@@ -6,17 +6,41 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Logout from "../FormPages/Logout";
 import Notification from "../Notification";
+import API from "../API";
 
+const GetOwnedId = () => {
+    const token = JSON.parse(localStorage.getItem("token"))
+    const [checkId, setCheckId] = useState(0)
+
+    useEffect(() => {
+        fetch(`${API}/accounts/restaurant/`,{
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            })
+            .then(response => { return response.json()})
+            .then(response => setCheckId(response))
+            .catch(err => {
+                console.log("error: " + err)
+        })
+    }, [token])
+    return checkId[0]
+}
 
 const BootstrapNavbar = () => {
     const [loggedIn, setLoggedIn] = useState(true)
+    let ownedId = GetOwnedId()
+
     useEffect(() => {
-        const token = localStorage.getItem("token")
+        const token = JSON.parse(localStorage.getItem("token"))
         if (token == null){
             setLoggedIn(false)
         }
     }, [])
-    
+
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
@@ -28,10 +52,18 @@ const BootstrapNavbar = () => {
                         {loggedIn ?
                         <>
                             <Nav.Link href="/feed">Feed</Nav.Link>
-                            <Nav.Link href="/">My Restaurant</Nav.Link>
+                            {ownedId === undefined ?
+                                <Nav.Link href="restaurant/add-restaurant/">
+                                    My Restaurant
+                                </Nav.Link>
+                                :
+                                <Nav.Link href={`restaurant/${ownedId}`}>
+                                    My Restaurant
+                                </Nav.Link>
+                            }
                             <NavDropdown title="Profile" id="basic-nav-dropdown" menuVariant="dark">
                                 <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-                                <NavDropdown.Item href="/profile">Edit Profile</NavDropdown.Item>
+                                <NavDropdown.Item href="/profile/edit">Edit Profile</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Notifications" id="basic-nav-dropdown" menuVariant="dark">
                                 <Notification />

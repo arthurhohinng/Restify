@@ -4,7 +4,7 @@ import "../style.css";
 import API from '../../API';
 import BASEURL from '../../BASEURL';
 
-const Profile = () => {
+const Profile = ( { isEdit=false } ) => {
     const [readOnly, setReadOnly] = useState(true)
     const [userInfo, setUserInfo] = useState({
         firstName: '',
@@ -40,6 +40,8 @@ const Profile = () => {
                 avatar: data.avatar,
                 phone: data.phone_num
             })
+            if (isEdit)
+                toggleEdit()
         })
         .catch(err => {
             console.log("error: " + err)
