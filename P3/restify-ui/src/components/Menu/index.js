@@ -67,7 +67,7 @@ const Menu = ( {owned=false} ) => {
     if (items.list.length > 0){
         return ( <> {owned ? 
                     <>
-                        <button className="btn btn-success my-2 my-sm-0 btn-block form-control menuaddbutton" 
+                        <button className="btn btn-success my-2 my-sm-0 btn-block form-control addbutton" 
                         onClick={() => setShowAddItem(!showAddItem)}>
                             Add an item
                         </button>
