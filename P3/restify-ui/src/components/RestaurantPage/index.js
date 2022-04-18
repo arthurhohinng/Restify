@@ -3,6 +3,7 @@ import Tab from 'react-bootstrap/Tab'
 import {useState, useEffect} from 'react';
 import API from '../API';
 import './style.css'
+import PageNotFound from '../PageNotFound'
 //import ContactInfo from '../ContactInfo'
 //import BlogPosts from '../BlogPosts'
 //import Menu from '../Menu'
@@ -39,10 +40,14 @@ const RestaurantPage = () => {
     const [restaurant, setRestaurant] = useState({})
     useEffect(() => {
         fetch(`${API}/restaurants/${id}/`)
-            .then(response => { return response.json()})
-            .then(response => setRestaurant(response))
+            .then(response => { 
+                if(!response.ok) throw new Error(response.status);
+                else return response.json();})
+            .then(response => {
+                setRestaurant(response)
+            })
             .catch(err => {
-                console.log("error: " + err)
+                setRestaurant(undefined)
             })
         
     }, [id])
@@ -114,9 +119,7 @@ const RestaurantPage = () => {
         </div>
         </>
     }
-    return <>
-    <h2 id="title">Loading...</h2>
-    </>
+    return <PageNotFound />
 }
 
 export default RestaurantPage;
