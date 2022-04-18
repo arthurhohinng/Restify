@@ -146,11 +146,25 @@ class LikesBlogView(CreateAPIView, DestroyAPIView):
                 return Response(status=status.HTTP_204_NO_CONTENT)
 
 class CheckLiked(APIView):
-    
     def get(self, request, pk):
         try:
             is_liked = LikesBlog.objects.get(user=request.user, blogpost=pk)
         except ObjectDoesNotExist:
             return Response({"false"}, status=200)
+        return Response({"true"}, status=200)
 
+class CheckLikedRestaurant(APIView):
+    def get(self, request, pk):
+        try:
+            is_liked = LikesRestaurant.objects.get(user=request.user, restaurant=pk)
+        except ObjectDoesNotExist:
+            return Response({"false"}, status=200)
+        return Response({"true"}, status=200)
+
+class CheckFollowedRestaurant(APIView):
+    def get(self, request, pk):
+        try:
+            is_liked = Follows.objects.get(user=request.user, restaurant=pk)
+        except ObjectDoesNotExist:
+            return Response({"false"}, status=200)
         return Response({"true"}, status=200)

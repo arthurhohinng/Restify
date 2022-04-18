@@ -10,6 +10,7 @@ import ContactInfo from "../ContactInfo";
 import BlogPosts from "../BlogPosts";
 import AddBlog from '../FormPages/AddBlog';
 import AddEditMenu from '../FormPages/AddEditMenu';
+import About from '../About';
 
 /* If the user is logged in and stuff, do they own a restaurant? If so, which? */
 const GetOwnedId = () => {
@@ -65,7 +66,9 @@ const RestaurantPage = () => {
                 transition={true}
                 className="mb-3 tabholder"
             >
-                <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
+                <Tab tabClassName="infotab" eventKey="about" title="About">
+                    <About />    
+                </Tab>
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
                     <button className="btn btn-success my-2 my-sm-0 btn-block form-control menuaddbutton" onClick={() => setShowAddItem(!showAddItem)}>
                         Add an item
@@ -111,7 +114,9 @@ const RestaurantPage = () => {
                 transition={true}
                 className="mb-3 tabholder"
             >
-                <Tab tabClassName="infotab" eventKey="about" title="About"></Tab>
+                <Tab tabClassName="infotab" eventKey="about" title="About">
+                    <About />   
+                </Tab>
                 <Tab tabClassName="infotab" eventKey="menu" title="Menu">
                     <Menu />
                 </Tab>
