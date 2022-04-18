@@ -59,7 +59,7 @@ const Register = () => {
 
     return (
         <form method='POST' id='registerForm'>
-            <div className="form-container">
+            <div className="form-container signup-login">
                 <h2>Sign up</h2>
                 <div className="form-group">
                     <Input title="Username" type="text" name="userName" placeholder="Enter username" inputsHandler={inputsHandler} read={false}/>

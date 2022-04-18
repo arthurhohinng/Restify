@@ -4,7 +4,7 @@ import "../style.css";
 import API from '../../API';
 import BASEURL from '../../BASEURL';
 
-const AddBlog = () => {
+const AddBlog = ( {setShowAddBlog, showAddBlog} ) => {
     const [inputFields, setInputField] = useState({
         title: '',
         image: null,
@@ -40,8 +40,7 @@ const AddBlog = () => {
         })
         .then(results => {
             if (results.status === 201){
-                // TODO: change to link of restaurant page
-                window.location.href=`${BASEURL}`
+                setShowAddBlog(!showAddBlog)
             }
             else{
                 return results.json()

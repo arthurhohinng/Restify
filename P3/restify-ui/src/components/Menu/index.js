@@ -6,7 +6,7 @@ import Button from '../Button';
 
 // make function to get all menu data and return it in a nested json object,
 // where the key is the category, something along those lines
-const Menu = () => {
+const Menu = ( {owned=false} ) => {
     const [items, setItems] = useState({list:[], page:1})
     const [nextExists, setNextExists] = useState(0)
     const [categories, setCategories] = useState([])
@@ -14,7 +14,6 @@ const Menu = () => {
     useEffect(() => {
         const url = window.location.href
         const restaurantId = url.split("/")[4]
-        const token = JSON.parse(localStorage.getItem("token"))
         fetch(`${API}/restaurants/${restaurantId}/menu/?page=${items.page}`, {
             method: 'GET',
             headers: {
@@ -39,6 +38,27 @@ const Menu = () => {
             })
         }, [items.page])
 
+    const deleteItem = (id) => {
+        const token = JSON.parse(localStorage.getItem("token"))
+        let formData = new FormData()
+        formData.append('id', id)
+        fetch(`${API}/restaurants/edit-menu/`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+            body: formData
+        })
+        .then(results => {
+            if (results.status === 204){
+                const newList = items.list.filter(item => item.id !== id)
+                setItems({...items, list: newList})
+            }
+        })
+        .catch(err => {
+            console.log("error:" + err)
+        })
+    }
 
     if (items.list.length > 0){
         return ( <>
@@ -53,7 +73,11 @@ const Menu = () => {
                                 <tr key={item.id}>
                                     <td>
                                         {item.name}
-                                        <span className="price">{item.price}</span>
+                                        <span className="price">
+                                            {item.price}
+                                            {owned ? <button className='btn' onClick={() => deleteItem(item.id)}>x</button> :
+                                            <></>}
+                                        </span>
                                         <br/>
                                         <i>{item.description}</i>
                                     </td>

@@ -1,11 +1,15 @@
 .form-container{
-    padding-top: 100px;
+    padding-top: 25px;
     width: 45%;
     text-align: left;
     margin: auto;
     justify-content: center;
     min-width: 400px !important;
     max-width: 800px !important; 
+}
+
+.signup-login{
+    padding-top: 75px
 }
 
 img:not(.logo, .nav-logo) {
