@@ -51,6 +51,7 @@ const Feed = () => {
     // TODO: get restaurant as author of blogpost
     const [nextExists, setNextExists] = useState(0)
     const [authorized, setAuthorized] = useState(0)
+    const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
         const token = JSON.parse(localStorage.getItem("token"))
@@ -69,51 +70,59 @@ const Feed = () => {
                 setPosts({...posts, posts: json.results})
                 setNextExists(json.next)
                 setAuthorized(true)
+                setLoading(false)
             })
             .catch(err => {
                 setAuthorized(false)
             })
     }, [posts.page])
 
-    if (authorized && (posts.posts).length > 0){
-        return (<>
-            <div><h1 id="title">Restaurant Feed</h1></div>
-            <div className="container feed-container">
-                {(posts.posts).map(post => 
-                    <div className="media d-flex" key={post.id}>
-                        <div className="me-3 rounded-circle">
-                            <a href={BASEURL+"/restaurant/"+post.restaurant}>
-                                <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo" loading="lazy"></img>
-                                {getLogo(post.restaurant)}
-                            </a>
+    if (isLoading) {
+        return (
+            <></>
+        )
+    }
+    else{
+        if (authorized && (posts.posts).length > 0){
+            return (<>
+                <div><h1 id="title">Restaurant Feed</h1></div>
+                <div className="container feed-container">
+                    {(posts.posts).map(post => 
+                        <div className="media d-flex" key={post.id}>
+                            <div className="me-3 rounded-circle">
+                                <a href={BASEURL+"/restaurant/"+post.restaurant}>
+                                    <img className={"media-object "+post.restaurant+"-logo"} height="64" width="64" alt="Logo" loading="lazy"></img>
+                                    {getLogo(post.restaurant)}
+                                </a>
+                            </div>
+                            <div>
+                                <h5><span className="name">{post.author}</span> Uploaded a Blogpost
+                                <span className="float-end">{getDate(post.date)}</span>
+                                </h5>
+                                    <img className="img-fluid" src={post.image} alt=""></img>
+                                    <h5 className="posttitle">{post.title}</h5>
+                                    <div>{post.body}</div>
+                                    <br></br>
+                                    <div id={post.id+"-like-btn"}></div>
+                                    <LikeButton className="btn btn-outline-light" postId={post.id} />
+                            </div>
                         </div>
-                        <div>
-                            <h5><span className="name">{post.author}</span> Uploaded a Blogpost
-                            <span className="float-end">{getDate(post.date)}</span>
-                            </h5>
-                                <h5 className="posttitle">{post.title}</h5>
-                                <img className="img-fluid" src={post.image} alt=""></img>
-                                <div>{post.body}</div>
-                                <br></br>
-                                <div id={post.id+"-like-btn"}></div>
-                                <LikeButton className="btn btn-outline-light" postId={post.id} />
-                        </div>
-                    </div>
-                )}
+                    )}
 
-                {(posts.page > 1) ? <Button value="prev" update={() => setPosts({...posts, page: posts.page - 1})} /> : <></>}
-                {nextExists != null ? <Button value="next" update={() => setPosts({...posts, page: posts.page + 1})} /> : <></>}
-            </div>
-        </>)
-    }
-    else if (authorized){
-        return <>
-        <div><h1 id="title">Restaurant Feed</h1></div>
-        <div class="feed-msg">No new posts yet.</div>
-        </>
-    }
-    else {
-        return <Login />
+                    {(posts.page > 1) ? <Button value="prev" update={() => setPosts({...posts, page: posts.page - 1})} /> : <></>}
+                    {nextExists != null ? <Button value="next" update={() => setPosts({...posts, page: posts.page + 1})} /> : <></>}
+                </div>
+            </>)
+        }
+        else if (authorized){
+            return <>
+            <div><h1 id="title">Restaurant Feed</h1></div>
+            <div class="feed-msg">No posts yet. <a href={BASEURL}>Search for restaurants</a> and follow them!</div>
+            </>
+        }
+        else if (!authorized){
+            return <Login />
+        }
     }
 }
 
