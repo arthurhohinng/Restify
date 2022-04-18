@@ -16,3 +16,4 @@ python3 manage.py migrate
 # Setup frontend
 cd ../restify-ui
 npm install
+cd ..
