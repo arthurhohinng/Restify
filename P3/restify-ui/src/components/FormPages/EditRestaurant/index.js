@@ -123,6 +123,9 @@ const EditRestaurant = () => {
             {errorMessage}
             <br/>
             <input className="btn btn-outline-success my-2 my-sm-0 btn-block form-control" type="button" value="Submit" onClick={submitHandler}/>
+            <br/>
+            <br/>
+            <br/>
         </div>
     )
 }
