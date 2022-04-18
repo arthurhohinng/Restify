@@ -106,6 +106,12 @@ const Feed = () => {
             </div>
         </>)
     }
+    else if (authorized){
+        return <>
+        <div><h1 id="title">Restaurant Feed</h1></div>
+        No posts yet.
+        </>
+    }
     else {
         return <Login />
     }
