@@ -1,10 +1,8 @@
 table {
   margin: auto;
   padding: 2%;
-  width: 40%;
+  width: 50%;
   color:rgb(255, 255, 255);
-  border-collapse:separate; 
-  border-spacing: 5em;
 }
 
 .menuedit {
@@ -35,4 +33,7 @@ td {
 
 .menu-items {
   margin-bottom: 2%;
+  border-collapse:separate; 
+  border-spacing:0 5px;
+  min-width: 300px;
 }
