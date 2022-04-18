@@ -96,7 +96,6 @@ const RestaurantPage = () => {
                         <BlogPosts />}
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact">
-                    <ContactInfo />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant">
                     <EditRestaurant />
@@ -122,7 +121,6 @@ const RestaurantPage = () => {
                     <BlogPosts />
                 </Tab>
                 <Tab tabClassName="infotab" eventKey="contact" title="Contact">
-                    <ContactInfo />
                 </Tab>
             </Tabs>
         </div>
