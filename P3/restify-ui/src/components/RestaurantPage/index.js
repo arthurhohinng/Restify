@@ -1,10 +1,13 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import $ from 'jquery';
-import Popper from 'popper.js';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
 import {useState, useEffect} from 'react';
 import API from '../API';
 import './style.css'
+import ContactInfo from '../ContactInfo'
+import BlogPosts from '../BlogPosts'
+import Menu from '../Menu'
+import EditRestaurant from '../EditRestaurant'
+import About from '../About'
 
 /* If the user is logged in and stuff, do they own a restaurant? If so, which? */
 const GetOwnedId = () => {
@@ -25,7 +28,7 @@ const GetOwnedId = () => {
             .catch(err => {
                 console.log("error: " + err)
         })
-    }, [])
+    }, [token])
     return checkId[0]
 }
 
@@ -42,75 +45,41 @@ const RestaurantPage = () => {
                 console.log("error: " + err)
             })
         
-    }, [])
+    }, [id])
 
     /* if ownedId === Id, render the restaurant as the owner. otherwise, render as normal */
-    if ((restaurant != undefined) && (ownedId != undefined) && (ownedId === id)){
+    if ((restaurant !== undefined) && (ownedId !== undefined) && (ownedId === id)){
         return <>
         <h2 id="rest-page-title">{restaurant.name}</h2>
         <div className="container resto-container">
-            <ul className="nav nav-pills" id="restaurant-tabs" role="tablist">
-                <li className="nav-item">
-                <a className="nav-link rest-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
-                </li>
-                <li className="nav-item">
-                <a className="nav-link rest-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false">Menu</a>
-                </li>
-                <li className="nav-item">
-                <a className="nav-link rest-link" id="blog-tab" data-toggle="tab" href="#blogposts" role="tab" aria-controls="blogposts" aria-selected="false">Blog Posts</a>
-                </li>
-                <li className="nav-item">
-                <a className="nav-link rest-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                </li>
-                <li className="nav-item">
-                    <a className="nav-link rest-link" id="edit-tab" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">Edit Restaurant</a>
-                </li>
-            </ul>
-            <div className="tab-content" id="restaurant-tabs-content">
-                <div className="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    about
-                </div>
-                <div className="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
-                    menu
-                </div>
-                <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                    contact
-                </div>
-                <div className="tab-pane fade" id="edit" role="tabpanel" aria-labelledby="edit-tab">
-                    edit
-                </div>
-            </div>
+            <Tabs
+                defaultActiveKey="about"
+                transition={true}
+                className="mb-3 tabholder"
+            >
+                <Tab tabClassName="infotab" eventKey="about" title="About"><About /></Tab>
+                <Tab tabClassName="infotab" eventKey="menu" title="Menu"><Menu /></Tab>
+                <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"><BlogPosts /></Tab>
+                <Tab tabClassName="infotab" eventKey="contact" title="Contact"><ContactInfo /></Tab>
+                <Tab tabClassName="infotab" eventKey="edit" title="Edit Restaurant"><EditRestaurant /></Tab>
+            </Tabs>
         </div>
         </>
     }
-    else if (restaurant != undefined){
+    else if (restaurant !== undefined){
         return <>
-        <h2 id="title">{restaurant.name}</h2>
+        <h2 id="rest-page-title">{restaurant.name}</h2>
         <div className="container resto-container">
-            <ul className="nav nav-tabs" id="restaurant-tabs" role="tablist">
-                <li className="nav-item">
-                <a className="nav-link rest-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
-                </li>
-                <li className="nav-item">
-                <a className="nav-link rest-link" id="menu-tab" data-toggle="tab" href="#menu" role="tab" aria-controls="menu" aria-selected="false">Menu</a>
-                </li>
-                <li className="nav-item">
-                <a className="nav-link rest-link" id="blog-tab" data-toggle="tab" href="#blogposts" role="tab" aria-controls="blogposts" aria-selected="false">Blog Posts</a>
-                </li>
-                <li className="nav-item">
-                <a className="nav-link rest-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                </li>
-            </ul>
-            <div className="tab-content" id="restaurant-tabs-content">
-                <div className="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
-                    
-                </div>
-                <div className="tab-pane fade" id="menu" role="tabpanel" aria-labelledby="menu-tab">
-                
-                </div>
-                <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                </div>
-            </div>
+            <Tabs
+                defaultActiveKey="about"
+                transition={true}
+                className="mb-3 tabholder"
+            >
+                <Tab tabClassName="infotab" eventKey="about" title="About"><About /></Tab>
+                <Tab tabClassName="infotab" eventKey="menu" title="Menu"><Menu /></Tab>
+                <Tab tabClassName="infotab" eventKey="blogposts" title="Blog Posts"><BlogPosts /></Tab>
+                <Tab tabClassName="infotab" eventKey="contact" title="Contact"><ContactInfo /></Tab>
+            </Tabs>
         </div>
         </>
     }
