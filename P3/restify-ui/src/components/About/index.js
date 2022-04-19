@@ -94,7 +94,6 @@ const About = () => {
             </div>
             <Gallery />
             <Comment />
-            <CommentForm />
         </>)
     }
     // Case 2: they are logged in, but do not own it
@@ -115,7 +114,6 @@ const About = () => {
             </div>
             <Gallery />
             <Comment />
-            <CommentForm />
         </>)
     }
     // Case 3: Not logged in (Like/follow buttons will redirect to Login? Or just not view them at all)

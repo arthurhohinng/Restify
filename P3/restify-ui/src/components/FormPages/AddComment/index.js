@@ -50,10 +50,11 @@ const AddComment = ( {comments, setComments} ) => {
             <div className="form-group">
                 <textarea id="comment-box" type="textarea" name="text" onChange={inputsHandler} placeholder="Enter comment here..." rows="4" cols="50" />
             </div>
-            <br/>
             {errorMessage}
             <br/>
             <input id="add-comment-button" type="button" value="Add comment" onClick={submitHandler}/>
+            <br/>
+            <br/>
         </div>
     )
 }
