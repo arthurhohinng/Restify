@@ -71,7 +71,7 @@ const Menu = ( {owned=false} ) => {
                         onClick={() => setShowAddItem(!showAddItem)}>
                             Add an item
                         </button>
-                    {showAddItem ? <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem} setItems={setItems} items={items}/>
+                    {showAddItem ? <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem} setItems={setItems} items={items} categories={categories} setCategories={setCategories}/>
                         :
                         <></>}
                     </>
@@ -115,6 +115,22 @@ const Menu = ( {owned=false} ) => {
                 )} 
                 {(items.page > 1) ? <Button value="prev" update={() => setItems({...items, page: items.page - 1})} /> : <></>}
                     {nextExists !== null ? <Button value="next" update={() => setItems({...items, page: items.page + 1})} /> : <></>}
+            </>
+        )
+    }
+    else {
+        return ( <> {owned ? 
+            <>
+                <button className="btn btn-success my-2 my-sm-0 btn-block form-control addbutton" 
+                onClick={() => setShowAddItem(!showAddItem)}>
+                    Add an item
+                </button>
+            {showAddItem ? <AddEditMenu showAddItem={showAddItem} setShowAddItem={setShowAddItem} setItems={setItems} items={items} categories={setCategories} setCategories={setCategories}/>
+                :
+                <></>}
+            </>
+            :
+            <></>}
             </>
         )
     }

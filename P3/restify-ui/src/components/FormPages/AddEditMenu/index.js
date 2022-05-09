@@ -4,7 +4,7 @@ import "../style.css";
 import API from '../../API';
 import BASEURL from '../../BASEURL';
 
-const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setItems, items, setEdit} ) => {
+const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setItems, items, setEdit, categories, setCategories} ) => {
     const [inputFields, setInputField] = useState({
         name: '',
         description: '',
@@ -69,6 +69,9 @@ const AddEditMenu = ( {title="Add item", showAddItem, setShowAddItem, id=0, setI
             })
             .then(data => {
                 setItems({... items, list: [... items.list, data]})
+                if (!categories.includes(data.categeory))
+                    setCategories([... categories, data.category])
+
             })
             .catch(err => {
                 console.log("error: " + err)
